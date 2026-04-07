@@ -56,11 +56,64 @@ export type HighlightItem = {
   value?: string;
 };
 
+export type QuantifiedItem = {
+  label: string;
+  value: string;
+  width: string;
+  note?: string;
+};
+
 export type ProblemPoint = {
   label: string;
   title: string;
   description: string;
   evidence: string;
+};
+
+export type FrameworkDimension = {
+  label: string;
+  title: string;
+  conclusion: string;
+  items: QuantifiedItem[];
+};
+
+export type FindingStatement = {
+  label: string;
+  conclusion: string;
+  explanation: string;
+  evidence?: string;
+};
+
+export type FindingsFigure = {
+  title: string;
+  caption: string;
+  items: QuantifiedItem[];
+};
+
+export type AssociationPair = {
+  label: string;
+  statistic: string;
+  width: string;
+  explanation: string;
+};
+
+export type ImplicationItem = {
+  title: string;
+  conclusion: string;
+  explanation: string;
+  support: string;
+};
+
+export type ImplicationsFigureStep = {
+  label: string;
+  title: string;
+  summary: string;
+};
+
+export type ImplicationsFigure = {
+  title: string;
+  caption: string;
+  steps: ImplicationsFigureStep[];
 };
 
 export type DetailItem = {
@@ -128,15 +181,26 @@ export type MethodContent = SectionIntro & {
 };
 
 export type FrameworkContent = SectionIntro & {
-  dimensions: HighlightItem[];
+  conclusion: string;
+  figureCaption: string;
+  dimensions: FrameworkDimension[];
 };
 
 export type FindingsContent = SectionIntro & {
-  items: HighlightItem[];
+  conclusion: string;
+  items: FindingStatement[];
+  representationFigure: FindingsFigure;
+  associationFigure: {
+    title: string;
+    caption: string;
+    pairs: AssociationPair[];
+  };
 };
 
 export type ImplicationsContent = SectionIntro & {
-  items: HighlightItem[];
+  conclusion: string;
+  items: ImplicationItem[];
+  figure: ImplicationsFigure;
 };
 
 export type AuthorsContent = SectionIntro & {
