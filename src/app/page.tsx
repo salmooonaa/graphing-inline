@@ -20,8 +20,8 @@ export default function HomePage() {
         <HeroSection content={homeContent.hero} />
         <SummarySection content={homeContent.summary} />
         <ProblemSection content={homeContent.problem} />
-        <MethodSection content={homeContent.method} />
         <FrameworkSection content={homeContent.framework} />
+        <MethodSection content={homeContent.method} />
         <FindingsSection content={homeContent.findings} />
         <ImplicationsSection content={homeContent.implications} />
         <AuthorsSection content={homeContent.authors} />

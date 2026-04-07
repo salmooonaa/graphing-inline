@@ -2,24 +2,27 @@ import type { SummaryContent } from "@/types/content";
 
 export const summaryContent: SummaryContent = {
   eyebrow: "Summary",
-  title: "What this paper investigates",
+  title: "The paper contributes a corpus, a framework, and a validated reading of the design space",
   description:
-    "This page summarizes the paper’s research question, corpus study, framework, findings, and public materials.",
+    "Instead of reproducing the paper section by section, this page foregrounds the study’s main evidence, framing devices, and public reference materials.",
   points: [
     {
-      title: "Research scope",
+      value: "126,797",
+      title: "Corpus scale",
       description:
-        "The paper studies real-world uses of word-scale graphics in scientific papers.",
+        "Computer Science papers screened to identify real uses of word-scale graphics in the wild.",
     },
     {
-      title: "Study design",
+      value: "where–why–how",
+      title: "Analytical frame",
       description:
-        "The analysis combines corpus-scale observation with a structured framework for interpreting inline graphics use.",
+        "A three-part language for positioning, communicative function, and visual representation.",
     },
     {
-      title: "Public outputs",
+      value: "κ = 0.91",
+      title: "Validation",
       description:
-        "The site will connect readers to the paper, poster, citation materials, and other public project assets.",
+        "High interrater reliability for the framework on the external validation corpus.",
     },
   ],
 };

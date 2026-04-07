@@ -161,6 +161,8 @@ export type SiteMeta = {
 };
 
 export type HeroContent = SectionIntro & {
+  authorsLine: string;
+  publicationLine: string;
   status: string;
   actions: HeroAction[];
   metrics: HeroMetric[];

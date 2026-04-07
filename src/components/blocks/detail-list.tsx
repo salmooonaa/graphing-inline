@@ -7,18 +7,15 @@ type DetailListProps = {
 export function DetailList({ items }: DetailListProps) {
   return (
     <div className="grid gap-4 lg:grid-cols-2">
-      {items.map((item, index) => (
+      {items.map((item) => (
         <article
           key={item.title}
-          className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+          className="border-t border-[var(--line-strong)] bg-[var(--surface)] px-0 py-5"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
-            {`Item ${index + 1}`}
-          </p>
-          <h3 className="mt-3 text-xl font-semibold text-slate-950">
+          <h3 className="text-2xl font-semibold text-slate-950">
             {item.title}
           </h3>
-          <p className="mt-3 text-sm leading-7 text-slate-700">
+          <p className="mt-3 max-w-md text-sm leading-7 text-slate-700">
             {item.description}
           </p>
           {item.details?.length ? (

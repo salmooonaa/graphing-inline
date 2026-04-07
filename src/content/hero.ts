@@ -6,10 +6,14 @@ export const heroContent: HeroContent = {
     "Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers",
   description:
     "A corpus study of 909 word-scale graphic use cases across 126,797 scientific papers, examining where they appear, why authors use them, and how they are visually represented.",
+  authorsLine:
+    "Siyu Lu, Yanhan Liu, Shiyu Xu, Ruishi Zou, and Chen Ye",
+  publicationLine:
+    "CHI EA 2026 · Barcelona, Spain · DOI 10.1145/3772363.3798356",
   status:
-    "Public files are not linked yet; use the sections below for resource status, citation metadata, and contact information.",
+    "The site emphasizes the paper’s framework, method pipeline, findings, and public research materials.",
   actions: [
-    { label: "Paper", href: "#resources", variant: "primary" },
+    { label: "Paper", href: "https://arxiv.org/abs/2603.10533", variant: "primary" },
     { label: "Poster", href: "#resources", variant: "secondary" },
     { label: "BibTeX", href: "#citation", variant: "secondary" },
     { label: "Method", href: "#method", variant: "secondary" },

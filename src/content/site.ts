@@ -5,11 +5,11 @@ export const siteMeta: SiteMeta = {
   description:
     "Project page for the paper Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers.",
   navItems: [
-    { id: "summary", label: "Summary" },
     { id: "problem", label: "Problem" },
-    { id: "method", label: "Method" },
     { id: "framework", label: "Framework" },
+    { id: "method", label: "Method" },
     { id: "findings", label: "Findings" },
+    { id: "implications", label: "Implications" },
     { id: "resources", label: "Resources" },
     { id: "citation", label: "Citation" },
     { id: "contact", label: "Contact" },

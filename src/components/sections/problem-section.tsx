@@ -1,5 +1,6 @@
 import type { ProblemContent } from "@/types/content";
 
+import { SectionIntro } from "@/components/blocks/section-intro";
 import { Container } from "@/components/ui/container";
 
 type ProblemSectionProps = {
@@ -10,38 +11,34 @@ export function ProblemSection({ content }: ProblemSectionProps) {
   return (
     <section
       id="problem"
-      className="scroll-mt-24 border-t border-slate-200/80 py-16 sm:py-20"
+      className="scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20"
     >
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
-          <div className="max-w-2xl space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
-              {content.eyebrow}
-            </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              {content.title}
-            </h2>
-            <p className="text-base leading-8 text-slate-700 sm:text-lg">
-              {content.description}
-            </p>
-          </div>
+        <div className="grid gap-12 lg:grid-cols-[0.68fr_1.32fr]">
+          <SectionIntro
+            eyebrow={content.eyebrow}
+            title={content.title}
+            description={content.description}
+            accent="The argument progresses from a reading burden, to the promise of inline graphics, to the absence of an in-the-wild scholarly account."
+            className="lg:pr-8"
+          />
 
           <ol className="grid gap-8 md:grid-cols-3">
             {content.points.map((point) => (
               <li
                 key={point.label}
-                className="border-t border-slate-900 pt-4"
+                className="border-t border-[var(--line-strong)] bg-[var(--surface)] pt-4"
               >
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
                   {point.label}
                 </p>
-                <h3 className="mt-3 text-xl font-semibold leading-8 text-slate-950">
+                <h3 className="mt-3 text-2xl font-semibold leading-8 text-slate-950">
                   {point.title}
                 </h3>
                 <p className="mt-4 text-sm leading-7 text-slate-700">
                   {point.description}
                 </p>
-                <p className="mt-4 border-l border-slate-300 pl-4 text-sm leading-7 text-slate-600">
+                <p className="mt-4 border-l border-[var(--line)] pl-4 text-sm leading-7 text-slate-600">
                   {point.evidence}
                 </p>
               </li>

@@ -14,7 +14,7 @@ export function QuantifiedFigure({
   items,
 }: QuantifiedFigureProps) {
   return (
-    <figure className="border border-slate-300 bg-white p-6 sm:p-7">
+    <figure className="border border-[var(--line-strong)] bg-[rgba(255,252,247,0.92)] p-6 sm:p-7">
       <dl className="space-y-5">
         {items.map((item) => (
           <div key={item.label} className="space-y-2">
@@ -24,7 +24,7 @@ export function QuantifiedFigure({
             </div>
             <div className="h-2 bg-slate-200">
               <div
-                className="h-full bg-slate-900"
+                className="h-full bg-[linear-gradient(90deg,#111827,#8a5a1f)]"
                 style={{ width: item.width }}
               />
             </div>
@@ -54,17 +54,17 @@ export function AssociationFigure({
   pairs,
 }: AssociationFigureProps) {
   return (
-    <figure className="border border-slate-300 bg-white p-6 sm:p-7">
+    <figure className="border border-[var(--line-strong)] bg-[rgba(255,252,247,0.92)] p-6 sm:p-7">
       <div className="space-y-5">
         {pairs.map((pair) => (
-          <section key={pair.label} className="border-t border-slate-300 pt-4">
+          <section key={pair.label} className="border-t border-[var(--line)] pt-4">
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <h3 className="text-base font-semibold text-slate-950">{pair.label}</h3>
               <p className="text-xs text-slate-500">{pair.statistic}</p>
             </div>
             <div className="mt-3 h-2 bg-slate-200">
               <div
-                className="h-full bg-slate-900"
+                className="h-full bg-[linear-gradient(90deg,#111827,#8a5a1f)]"
                 style={{ width: pair.width }}
               />
             </div>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { SectionIntro } from "@/components/blocks/section-intro";
 import { cn } from "@/lib/utils";
 
 import { Container } from "./container";
@@ -25,23 +26,20 @@ export function SectionShell({
     <section
       id={id}
       className={cn(
-        "scroll-mt-24 border-t border-slate-200/80 py-16 sm:py-20",
+        "scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20",
         className,
       )}
     >
       <Container>
-        <div className="max-w-3xl space-y-4">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
-            {eyebrow}
-          </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-            {title}
-          </h2>
-          <p className="text-base leading-8 text-slate-700 sm:text-lg">
-            {description}
-          </p>
+        <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-12">
+          <SectionIntro
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
+            className="lg:pr-8"
+          />
+          <div>{children}</div>
         </div>
-        <div className="mt-10">{children}</div>
       </Container>
     </section>
   );
