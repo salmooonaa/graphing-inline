@@ -2,13 +2,23 @@ import type { CitationContent } from "@/types/content";
 
 export const citationContent: CitationContent = {
   eyebrow: "Citation",
-  title: "Citation information for the paper",
+  title: "Reference the paper in standard citation formats",
   description:
-    "This section is reserved for the public citation text and BibTeX entry associated with the paper.",
+    "Use the proceedings citation below or copy the BibTeX entry for bibliographic software.",
   citationText:
-    "Full citation details will be added here when the publication metadata is finalized.",
-  bibtex: `@misc{graphing-inline-paper,
+    "Siyu Lu, Yanhan Liu, Shiyu Xu, Ruishi Zou, and Chen Ye. 2026. Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers. In Extended Abstracts of the 2026 CHI Conference on Human Factors in Computing Systems (CHI EA '26), April 13–17, 2026, Barcelona, Spain. ACM, New York, NY, USA, 6 pages. https://doi.org/10.1145/3772363.3798356",
+  bibtex: `@inproceedings{lu2026graphinginline,
+  author = {Lu, Siyu and Liu, Yanhan and Xu, Shiyu and Zou, Ruishi and Ye, Chen},
   title = {Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers},
-  note = {Full citation metadata coming soon.}
+  year = {2026},
+  booktitle = {Extended Abstracts of the 2026 CHI Conference on Human Factors in Computing Systems},
+  series = {CHI EA '26'},
+  location = {Barcelona, Spain},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  numpages = {6},
+  doi = {10.1145/3772363.3798356},
+  url = {https://doi.org/10.1145/3772363.3798356}
 }`,
+  bibtexDownloadHref: "/files/graphing-inline.bib",
 };

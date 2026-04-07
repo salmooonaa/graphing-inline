@@ -3,7 +3,7 @@ import type { SiteMeta } from "@/types/content";
 export const siteMeta: SiteMeta = {
   title: "Graphing Inline",
   description:
-    "Project site scaffold for the paper Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers.",
+    "Project page for the paper Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers.",
   navItems: [
     { id: "summary", label: "Summary" },
     { id: "problem", label: "Problem" },

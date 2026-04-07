@@ -214,6 +214,7 @@ export type ResourcesContent = SectionIntro & {
 export type CitationContent = SectionIntro & {
   citationText: string;
   bibtex: string;
+  bibtexDownloadHref?: string;
 };
 
 export type ContactContent = SectionIntro & {

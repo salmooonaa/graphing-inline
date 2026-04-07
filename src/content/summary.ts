@@ -4,7 +4,7 @@ export const summaryContent: SummaryContent = {
   eyebrow: "Summary",
   title: "What this paper investigates",
   description:
-    "The project site introduces the paper through its core research scope, study design, major findings, and public project resources.",
+    "This page summarizes the paper’s research question, corpus study, framework, findings, and public materials.",
   points: [
     {
       title: "Research scope",

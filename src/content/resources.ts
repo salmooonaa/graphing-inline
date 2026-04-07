@@ -2,21 +2,41 @@ import type { ResourcesContent } from "@/types/content";
 
 export const resourcesContent: ResourcesContent = {
   eyebrow: "Resources",
-  title: "Public resources for the paper project",
+  title: "Public materials associated with the paper",
   description:
-    "Only public materials directly associated with the paper should appear here, with explicit status when a resource is not yet open.",
+    "This section lists only public materials directly connected to the paper, with explicit status when a resource is not currently open.",
   items: [
     {
-      name: "Paper PDF",
+      name: "Paper",
       description:
-        "The public PDF link will appear here when the paper file is ready for release.",
-      status: "comingSoon",
+        "Author version on arXiv for Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers.",
+      status: "available",
+      href: "https://arxiv.org/abs/2603.10533",
     },
     {
       name: "Poster",
       description:
-        "The project poster will appear here when the public poster file is ready.",
-      status: "comingSoon",
+        "No public poster file is linked in the current paper record.",
+      status: "unavailable",
+    },
+    {
+      name: "BibTeX",
+      description:
+        "Download the BibTeX entry for the published CHI EA 2026 paper.",
+      status: "available",
+      href: "/files/graphing-inline.bib",
+    },
+    {
+      name: "Supplementary",
+      description:
+        "No public supplementary material is linked in the current paper record.",
+      status: "unavailable",
+    },
+    {
+      name: "Code",
+      description:
+        "No public research code repository is linked in the current paper record.",
+      status: "unavailable",
     },
   ],
 };

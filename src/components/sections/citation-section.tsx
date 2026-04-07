@@ -18,6 +18,7 @@ export function CitationSection({ content }: CitationSectionProps) {
       <CitationBlock
         citationText={content.citationText}
         bibtex={content.bibtex}
+        bibtexDownloadHref={content.bibtexDownloadHref}
       />
     </SectionShell>
   );

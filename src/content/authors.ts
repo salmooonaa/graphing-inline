@@ -2,19 +2,27 @@ import type { AuthorsContent } from "@/types/content";
 
 export const authorsContent: AuthorsContent = {
   eyebrow: "Authors",
-  title: "Author information for the paper project",
+  title: "Authors and affiliations",
   description:
-    "This section is reserved for the paper's public author and affiliation metadata.",
+    "The paper is authored by researchers from Tongji University and an independent researcher based in Seattle.",
   items: [
     {
-      title: "Author list",
+      title: "Tongji University",
       description:
-        "Author names and affiliations will be populated from the official paper record.",
+        "Siyu Lu, Yanhan Liu, Ruishi Zou, and Chen Ye.",
+      details: ["Shanghai, China"],
     },
     {
-      title: "Corresponding contact",
+      title: "Independent Researcher",
       description:
-        "The public contact owner will be listed here once the project metadata is finalized.",
+        "Shiyu Xu.",
+      details: ["Seattle, WA, USA"],
+    },
+    {
+      title: "Corresponding author",
+      description:
+        "Chen Ye.",
+      details: ["yechen@tongji.edu.cn"],
     },
   ],
 };

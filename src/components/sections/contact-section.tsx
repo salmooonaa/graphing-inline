@@ -18,7 +18,7 @@ export function ContactSection({ content }: ContactSectionProps) {
         {content.items.map((item) => (
           <article
             key={item.label}
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="border-t border-slate-300 bg-white pt-5"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
               {item.label}

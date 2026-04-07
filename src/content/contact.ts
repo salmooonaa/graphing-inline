@@ -2,13 +2,19 @@ import type { ContactContent } from "@/types/content";
 
 export const contactContent: ContactContent = {
   eyebrow: "Contact",
-  title: "Public contact for the paper project",
+  title: "Contact the paper authors",
   description:
-    "This section will provide a public contact route associated with the paper project.",
+    "Public contact routes for questions about the paper and its scholarly context.",
   items: [
     {
-      label: "Project contact",
-      value: "Public contact details will be added here when they are finalized.",
+      label: "Corresponding author",
+      value: "Chen Ye",
+      href: "mailto:yechen@tongji.edu.cn",
+    },
+    {
+      label: "Email",
+      value: "yechen@tongji.edu.cn",
+      href: "mailto:yechen@tongji.edu.cn",
     },
   ],
 };

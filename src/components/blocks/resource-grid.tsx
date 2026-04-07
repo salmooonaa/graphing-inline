@@ -8,12 +8,19 @@ type ResourceGridProps = {
 
 export function ResourceGrid({ items }: ResourceGridProps) {
   return (
-    <div className="grid gap-4 lg:grid-cols-3">
+    <div className="space-y-4">
       {items.map((item) => {
         const body = (
           <>
             <div className="flex items-start justify-between gap-4">
-              <h3 className="text-xl font-semibold text-slate-950">{item.name}</h3>
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
+                  Resource
+                </p>
+                <h3 className="mt-2 text-xl font-semibold text-slate-950">
+                  {item.name}
+                </h3>
+              </div>
               <StatusBadge status={item.status} />
             </div>
             <p className="mt-4 text-sm leading-7 text-slate-700">
@@ -26,14 +33,14 @@ export function ResourceGrid({ items }: ResourceGridProps) {
           <a
             key={item.name}
             href={item.href}
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-transform hover:-translate-y-0.5"
+            className="block border-t border-slate-300 bg-white px-0 py-5 transition-colors hover:text-slate-950"
           >
             {body}
           </a>
         ) : (
           <article
             key={item.name}
-            className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="border-t border-slate-300 bg-white px-0 py-5"
           >
             {body}
           </article>
