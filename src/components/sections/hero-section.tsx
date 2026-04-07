@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { HeroContent } from "@/types/content";
 
 import { HeroActions } from "@/components/blocks/hero-actions";
 import { Container } from "@/components/ui/container";
 
 type HeroSectionProps = {
-  content: HomeContent["hero"];
+  content: HeroContent;
 };
 
 export function HeroSection({ content }: HeroSectionProps) {

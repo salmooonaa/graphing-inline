@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { ResourcesContent } from "@/types/content";
 
 import { ResourceGrid } from "@/components/blocks/resource-grid";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type ResourcesSectionProps = {
-  content: HomeContent["resources"];
+  content: ResourcesContent;
 };
 
 export function ResourcesSection({ content }: ResourcesSectionProps) {

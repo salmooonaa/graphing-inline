@@ -1,0 +1,12 @@
+export { authorsContent } from "./authors";
+export { citationContent } from "./citation";
+export { contactContent } from "./contact";
+export { findingsContent } from "./findings";
+export { frameworkContent } from "./framework";
+export { heroContent } from "./hero";
+export { implicationsContent } from "./implications";
+export { methodContent } from "./method";
+export { problemContent } from "./problem";
+export { resourcesContent } from "./resources";
+export { siteMeta } from "./site";
+export { summaryContent } from "./summary";

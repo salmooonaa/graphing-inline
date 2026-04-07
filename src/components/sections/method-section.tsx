@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { MethodContent } from "@/types/content";
 
 import { DetailList } from "@/components/blocks/detail-list";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type MethodSectionProps = {
-  content: HomeContent["method"];
+  content: MethodContent;
 };
 
 export function MethodSection({ content }: MethodSectionProps) {

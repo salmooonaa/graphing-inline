@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { FrameworkContent } from "@/types/content";
 
 import { KeyPointsGrid } from "@/components/blocks/key-points-grid";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type FrameworkSectionProps = {
-  content: HomeContent["framework"];
+  content: FrameworkContent;
 };
 
 export function FrameworkSection({ content }: FrameworkSectionProps) {

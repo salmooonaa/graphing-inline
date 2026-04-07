@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { ImplicationsContent } from "@/types/content";
 
 import { KeyPointsGrid } from "@/components/blocks/key-points-grid";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type ImplicationsSectionProps = {
-  content: HomeContent["implications"];
+  content: ImplicationsContent;
 };
 
 export function ImplicationsSection({ content }: ImplicationsSectionProps) {

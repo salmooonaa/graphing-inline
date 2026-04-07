@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { AuthorsContent } from "@/types/content";
 
 import { DetailList } from "@/components/blocks/detail-list";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type AuthorsSectionProps = {
-  content: HomeContent["authors"];
+  content: AuthorsContent;
 };
 
 export function AuthorsSection({ content }: AuthorsSectionProps) {

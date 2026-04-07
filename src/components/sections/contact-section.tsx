@@ -1,9 +1,9 @@
-import type { HomeContent } from "@/types/content";
+import type { ContactContent } from "@/types/content";
 
 import { SectionShell } from "@/components/ui/section-shell";
 
 type ContactSectionProps = {
-  content: HomeContent["contact"];
+  content: ContactContent;
 };
 
 export function ContactSection({ content }: ContactSectionProps) {

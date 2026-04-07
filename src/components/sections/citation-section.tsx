@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { CitationContent } from "@/types/content";
 
 import { CitationBlock } from "@/components/blocks/citation-block";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type CitationSectionProps = {
-  content: HomeContent["citation"];
+  content: CitationContent;
 };
 
 export function CitationSection({ content }: CitationSectionProps) {

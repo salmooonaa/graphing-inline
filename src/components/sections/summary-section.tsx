@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { SummaryContent } from "@/types/content";
 
 import { KeyPointsGrid } from "@/components/blocks/key-points-grid";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type SummarySectionProps = {
-  content: HomeContent["summary"];
+  content: SummaryContent;
 };
 
 export function SummarySection({ content }: SummarySectionProps) {

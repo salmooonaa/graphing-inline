@@ -16,6 +16,12 @@ export type NavItem = {
   label: string;
 };
 
+export type SectionIntro = {
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
 export type HeroAction = {
   label: string;
   href: string;
@@ -34,14 +40,24 @@ export type DetailItem = {
   details?: string[];
 };
 
-export type ResourceStatus = "Planned" | "In Preparation" | "Available";
+export type ResourceStatus = "available" | "comingSoon" | "unavailable";
 
-export type ResourceItem = {
+type BaseResourceItem = {
   name: string;
   description: string;
-  status: ResourceStatus;
-  href?: string;
 };
+
+export type AvailableResourceItem = BaseResourceItem & {
+  status: "available";
+  href: string;
+};
+
+export type PendingResourceItem = BaseResourceItem & {
+  status: "comingSoon" | "unavailable";
+  href?: never;
+};
+
+export type ResourceItem = AvailableResourceItem | PendingResourceItem;
 
 export type ContactItem = {
   label: string;
@@ -55,73 +71,62 @@ export type SiteMeta = {
   navItems: NavItem[];
 };
 
+export type HeroContent = SectionIntro & {
+  status: string;
+  actions: HeroAction[];
+};
+
+export type SummaryContent = SectionIntro & {
+  points: HighlightItem[];
+};
+
+export type ProblemContent = SectionIntro & {
+  points: HighlightItem[];
+};
+
+export type MethodContent = SectionIntro & {
+  phases: DetailItem[];
+};
+
+export type FrameworkContent = SectionIntro & {
+  dimensions: HighlightItem[];
+};
+
+export type FindingsContent = SectionIntro & {
+  items: HighlightItem[];
+};
+
+export type ImplicationsContent = SectionIntro & {
+  items: HighlightItem[];
+};
+
+export type AuthorsContent = SectionIntro & {
+  items: DetailItem[];
+};
+
+export type ResourcesContent = SectionIntro & {
+  items: ResourceItem[];
+};
+
+export type CitationContent = SectionIntro & {
+  citationText: string;
+  bibtex: string;
+};
+
+export type ContactContent = SectionIntro & {
+  items: ContactItem[];
+};
+
 export type HomeContent = {
-  hero: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    status: string;
-    actions: HeroAction[];
-  };
-  summary: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    points: HighlightItem[];
-  };
-  problem: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    points: HighlightItem[];
-  };
-  method: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    phases: DetailItem[];
-  };
-  framework: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    dimensions: HighlightItem[];
-  };
-  findings: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: HighlightItem[];
-  };
-  implications: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: HighlightItem[];
-  };
-  authors: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: DetailItem[];
-  };
-  resources: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: ResourceItem[];
-  };
-  citation: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    citationText: string;
-    bibtex: string;
-  };
-  contact: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    items: ContactItem[];
-  };
+  hero: HeroContent;
+  summary: SummaryContent;
+  problem: ProblemContent;
+  method: MethodContent;
+  framework: FrameworkContent;
+  findings: FindingsContent;
+  implications: ImplicationsContent;
+  authors: AuthorsContent;
+  resources: ResourcesContent;
+  citation: CitationContent;
+  contact: ContactContent;
 };

@@ -1,10 +1,10 @@
-import type { HomeContent } from "@/types/content";
+import type { ProblemContent } from "@/types/content";
 
 import { KeyPointsGrid } from "@/components/blocks/key-points-grid";
 import { SectionShell } from "@/components/ui/section-shell";
 
 type ProblemSectionProps = {
-  content: HomeContent["problem"];
+  content: ProblemContent;
 };
 
 export function ProblemSection({ content }: ProblemSectionProps) {
