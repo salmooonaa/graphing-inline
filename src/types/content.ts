@@ -28,16 +28,52 @@ export type HeroAction = {
   variant?: "primary" | "secondary";
 };
 
+export type HeroMetric = {
+  label: string;
+  value: string;
+};
+
+export type HeroVisualItem = {
+  label: string;
+  value: string;
+};
+
+export type HeroVisualDimension = {
+  label: string;
+  subtitle: string;
+  items: HeroVisualItem[];
+};
+
+export type HeroVisual = {
+  title: string;
+  caption: string;
+  dimensions: HeroVisualDimension[];
+};
+
 export type HighlightItem = {
   title: string;
   description: string;
   value?: string;
 };
 
+export type ProblemPoint = {
+  label: string;
+  title: string;
+  description: string;
+  evidence: string;
+};
+
 export type DetailItem = {
   title: string;
   description: string;
   details?: string[];
+};
+
+export type MethodStage = {
+  title: string;
+  input: string[];
+  process: string[];
+  output: string[];
 };
 
 export type ResourceStatus = "available" | "comingSoon" | "unavailable";
@@ -74,6 +110,8 @@ export type SiteMeta = {
 export type HeroContent = SectionIntro & {
   status: string;
   actions: HeroAction[];
+  metrics: HeroMetric[];
+  visual: HeroVisual;
 };
 
 export type SummaryContent = SectionIntro & {
@@ -81,11 +119,12 @@ export type SummaryContent = SectionIntro & {
 };
 
 export type ProblemContent = SectionIntro & {
-  points: HighlightItem[];
+  points: ProblemPoint[];
 };
 
 export type MethodContent = SectionIntro & {
-  phases: DetailItem[];
+  phases: MethodStage[];
+  note?: string;
 };
 
 export type FrameworkContent = SectionIntro & {

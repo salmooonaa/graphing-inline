@@ -14,13 +14,13 @@ export function HeroActions({ actions }: HeroActionsProps) {
           key={`${action.label}-${action.href}`}
           href={action.href}
           className={cn(
-            "inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition-colors",
+            "inline-flex items-center border-b px-0 py-2 text-sm font-medium transition-colors",
             action.variant === "primary"
-              ? "bg-slate-950 text-white hover:bg-slate-800"
-              : "border border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:text-slate-950",
+              ? "border-slate-950 text-slate-950 hover:text-slate-700"
+              : "border-slate-300 text-slate-700 hover:border-slate-950 hover:text-slate-950",
           )}
         >
-          {action.label}
+          <span>{action.label}</span>
         </a>
       ))}
     </div>
