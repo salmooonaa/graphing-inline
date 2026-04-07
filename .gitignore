@@ -1,11 +1,1 @@
-# Private local-only materials
 /private/
-/prompts/
-/notes/
-/references/raw/
-/references/tmp/
-/screenshots/
-/exports/
-
-# Local tool artifacts
-/.codex
