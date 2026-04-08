@@ -6,25 +6,28 @@ export const homeContent: HomePageContent = {
     title:
       "Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers",
     authorsLine:
-      "Siyu Lu, Yanhan Liu, Shiyu Xu, Ruishi Zou, and Chen Ye",
+      "Siyu Lu*, Yanhan Liu*, Shiyu Xu, Ruishi Zou, and Chen Ye†",
     publicationLine:
       "CHI EA 2026 · Barcelona, Spain · DOI 10.1145/3772363.3798356",
+    contributionNotes: ["* Equal contribution", "† Corresponding author"],
+    acknowledgementLine:
+      "We gratefully acknowledge Ruishi Zou for substantial project support.",
     thesis:
       "Word-scale graphics, the tiny visuals embedded directly in sentences and tables, remain rare in scientific papers, yet the cases that do appear follow a repeatable logic of placement, function, and representation.",
     actions: [
       {
         label: "Paper",
-        href: "https://arxiv.org/abs/2603.10533",
+        href: "https://doi.org/10.1145/3772363.3798356",
         variant: "primary",
       },
       {
-        label: "DOI",
-        href: "https://doi.org/10.1145/3772363.3798356",
+        label: "Preprint",
+        href: "https://arxiv.org/abs/2603.10533",
         variant: "secondary",
       },
       {
-        label: "BibTeX",
-        href: "/files/graphing-inline.bib",
+        label: "Material",
+        href: "#paper",
         variant: "secondary",
       },
     ],

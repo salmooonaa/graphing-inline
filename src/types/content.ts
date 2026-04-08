@@ -185,6 +185,8 @@ export type PageHeroContent = {
   title: string;
   authorsLine: string;
   publicationLine: string;
+  contributionNotes?: string[];
+  acknowledgementLine?: string;
   thesis: string;
   actions: PageAction[];
   stats: PageStat[];

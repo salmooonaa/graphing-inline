@@ -16,24 +16,32 @@ export function HeroSection({ content }: HeroSectionProps) {
       <Container>
         <div className="space-y-10 sm:space-y-12 lg:space-y-14">
           <div className="section-reveal mx-auto flex max-w-5xl flex-col items-center text-center">
-            <div className="w-full max-w-4xl space-y-7 sm:space-y-8">
-              <h1 className="mx-auto max-w-[18ch] text-balance text-[2.45rem] leading-[0.98] tracking-[-0.038em] text-[var(--foreground)] sm:text-[3.35rem] lg:text-[4.15rem]">
+            <div className="w-full max-w-5xl space-y-6 sm:space-y-7">
+              <h1 className="mx-auto max-w-[24ch] text-balance text-[2rem] leading-[1.05] tracking-[-0.024em] text-[var(--foreground)] sm:text-[2.7rem] lg:text-[3.3rem]">
                 {content.title}
               </h1>
 
-              <div className="mx-auto max-w-3xl space-y-2.5 sm:space-y-3">
-                <p className="text-pretty text-[0.98rem] font-medium leading-7 text-[var(--muted-strong)] sm:text-[1.06rem]">
+              <div className="mx-auto max-w-4xl space-y-2.5 sm:space-y-3">
+                <p className="text-pretty text-[1.02rem] font-medium leading-7 text-[var(--muted-strong)] sm:text-[1.08rem]">
                   {content.authorsLine}
                 </p>
-                <p className="text-[0.82rem] leading-6 text-[var(--muted)] sm:text-[0.88rem]">
+                <p className="text-[0.84rem] leading-6 text-[var(--muted)] sm:text-[0.9rem]">
                   {content.publicationLine}
                 </p>
+                {content.contributionNotes?.length ? (
+                  <p className="text-[0.8rem] leading-6 text-[var(--muted)] sm:text-[0.86rem]">
+                    {content.contributionNotes.join(" · ")}
+                  </p>
+                ) : null}
+                {content.acknowledgementLine ? (
+                  <p className="text-[0.8rem] leading-6 text-[var(--muted)] sm:text-[0.86rem]">
+                    {content.acknowledgementLine}
+                  </p>
+                ) : null}
               </div>
             </div>
 
-            <div className="mt-9 flex w-full flex-col items-center gap-3.5 sm:mt-10">
-              <p className="section-eyebrow">Project resources</p>
-              <div className="flex w-full flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+            <div className="mt-8 flex w-full flex-wrap items-center justify-center gap-2.5 sm:mt-9 sm:gap-3">
               {content.actions.map((action) => (
                 <a
                   key={`${action.label}-${action.href}`}
@@ -47,7 +55,6 @@ export function HeroSection({ content }: HeroSectionProps) {
                   {action.label}
                 </a>
               ))}
-              </div>
             </div>
           </div>
 
