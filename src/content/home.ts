@@ -18,7 +18,7 @@ export const homeContent: HomePageContent = {
       {
         label: "Paper",
         href: "https://doi.org/10.1145/3772363.3798356",
-        variant: "primary",
+        variant: "secondary",
       },
       {
         label: "Preprint",
@@ -27,7 +27,7 @@ export const homeContent: HomePageContent = {
       },
       {
         label: "Material",
-        href: "#paper",
+        href: "/files/graphing-inline.bib",
         variant: "secondary",
       },
     ],
