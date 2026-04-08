@@ -11,16 +11,13 @@ export function FindingsSection({ content }: FindingsSectionProps) {
   return (
     <section id="findings" className="border-b border-[var(--line)] py-18 sm:py-20">
       <Container>
-        <div className="space-y-10">
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,1.38fr)] lg:items-end">
-            <div className="section-reveal space-y-4">
-              <p className="section-eyebrow">{content.eyebrow}</p>
-              <h2 className="max-w-[10ch] text-4xl leading-[0.98] text-[var(--foreground)] sm:text-[3.2rem]">
-                {content.title}
-              </h2>
-            </div>
-
-            <p className="section-reveal reveal-delay-1 max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-lg">
+        <div className="mx-auto max-w-5xl space-y-10 sm:space-y-12">
+          <div className="section-reveal space-y-4">
+            <p className="section-eyebrow">{content.eyebrow}</p>
+            <h2 className="max-w-[10ch] text-4xl leading-[0.98] text-[var(--foreground)] sm:text-[3.2rem]">
+              {content.title}
+            </h2>
+            <p className="max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-lg">
               {content.description}
             </p>
           </div>
@@ -49,7 +46,7 @@ export function FindingsSection({ content }: FindingsSectionProps) {
             ))}
           </ol>
 
-          <div className="grid gap-6 xl:grid-cols-2">
+          <div className="space-y-6">
             <ImagePlaceholder
               className="section-reveal reveal-delay-2"
               figure={content.distributionVisual}
