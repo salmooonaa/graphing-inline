@@ -13,13 +13,18 @@ export const homeContent: HomePageContent = {
       "Word-scale graphics, the tiny visuals embedded directly in sentences and tables, remain rare in scientific papers, yet the cases that do appear follow a repeatable logic of placement, function, and representation.",
     actions: [
       {
-        label: "Read Paper",
+        label: "Paper",
         href: "https://arxiv.org/abs/2603.10533",
         variant: "primary",
       },
       {
-        label: "BibTeX / DOI",
-        href: "#paper",
+        label: "DOI",
+        href: "https://doi.org/10.1145/3772363.3798356",
+        variant: "secondary",
+      },
+      {
+        label: "BibTeX",
+        href: "/files/graphing-inline.bib",
         variant: "secondary",
       },
     ],
