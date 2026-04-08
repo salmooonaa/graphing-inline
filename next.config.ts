@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const repoName = "graphing-inline";
-const isProduction = process.env.NODE_ENV === "production";
+const deployTarget = process.env.DEPLOY_TARGET ?? "";
+const isGitHubPagesBuild = deployTarget === "github-pages";
+const basePath = isGitHubPagesBuild ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -9,8 +11,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isProduction ? `/${repoName}` : "",
-  assetPrefix: isProduction ? `/${repoName}/` : "",
+  basePath,
+  assetPrefix: basePath ? `${basePath}/` : "",
 };
 
 export default nextConfig;
