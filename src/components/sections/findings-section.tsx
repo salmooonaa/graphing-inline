@@ -1,69 +1,63 @@
-import type { FindingsContent } from "@/types/content";
+import type { CoreFindingsContent } from "@/types/content";
 
-import {
-  AssociationFigure,
-  QuantifiedFigure,
-} from "@/components/blocks/findings-figure";
-import { SectionIntro } from "@/components/blocks/section-intro";
+import { ImagePlaceholder } from "@/components/blocks/image-placeholder";
 import { Container } from "@/components/ui/container";
 
 type FindingsSectionProps = {
-  content: FindingsContent;
+  content: CoreFindingsContent;
 };
 
 export function FindingsSection({ content }: FindingsSectionProps) {
   return (
-    <section
-      id="findings"
-      className="scroll-mt-24 border-t border-[var(--line)] bg-[rgba(255,252,247,0.7)] py-16 sm:py-20"
-    >
+    <section id="findings" className="border-b border-[var(--line)] py-18 sm:py-20">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
-          <SectionIntro
-            eyebrow={content.eyebrow}
-            title={content.title}
-            description={content.description}
-            accent={content.conclusion}
-            className="lg:pr-8"
-          />
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
+          <div className="space-y-6 lg:pr-8">
+            <div className="space-y-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
+                {content.eyebrow}
+              </p>
+              <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                {content.title}
+              </h2>
+              <p className="max-w-xl text-base leading-8 text-slate-700 sm:text-lg">
+                {content.description}
+              </p>
+            </div>
 
-          <div>
-            <ol className="grid gap-6 lg:grid-cols-2">
+            <ol className="space-y-6">
               {content.items.map((item) => (
-                <li
-                  key={item.label}
-                  className="border-t border-[var(--line-strong)] pt-4"
-                >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
-                    {item.label}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-semibold leading-8 text-slate-950">
-                    {item.conclusion}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-700">
-                    {item.explanation}
-                  </p>
-                  {item.evidence ? (
-                    <p className="mt-3 border-l border-[var(--line)] pl-4 text-sm leading-7 text-slate-600">
-                      {item.evidence}
+                <li key={item.label} className="border-t border-[var(--line-strong)] pt-5">
+                  <div className="flex items-end justify-between gap-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
+                      {item.label}
                     </p>
-                  ) : null}
+                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
+                      {item.metric}
+                    </p>
+                  </div>
+                  <h3 className="mt-3 text-2xl font-semibold leading-8 text-slate-950">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-lg text-sm leading-7 text-slate-700">
+                    {item.description}
+                  </p>
                 </li>
               ))}
             </ol>
+          </div>
 
-            <div className="mt-12 grid gap-6 xl:grid-cols-2">
-              <QuantifiedFigure
-                title={content.representationFigure.title}
-                caption={content.representationFigure.caption}
-                items={content.representationFigure.items}
-              />
-              <AssociationFigure
-                title={content.associationFigure.title}
-                caption={content.associationFigure.caption}
-                pairs={content.associationFigure.pairs}
-              />
-            </div>
+          <div className="space-y-6">
+            <ImagePlaceholder
+              figure={content.distributionVisual}
+              tone="neutral"
+              canvasClassName="aspect-[16/9]"
+            />
+            <ImagePlaceholder
+              figure={content.relationshipVisual}
+              tone="amber"
+              canvasClassName="aspect-[16/9]"
+            />
           </div>
         </div>
       </Container>

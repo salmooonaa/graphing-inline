@@ -1,4 +1,7 @@
 export type SectionId =
+  | "overview"
+  | "lens"
+  | "paper"
   | "hero"
   | "summary"
   | "problem"
@@ -158,6 +161,94 @@ export type SiteMeta = {
   title: string;
   description: string;
   navItems: NavItem[];
+};
+
+export type PageAction = {
+  label: string;
+  href: string;
+  variant?: "primary" | "secondary";
+};
+
+export type PageStat = {
+  value: string;
+  label: string;
+};
+
+export type PlaceholderFigure = {
+  eyebrow: string;
+  title: string;
+  description: string;
+};
+
+export type PageHeroContent = {
+  badge: string;
+  title: string;
+  authorsLine: string;
+  publicationLine: string;
+  thesis: string;
+  actions: PageAction[];
+  stats: PageStat[];
+  visual: PlaceholderFigure;
+};
+
+export type LensAxis = {
+  label: string;
+  title: string;
+  description: string;
+  accent: "blue" | "amber" | "green";
+};
+
+export type ResearchLensContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  definition: string;
+  researchQuestion: string;
+  metrics: PageStat[];
+  axes: LensAxis[];
+  visual: PlaceholderFigure;
+};
+
+export type CoreFinding = {
+  label: string;
+  metric: string;
+  title: string;
+  description: string;
+};
+
+export type CoreFindingsContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: CoreFinding[];
+  distributionVisual: PlaceholderFigure;
+  relationshipVisual: PlaceholderFigure;
+};
+
+export type Implication = {
+  title: string;
+  description: string;
+};
+
+export type PaperSectionContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  implications: Implication[];
+  paperHref: string;
+  doiHref: string;
+  bibtex: string;
+  bibtexDownloadHref: string;
+  citationText: string;
+  contactLabel: string;
+  contactHref: string;
+};
+
+export type HomePageContent = {
+  hero: PageHeroContent;
+  lens: ResearchLensContent;
+  findings: CoreFindingsContent;
+  paper: PaperSectionContent;
 };
 
 export type HeroContent = SectionIntro & {

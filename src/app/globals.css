@@ -2,15 +2,24 @@
 
 :root {
   color-scheme: light;
-  --background: #f4f0e8;
-  --surface: rgba(255, 252, 247, 0.86);
-  --surface-strong: #fffcf7;
-  --foreground: #171717;
-  --muted: #5d5a54;
-  --line: rgba(23, 23, 23, 0.16);
-  --line-strong: rgba(23, 23, 23, 0.48);
+  --background: #f4efe5;
+  --surface: rgba(255, 252, 246, 0.82);
+  --surface-strong: #fbf8f3;
+  --foreground: #171510;
+  --muted: #5f5a54;
+  --line: rgba(23, 21, 16, 0.14);
+  --line-strong: rgba(23, 21, 16, 0.36);
   --accent: #8a5a1f;
-  --accent-soft: rgba(138, 90, 31, 0.12);
+  --accent-soft: rgba(138, 90, 31, 0.1);
+  --blue: #365d9d;
+  --blue-soft: rgba(54, 93, 157, 0.08);
+  --blue-line: rgba(54, 93, 157, 0.32);
+  --amber: #94620b;
+  --amber-soft: rgba(148, 98, 11, 0.08);
+  --amber-line: rgba(148, 98, 11, 0.28);
+  --green: #0d6b58;
+  --green-soft: rgba(13, 107, 88, 0.08);
+  --green-line: rgba(13, 107, 88, 0.28);
 }
 
 html {
@@ -20,11 +29,12 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(138, 90, 31, 0.09), transparent 30%),
-    radial-gradient(circle at top right, rgba(20, 57, 68, 0.08), transparent 28%),
-    linear-gradient(180deg, #fbf8f2 0%, #f4f0e8 45%, #efe9df 100%);
+    radial-gradient(circle at top left, rgba(54, 93, 157, 0.05), transparent 28%),
+    radial-gradient(circle at 90% 0%, rgba(148, 98, 11, 0.06), transparent 24%),
+    linear-gradient(180deg, #faf7f1 0%, #f4efe5 50%, #efe8dc 100%);
   color: var(--foreground);
   font-family: var(--font-interface), sans-serif;
+  font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
 }
 
@@ -32,11 +42,11 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background-image:
-    linear-gradient(rgba(23, 23, 23, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(23, 23, 23, 0.028) 1px, transparent 1px);
-  background-size: 28px 28px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 65%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), transparent 42%),
+    radial-gradient(circle, rgba(23, 21, 16, 0.02) 1px, transparent 1px);
+  background-size: auto, 16px 16px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 68%);
   content: "";
   pointer-events: none;
 }
@@ -51,7 +61,7 @@ h2,
 h3,
 h4 {
   font-family: var(--font-editorial), serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 p,
@@ -64,6 +74,10 @@ a,
 code,
 pre {
   font-family: var(--font-interface), sans-serif;
+}
+
+main {
+  position: relative;
 }
 
 ::selection {
