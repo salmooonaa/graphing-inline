@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-[rgba(248,244,237,0.72)] backdrop-blur-lg">
+    <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-white/94 backdrop-blur-md">
       <Container className="flex min-h-14 items-center justify-between gap-6 lg:min-h-15">
         <a
           href="#overview"

@@ -13,7 +13,7 @@ function HeroActionIcon({ label }: { label: string }) {
       <svg
         aria-hidden="true"
         viewBox="0 0 24 24"
-        className="h-4 w-4 shrink-0"
+        className="h-[0.95rem] w-[0.95rem] shrink-0"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.7"
@@ -33,7 +33,7 @@ function HeroActionIcon({ label }: { label: string }) {
       <svg
         aria-hidden="true"
         viewBox="0 0 24 24"
-        className="h-4 w-4 shrink-0"
+        className="h-[0.95rem] w-[0.95rem] shrink-0"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.7"
@@ -51,7 +51,7 @@ function HeroActionIcon({ label }: { label: string }) {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="h-4 w-4 shrink-0"
+      className="h-[0.95rem] w-[0.95rem] shrink-0"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.7"
@@ -128,7 +128,7 @@ export function HeroSection({ content }: HeroSectionProps) {
                   <a
                     key={`${action.label}-${action.href}`}
                     href={action.href}
-                    className="inline-flex min-w-[9.5rem] items-center justify-center gap-2.25 border border-[var(--line-strong)] bg-white/92 px-4 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.18em] text-[var(--muted-strong)] transition-colors hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
+                    className="inline-flex min-w-[10rem] items-center justify-center gap-2.25 border border-[var(--line)] bg-white px-4.5 py-2.5 text-[0.72rem] font-medium uppercase tracking-[0.18em] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--foreground)]"
                   >
                     <HeroActionIcon label={action.label} />
                     <span>{action.label}</span>

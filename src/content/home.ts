@@ -6,10 +6,10 @@ export const homeContent: HomePageContent = {
     title:
       "Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers",
     authorsLine:
-      "Siyu Lu*, Yanhan Liu*, Shiyu Xu, Ruishi Zou, and Chen Ye†",
+      "Siyu Lu*, Yanhan Liu*, Shiyu Xu, Ruishi Zou, Chen Ye",
     publicationLine:
       "CHI EA 2026 · Barcelona, Spain · DOI 10.1145/3772363.3798356",
-    contributionNotes: ["* Equal contribution", "† Corresponding author"],
+    contributionNotes: ["* Equal contribution"],
     acknowledgementLine:
       "We gratefully acknowledge Ruishi Zou for substantial project support.",
     thesis:
@@ -165,7 +165,7 @@ export const homeContent: HomePageContent = {
   doi = {10.1145/3772363.3798356},
   url = {https://doi.org/10.1145/3772363.3798356}
 }`,
-    contactLabel: "Corresponding author: Chen Ye",
+    contactLabel: "Contact: Chen Ye",
     contactHref: "mailto:yechen@tongji.edu.cn",
   },
 };

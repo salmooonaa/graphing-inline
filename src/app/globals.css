@@ -2,26 +2,26 @@
 
 :root {
   color-scheme: light;
-  --background: #f3eee4;
-  --background-deep: #ece4d7;
-  --surface: rgba(255, 252, 246, 0.82);
-  --surface-strong: rgba(255, 250, 243, 0.92);
-  --surface-muted: rgba(239, 232, 219, 0.68);
+  --background: #ffffff;
+  --background-deep: #ffffff;
+  --surface: #ffffff;
+  --surface-strong: #ffffff;
+  --surface-muted: #eceff3;
   --foreground: #17130f;
-  --muted: #665f57;
-  --muted-strong: #3f382f;
-  --line: rgba(23, 19, 15, 0.11);
-  --line-strong: rgba(23, 19, 15, 0.28);
+  --muted: #67635d;
+  --muted-strong: #403b35;
+  --line: rgba(23, 19, 15, 0.09);
+  --line-strong: rgba(23, 19, 15, 0.2);
   --accent: #7c5932;
-  --accent-soft: rgba(124, 89, 50, 0.1);
+  --accent-soft: rgba(255, 255, 255, 1);
   --blue: #4d6580;
-  --blue-soft: rgba(77, 101, 128, 0.08);
+  --blue-soft: #ffffff;
   --blue-line: rgba(77, 101, 128, 0.28);
   --amber: #9b6a28;
-  --amber-soft: rgba(155, 106, 40, 0.08);
+  --amber-soft: #ffffff;
   --amber-line: rgba(155, 106, 40, 0.26);
   --green: #4b695c;
-  --green-soft: rgba(75, 105, 92, 0.08);
+  --green-soft: #ffffff;
   --green-line: rgba(75, 105, 92, 0.26);
 }
 
@@ -31,10 +31,7 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(77, 101, 128, 0.06), transparent 28%),
-    radial-gradient(circle at 95% 8%, rgba(155, 106, 40, 0.08), transparent 24%),
-    linear-gradient(180deg, #faf6ef 0%, #f3eee4 52%, #ece4d7 100%);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-interface), sans-serif;
   font-feature-settings: "liga" 1, "kern" 1;
@@ -42,28 +39,7 @@ body {
 }
 
 body::before {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 46%),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0,
-      transparent calc(50% - 620px),
-      rgba(23, 19, 15, 0.035) calc(50% - 620px),
-      rgba(23, 19, 15, 0.035) calc(50% - 619px),
-      transparent calc(50% - 619px),
-      transparent calc(50% + 619px),
-      rgba(23, 19, 15, 0.035) calc(50% + 619px),
-      rgba(23, 19, 15, 0.035) calc(50% + 620px),
-      transparent calc(50% + 620px)
-    ),
-    radial-gradient(circle, rgba(23, 19, 15, 0.018) 1px, transparent 1px);
-  background-size: auto, auto, 18px 18px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.36), transparent 78%);
   content: "";
-  pointer-events: none;
 }
 
 a {
@@ -102,7 +78,7 @@ main {
 }
 
 ::selection {
-  background: rgba(124, 89, 50, 0.18);
+  background: rgba(23, 19, 15, 0.12);
 }
 
 @layer utilities {
@@ -118,7 +94,6 @@ main {
   .paper-panel {
     border: 1px solid var(--line);
     background: var(--surface);
-    backdrop-filter: blur(10px);
   }
 
   .quiet-link {

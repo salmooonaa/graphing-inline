@@ -89,7 +89,7 @@ export function ResearchLensSection({ content }: ResearchLensSectionProps) {
               </div>
             </div>
 
-            <div className="paper-panel bg-white/66 p-5 sm:p-6">
+            <div className="paper-panel bg-white p-5 sm:p-6">
               <p className="section-eyebrow">Why this section exists</p>
               <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--muted)]">
                 Instead of reproducing the full paper structure, the homepage uses

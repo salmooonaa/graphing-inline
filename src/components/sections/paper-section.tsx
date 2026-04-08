@@ -83,21 +83,21 @@ export function PaperSection({ content }: PaperSectionProps) {
             </p>
           </section>
 
-          <section className="section-reveal reveal-delay-3 border border-[var(--line)] bg-[rgba(247,241,231,0.95)] p-6 sm:p-7">
+          <section className="section-reveal reveal-delay-3 border border-[var(--line)] bg-white p-6 sm:p-7">
             <p className="section-eyebrow">BibTeX</p>
-            <pre className="mt-4 overflow-x-auto border border-[var(--line)] bg-white/82 p-5 text-xs leading-6 text-[var(--muted-strong)]">
+            <pre className="mt-4 overflow-x-auto border border-[var(--line)] bg-white p-5 text-xs leading-6 text-[var(--muted-strong)]">
               <code>{content.bibtex}</code>
             </pre>
           </section>
 
           <dl className="section-reveal reveal-delay-3 grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] sm:grid-cols-2">
-            <div className="bg-white/80 px-5 py-5">
+            <div className="bg-white px-5 py-5">
               <dt className="section-eyebrow">Authors</dt>
               <dd className="mt-3 text-sm leading-7 text-[var(--muted)]">
                 {content.authorsLine}
               </dd>
             </div>
-            <div className="bg-white/80 px-5 py-5">
+            <div className="bg-white px-5 py-5">
               <dt className="section-eyebrow">Contact</dt>
               <dd className="mt-3">
                 <a
