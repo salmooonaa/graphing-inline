@@ -14,3 +14,6 @@ Thumbs.db
 
 # Static export output
 out/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
