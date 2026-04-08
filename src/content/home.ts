@@ -2,15 +2,15 @@ import type { HomePageContent } from "@/types/content";
 
 export const homeContent: HomePageContent = {
   hero: {
-    badge: "CHI EA 2026 · Barcelona, Spain",
+    badge: "Project Thesis",
     title:
       "Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers",
     authorsLine:
       "Siyu Lu, Yanhan Liu, Shiyu Xu, Ruishi Zou, and Chen Ye",
     publicationLine:
-      "A corpus study of word-scale graphics in scientific papers",
+      "CHI EA 2026 · Barcelona, Spain · DOI 10.1145/3772363.3798356",
     thesis:
-      "Word-scale graphics are still rare in scientific writing, but when they do appear they follow a clear logic across placement, function, and representation.",
+      "Word-scale graphics, the tiny visuals embedded directly in sentences and tables, remain rare in scientific papers, yet the cases that do appear follow a repeatable logic of placement, function, and representation.",
     actions: [
       {
         label: "Read Paper",
@@ -18,32 +18,32 @@ export const homeContent: HomePageContent = {
         variant: "primary",
       },
       {
-        label: "BibTeX",
+        label: "BibTeX / DOI",
         href: "#paper",
         variant: "secondary",
       },
     ],
     stats: [
       { value: "126,797", label: "papers screened" },
-      { value: "909", label: "use cases reviewed" },
-      { value: "0.6%", label: "papers using word-scale graphics" },
+      { value: "909", label: "use cases coded" },
+      { value: "0.6%", label: "adoption rate" },
     ],
     visual: {
-      eyebrow: "Primary visual",
-      title: "Hero image placeholder",
+      eyebrow: "Main figure",
+      title: "Replace with the thesis image",
       description:
-        "Place a wide editorial image here: ideally a refined comparison between conventional split figure reading and real word-scale graphics examples, or a carefully cropped Figure 1 if a custom comparison visual is not available.",
+        "Use a real paper figure, redraw, or tightly cropped comparison that immediately shows what word-scale graphics are. Preferred direction: conventional split figure reading versus inline graphics, or a refined Figure 1 adaptation.",
     },
   },
   lens: {
     eyebrow: "Research Lens",
-    title: "A compact way to read the paper",
+    title: "Research object, framework, and evidence in one compact view",
     description:
-      "The homepage only keeps the minimum needed to orient the reader: what word-scale graphics are, what the paper asks, and which lens organizes the evidence.",
+      "This section does only three things: define the object, state the question, and give the where-why-how lens that organizes the corpus evidence.",
     definition:
       "Word-scale graphics are typographic-scale visuals embedded directly in running text or tables.",
     researchQuestion:
-      "How do researchers apply word-scale graphics in scientific papers?",
+      "How are word-scale graphics positioned, what do they do, and how are they visually represented in scientific papers?",
     metrics: [
       { value: "126,797", label: "papers in the screened corpus" },
       { value: "909", label: "distinct use cases analyzed" },
@@ -72,17 +72,17 @@ export const homeContent: HomePageContent = {
       },
     ],
     visual: {
-      eyebrow: "Framework image",
-      title: "Annotated framework placeholder",
+      eyebrow: "Annotated overview",
+      title: "Replace with an annotated object-plus-framework figure",
       description:
-        "Place an annotated crop of Figure 1 here, showing representative examples for where, why, and how. The image should carry most of the explanatory burden, with labels pointing to the three dimensions.",
+        "Use one image group that explains the object and the framework together: representative inline examples, a concise where-why-how annotation layer, and enough visual evidence to reduce explanatory text.",
     },
   },
   findings: {
     eyebrow: "Core Findings",
     title: "Three findings worth remembering",
     description:
-      "The page foregrounds only the conclusions that matter most for fast understanding and academic recall.",
+      "The homepage keeps only the strongest conclusions: rarity, icon dominance, and structured relationships between where, why, and how.",
     items: [
       {
         label: "01",
@@ -107,23 +107,23 @@ export const homeContent: HomePageContent = {
       },
     ],
     distributionVisual: {
-      eyebrow: "Figure placeholder",
-      title: "Distribution summary placeholder",
+      eyebrow: "Result figure A",
+      title: "Replace with the overall distribution figure",
       description:
-        "Place a clean results graphic here showing overall rarity and representation prevalence, with icons clearly standing out against the smaller chart, typography, and network categories.",
+        "Show the big picture only: overall rarity plus representation prevalence, with icons clearly standing apart from the smaller chart, typography, and network categories.",
     },
     relationshipVisual: {
-      eyebrow: "Figure placeholder",
-      title: "Relationship summary placeholder",
+      eyebrow: "Result figure B",
+      title: "Replace with the relationship or pattern figure",
       description:
-        "Place a concise relationship visual here showing how where, why, and how co-occur. This should emphasize the stronger table-to-annotation-to-quantitative-graph pattern without reproducing the full statistical appendix.",
+        "Show the main co-occurrence pattern without rebuilding the full appendix. Emphasize how tables, data annotation, and quantitative graphics align more strongly than the rest.",
     },
   },
   paper: {
     eyebrow: "Why It Matters",
-    title: "A corpus result with design consequences",
+    title: "A corpus result with practical consequences for scholarly communication",
     description:
-      "The paper closes with practical implications for scholarly authoring, reading, and publication workflows. The website keeps those implications brief and directs detailed reading back to the paper itself.",
+      "The discussion is reduced to three short implications, followed by a compact utility footer for paper access, citation, and contact.",
     implications: [
       {
         title: "Authoring",
@@ -141,6 +141,8 @@ export const homeContent: HomePageContent = {
           "Publication workflows need to better preserve expressive inline graphics across PDF and HTML outputs.",
       },
     ],
+    authorsLine:
+      "Siyu Lu, Yanhan Liu, Shiyu Xu, Ruishi Zou, and Chen Ye",
     paperHref: "https://arxiv.org/abs/2603.10533",
     doiHref: "https://doi.org/10.1145/3772363.3798356",
     bibtexDownloadHref: "/files/graphing-inline.bib",

@@ -1,20 +1,32 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { IBM_Plex_Sans, Source_Serif_4 } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  IBM_Plex_Mono,
+  IBM_Plex_Sans,
+} from "next/font/google";
 
 import { siteMeta } from "@/content/site";
 
 import "./globals.css";
 
-const editorialSerif = Source_Serif_4({
+const editorialSerif = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-editorial",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const interfaceSans = IBM_Plex_Sans({
   subsets: ["latin"],
   variable: "--font-interface",
   weight: ["400", "500", "600"],
+});
+
+const dataMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-data",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +41,9 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={`${editorialSerif.variable} ${interfaceSans.variable}`}>
+      <body
+        className={`${editorialSerif.variable} ${interfaceSans.variable} ${dataMono.variable}`}
+      >
         {children}
       </body>
     </html>

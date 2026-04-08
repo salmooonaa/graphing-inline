@@ -19,7 +19,7 @@ export function CopyBibtexButton({ value }: CopyBibtexButtonProps) {
     <button
       type="button"
       onClick={handleCopy}
-      className="inline-flex items-center border border-slate-300 px-3 py-2 text-xs font-medium uppercase tracking-[0.16em] text-slate-700 transition-colors hover:border-slate-950 hover:text-slate-950"
+      className="inline-flex items-center border border-[var(--line-strong)] bg-white/78 px-3 py-2 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
     >
       {copied ? "Copied" : "Copy BibTeX"}
     </button>

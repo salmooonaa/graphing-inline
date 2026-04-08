@@ -11,52 +11,56 @@ export function FindingsSection({ content }: FindingsSectionProps) {
   return (
     <section id="findings" className="border-b border-[var(--line)] py-18 sm:py-20">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]">
-          <div className="space-y-6 lg:pr-8">
-            <div className="space-y-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
-                {content.eyebrow}
-              </p>
-              <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+        <div className="space-y-10">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,1.38fr)] lg:items-end">
+            <div className="section-reveal space-y-4">
+              <p className="section-eyebrow">{content.eyebrow}</p>
+              <h2 className="max-w-[10ch] text-4xl leading-[0.98] text-[var(--foreground)] sm:text-[3.2rem]">
                 {content.title}
               </h2>
-              <p className="max-w-xl text-base leading-8 text-slate-700 sm:text-lg">
-                {content.description}
-              </p>
             </div>
 
-            <ol className="space-y-6">
-              {content.items.map((item) => (
-                <li key={item.label} className="border-t border-[var(--line-strong)] pt-5">
-                  <div className="flex items-end justify-between gap-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
-                      {item.label}
-                    </p>
-                    <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-                      {item.metric}
-                    </p>
-                  </div>
-                  <h3 className="mt-3 text-2xl font-semibold leading-8 text-slate-950">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 max-w-lg text-sm leading-7 text-slate-700">
-                    {item.description}
-                  </p>
-                </li>
-              ))}
-            </ol>
+            <p className="section-reveal reveal-delay-1 max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-lg">
+              {content.description}
+            </p>
           </div>
 
-          <div className="space-y-6">
+          <ol className="section-reveal reveal-delay-1 grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] lg:grid-cols-3">
+            {content.items.map((item) => (
+              <li
+                key={item.label}
+                className="bg-[var(--surface-strong)] px-5 py-6 sm:px-6 sm:py-7"
+              >
+                <div className="flex items-end justify-between gap-4">
+                  <p className="font-[var(--font-data)] text-[0.66rem] uppercase tracking-[0.24em] text-[var(--muted)]">
+                    {item.label}
+                  </p>
+                  <p className="font-[var(--font-data)] text-[0.72rem] uppercase tracking-[0.18em] text-[var(--muted)]">
+                    {item.metric}
+                  </p>
+                </div>
+                <h3 className="mt-4 text-[1.9rem] leading-tight text-[var(--foreground)]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 max-w-lg text-sm leading-7 text-[var(--muted)]">
+                  {item.description}
+                </p>
+              </li>
+            ))}
+          </ol>
+
+          <div className="grid gap-6 xl:grid-cols-2">
             <ImagePlaceholder
+              className="section-reveal reveal-delay-2"
               figure={content.distributionVisual}
               tone="neutral"
-              canvasClassName="aspect-[16/9]"
+              canvasClassName="aspect-[16/10]"
             />
             <ImagePlaceholder
+              className="section-reveal reveal-delay-3"
               figure={content.relationshipVisual}
-              tone="amber"
-              canvasClassName="aspect-[16/9]"
+              tone="green"
+              canvasClassName="aspect-[16/10]"
             />
           </div>
         </div>

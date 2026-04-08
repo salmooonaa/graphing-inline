@@ -235,6 +235,7 @@ export type PaperSectionContent = {
   title: string;
   description: string;
   implications: Implication[];
+  authorsLine: string;
   paperHref: string;
   doiHref: string;
   bibtex: string;
