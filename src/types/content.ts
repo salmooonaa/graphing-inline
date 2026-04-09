@@ -69,13 +69,6 @@ export type QuantifiedItem = {
   note?: string;
 };
 
-export type ProblemPoint = {
-  label: string;
-  title: string;
-  description: string;
-  evidence: string;
-};
-
 export type FrameworkDimension = {
   label: string;
   title: string;
@@ -280,7 +273,7 @@ export type SummaryContent = SectionIntro & {
 };
 
 export type ProblemContent = SectionIntro & {
-  points: ProblemPoint[];
+  gapStatement: string;
 };
 
 export type MethodContent = SectionIntro & {
