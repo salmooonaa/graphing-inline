@@ -53,14 +53,18 @@ export function CitationSection({ content }: CitationSectionProps) {
     <section id="bibtex" className="py-10 sm:py-12">
       <Container>
         <div className="layout-module mx-auto space-y-5 sm:space-y-6">
-          <div className="section-reveal layout-copy space-y-2">
-            <h2 className="text-[1.8rem] leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] sm:text-[2.1rem]">
-              {content.title}
-            </h2>
-            <div className="h-px w-full bg-[var(--line)]" />
+          <div className="section-reveal module-header">
+            <div className="module-header-row">
+              <div className="layout-copy min-w-0">
+                <h2 className="text-[1.8rem] leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] sm:text-[2.1rem]">
+                  {content.title}
+                </h2>
+              </div>
+              <div aria-hidden="true" className="module-divider" />
+            </div>
           </div>
 
-          <div className="section-reveal reveal-delay-1 layout-utility rounded-[0.95rem] border border-[var(--line)] bg-white px-3.5 py-3.5 sm:px-4 sm:py-4">
+          <div className="section-reveal reveal-delay-1 w-full rounded-[0.95rem] border border-[var(--line)] bg-white px-3.5 py-3.5 sm:px-4 sm:py-4">
             <div className="flex flex-wrap items-center justify-start gap-1.5 pb-3 sm:pb-3.5">
               {content.bibtexDownloadHref ? (
                 <a
@@ -78,9 +82,9 @@ export function CitationSection({ content }: CitationSectionProps) {
             </pre>
           </div>
 
-          <div className="section-reveal reveal-delay-2 layout-copy space-y-1">
+          <div className="section-reveal reveal-delay-2 w-full space-y-1">
             <p className="section-eyebrow">Citation</p>
-            <p className="text-[0.72rem] leading-5 text-[var(--muted)] sm:text-[0.76rem] sm:leading-5.5">
+            <p className="max-w-[36rem] text-[0.72rem] leading-5 text-[var(--muted)] sm:text-[0.76rem] sm:leading-5.5">
               {content.citationText}
             </p>
           </div>
