@@ -96,6 +96,26 @@ main {
     background: var(--surface);
   }
 
+  .layout-masthead {
+    width: 100%;
+    max-width: 56rem;
+  }
+
+  .layout-copy {
+    width: 100%;
+    max-width: 42rem;
+  }
+
+  .layout-band {
+    width: 100%;
+    max-width: 50rem;
+  }
+
+  .layout-figure {
+    width: 100%;
+    max-width: 58rem;
+  }
+
   .quiet-link {
     position: relative;
     display: inline-flex;

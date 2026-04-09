@@ -8,7 +8,7 @@ export const frameworkContent: FrameworkContent = {
   conclusion:
     "The framework turns scattered examples into a comparable design language.",
   figureCaption:
-    "Framework figure placeholder.",
+    "Position, function, and representation across the corpus.",
   dimensions: [
     {
       label: "Where",

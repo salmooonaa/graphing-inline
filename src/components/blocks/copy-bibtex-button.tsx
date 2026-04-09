@@ -19,7 +19,7 @@ export function CopyBibtexButton({ value }: CopyBibtexButtonProps) {
     <button
       type="button"
       onClick={handleCopy}
-      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.6rem] border border-[rgba(23,19,15,0.14)] bg-white px-4 py-2.5 text-[0.82rem] font-medium text-[var(--foreground)] shadow-[0_1px_2px_rgba(23,19,15,0.04)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.22)]"
+      className="inline-flex min-h-10 items-center justify-center gap-2 rounded-[0.55rem] border border-[rgba(23,19,15,0.14)] bg-white px-3.5 py-2 text-[0.76rem] font-medium text-[var(--foreground)] shadow-[0_1px_2px_rgba(23,19,15,0.04)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.22)]"
     >
       <svg
         aria-hidden="true"

@@ -4,13 +4,44 @@ type FigureCaptionProps = {
   className?: string;
 };
 
+function sanitizeFigureText(value: string, fallback?: string) {
+  const trimmed = value.trim();
+
+  if (!trimmed) {
+    return fallback ?? "";
+  }
+
+  if (/replace with|reserved for|use one|use /i.test(trimmed)) {
+    return fallback ?? "";
+  }
+
+  if (/placeholder/i.test(trimmed)) {
+    return fallback ?? "";
+  }
+
+  return trimmed;
+}
+
 export function FigureCaption({ title, caption, className }: FigureCaptionProps) {
+  const safeTitle = sanitizeFigureText(title, "");
+  const safeCaption = sanitizeFigureText(caption, "");
+
+  if (!safeTitle && !safeCaption) {
+    return null;
+  }
+
   return (
     <figcaption className={className}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
-        {title}
-      </p>
-      <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-600">{caption}</p>
+      {safeTitle ? (
+        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
+          {safeTitle}
+        </p>
+      ) : null}
+      {safeCaption ? (
+        <p className="mt-1.5 max-w-2xl text-[0.84rem] leading-6 text-[var(--muted)]">
+          {safeCaption}
+        </p>
+      ) : null}
     </figcaption>
   );
 }

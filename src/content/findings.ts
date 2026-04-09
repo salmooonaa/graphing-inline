@@ -40,9 +40,9 @@ export const findingsContent: FindingsContent = {
     },
   ],
   representationFigure: {
-    title: "Result figure placeholder",
+    title: "Representation Distribution",
     caption:
-      "Distribution of use and representation.",
+      "Corpus prevalence across representation types.",
     items: [
       {
         label: "Papers using word-scale graphics",
@@ -77,9 +77,9 @@ export const findingsContent: FindingsContent = {
     ],
   },
   associationFigure: {
-    title: "Result figure placeholder",
+    title: "Dimension Associations",
     caption:
-      "Associations across where, why, and how.",
+      "Pairwise relationships across where, why, and how.",
     pairs: [
       {
         label: "Where × Why",

@@ -43,6 +43,14 @@ export function ImagePlaceholder({
   tone = "neutral",
 }: ImagePlaceholderProps) {
   const toneStyles = toneMap[tone];
+  const description = /replace with|reserved for|use one|use /i.test(
+    figure.description,
+  )
+    ? ""
+    : figure.description;
+  const title = /placeholder/i.test(figure.title)
+    ? "Figure placeholder"
+    : figure.title;
 
   return (
     <figure
@@ -72,9 +80,6 @@ export function ImagePlaceholder({
             <span className={cn("h-2.5 w-2.5 rounded-full", toneStyles.accent)} />
             <div>
               <p className="section-eyebrow">{figure.eyebrow}</p>
-              <p className="mt-1 text-[0.68rem] uppercase tracking-[0.18em] text-[var(--muted)]">
-                Reserved for a real paper figure
-              </p>
             </div>
           </div>
           <p
@@ -83,7 +88,7 @@ export function ImagePlaceholder({
               toneStyles.chip,
             )}
           >
-            Placeholder
+            Figure
           </p>
         </div>
 
@@ -208,11 +213,13 @@ export function ImagePlaceholder({
 
         <figcaption className="grid gap-3 lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)] lg:items-start">
           <h3 className="text-2xl leading-tight text-[var(--foreground)]">
-            {figure.title}
+            {title}
           </h3>
-          <p className="max-w-3xl text-sm leading-7 text-[var(--muted)]">
-            {figure.description}
-          </p>
+          {description ? (
+            <p className="max-w-3xl text-sm leading-7 text-[var(--muted)]">
+              {description}
+            </p>
+          ) : null}
         </figcaption>
       </div>
     </figure>
