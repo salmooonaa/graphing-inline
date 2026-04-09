@@ -7,6 +7,16 @@ export const homeContent: HomePageContent = {
     subtitle: "Understanding Word-scale Graphics Use in Scientific Papers",
     authorsLine:
       "Siyu Lu*, Yanhan Liu*, Shiyu Xu, Ruishi Zou, Chen Ye",
+    authors: [
+      { name: "Siyu Lu*" },
+      { name: "Yanhan Liu*" },
+      { name: "Shiyu Xu", href: "https://raynexu.com/" },
+      { name: "Ruishi Zou", href: "https://ruishizou.github.io/" },
+      {
+        name: "Chen Ye",
+        href: "https://cs.tongji.edu.cn/info/1122/3256.htm",
+      },
+    ],
     publicationLine:
       "CHI EA 2026 · DOI 10.1145/3772363.3798356",
     contributionNotes: ["* Equal contribution"],

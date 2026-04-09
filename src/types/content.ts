@@ -179,6 +179,11 @@ export type PageStat = {
   label: string;
 };
 
+export type HeroAuthor = {
+  name: string;
+  href?: string;
+};
+
 export type PlaceholderFigure = {
   eyebrow: string;
   title: string;
@@ -190,6 +195,7 @@ export type PageHeroContent = {
   title: string;
   subtitle?: string;
   authorsLine: string;
+  authors?: HeroAuthor[];
   publicationLine: string;
   contributionNotes?: string[];
   acknowledgementLine?: string;

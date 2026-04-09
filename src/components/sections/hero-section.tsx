@@ -69,6 +69,7 @@ export function HeroSection({ content }: HeroSectionProps) {
   const hasPublicationLine = content.publicationLine.trim().length > 0;
   const hasContributionNotes = Boolean(content.contributionNotes?.length);
   const hasAcknowledgementLine = Boolean(content.acknowledgementLine?.trim());
+  const hasStructuredAuthors = Boolean(content.authors?.length);
 
   return (
     <section
@@ -91,7 +92,35 @@ export function HeroSection({ content }: HeroSectionProps) {
 
             <div className="layout-copy mx-auto space-y-1.5">
               <p className="text-pretty text-[0.88rem] font-medium leading-5.5 text-[var(--muted-strong)] sm:text-[0.95rem]">
-                {content.authorsLine}
+                {hasStructuredAuthors
+                  ? content.authors!.map((author, index) => {
+                      const separator =
+                        index < content.authors!.length - 1 ? ", " : "";
+
+                      if (author.href) {
+                        return (
+                          <span key={`${author.name}-${author.href}`}>
+                            <a
+                              href={author.href}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline decoration-[rgba(23,19,15,0.22)] underline-offset-[0.16em] transition-colors duration-150 hover:text-[var(--foreground)] hover:decoration-[rgba(23,19,15,0.48)]"
+                            >
+                              {author.name}
+                            </a>
+                            {separator}
+                          </span>
+                        );
+                      }
+
+                      return (
+                        <span key={author.name}>
+                          {author.name}
+                          {separator}
+                        </span>
+                      );
+                    })
+                  : content.authorsLine}
               </p>
 
               {(hasPublicationLine || hasContributionNotes) && (
