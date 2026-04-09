@@ -104,7 +104,7 @@ export function HeroSection({ content }: HeroSectionProps) {
                               href={author.href}
                               target="_blank"
                               rel="noreferrer"
-                              className="underline decoration-[rgba(23,19,15,0.48)] decoration-[1px] underline-offset-[0.16em] transition-colors duration-150 hover:text-[var(--foreground)] hover:decoration-[rgba(23,19,15,0.72)]"
+                              className="inline-block border-b border-[rgba(23,19,15,0.52)] pb-[0.01em] leading-[0.95] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.78)] hover:text-[var(--foreground)]"
                             >
                               {author.name}
                             </a>
