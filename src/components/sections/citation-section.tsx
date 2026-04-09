@@ -69,9 +69,24 @@ export function CitationSection({ content }: CitationSectionProps) {
               {content.bibtexDownloadHref ? (
                 <a
                   href={content.bibtexDownloadHref}
-                  className="inline-flex min-h-9 items-center justify-center rounded-[0.5rem] border border-[rgba(23,19,15,0.1)] bg-white px-3 py-1.75 text-[0.66rem] font-medium text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.18)] hover:text-[var(--foreground)]"
+                  download
+                  className="inline-flex min-h-9 items-center justify-center gap-2 rounded-[0.5rem] border border-[rgba(23,19,15,0.1)] bg-white px-3 py-1.75 text-[0.68rem] font-medium text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.18)] hover:text-[var(--foreground)]"
                 >
-                  Download .bib
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M12 4.75v10.5" />
+                    <path d="M7.75 11.25L12 15.25l4.25-4" />
+                    <path d="M4.75 19.25h14.5" />
+                  </svg>
+                  <span>Download</span>
                 </a>
               ) : null}
               <CopyBibtexButton value={content.bibtex} />

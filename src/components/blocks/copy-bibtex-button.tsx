@@ -19,21 +19,36 @@ export function CopyBibtexButton({ value }: CopyBibtexButtonProps) {
     <button
       type="button"
       onClick={handleCopy}
-      className="inline-flex min-h-9 items-center justify-center gap-2 rounded-[0.5rem] border border-[rgba(23,19,15,0.1)] bg-white px-3 py-1.75 text-[0.68rem] font-medium text-[var(--foreground)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.18)]"
+      className="inline-flex min-h-9 items-center justify-center gap-2 rounded-[0.5rem] border border-[rgba(23,19,15,0.1)] bg-white px-3 py-1.75 text-[0.68rem] font-medium text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.18)] hover:text-[var(--foreground)]"
     >
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 24 24"
-        className="h-4 w-4 shrink-0"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M9 7.25h10v13H9z" />
-        <path d="M5 3.75h10v13" />
-      </svg>
+      {copied ? (
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-4 w-4 shrink-0"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M5 13l4 4L19 7" />
+        </svg>
+      ) : (
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-4 w-4 shrink-0"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M9 7.25h10v13H9z" />
+          <path d="M5 3.75h10v13" />
+        </svg>
+      )}
       <span>{copied ? "Copied" : "Copy"}</span>
     </button>
   );
