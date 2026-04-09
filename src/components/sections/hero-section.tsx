@@ -83,7 +83,7 @@ export function HeroSection({ content }: HeroSectionProps) {
                 {content.title}
               </h1>
               {content.subtitle ? (
-                <p className="layout-copy mx-auto text-balance text-[0.82rem] leading-5.5 text-[var(--muted)] sm:text-[0.9rem] sm:leading-6.5">
+                <p className="mx-auto max-w-full font-[var(--font-editorial)] text-[1rem] font-semibold leading-[1] tracking-[-0.04em] text-[var(--muted-strong)] sm:text-[1.18rem] md:whitespace-nowrap lg:text-[1.32rem]">
                   {content.subtitle}
                 </p>
               ) : null}
