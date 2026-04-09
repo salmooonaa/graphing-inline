@@ -27,8 +27,8 @@ export function ResultsSection({
   return (
     <section id="results" className="border-b border-[var(--line)] py-10 sm:py-12">
       <Container>
-        <div className="mx-auto space-y-5 sm:space-y-6">
-          <div className="section-reveal layout-copy mx-auto space-y-2">
+        <div className="layout-module mx-auto space-y-5 sm:space-y-6">
+          <div className="section-reveal layout-copy space-y-2">
             <p className="section-eyebrow">Results</p>
             <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
               Results
@@ -39,7 +39,7 @@ export function ResultsSection({
             </p>
           </div>
 
-          <dl className="section-reveal reveal-delay-1 layout-band mx-auto grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] md:grid-cols-3">
+          <dl className="section-reveal reveal-delay-1 layout-band grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] md:grid-cols-3">
             {stats.map((stat) => (
               <div key={stat.label} className="bg-white px-4 py-4.5 sm:px-4.5 sm:py-5">
                 <dt className="font-[var(--font-data)] text-[0.62rem] uppercase tracking-[0.22em] text-[var(--muted)]">
@@ -52,7 +52,7 @@ export function ResultsSection({
             ))}
           </dl>
 
-          <div className="section-reveal reveal-delay-2 layout-band mx-auto space-y-2">
+          <div className="section-reveal reveal-delay-2 layout-band space-y-2">
             <p className="section-eyebrow">{framework.eyebrow}</p>
             <FrameworkMap
               dimensions={framework.dimensions}
@@ -61,7 +61,7 @@ export function ResultsSection({
             />
           </div>
 
-          <div className="section-reveal reveal-delay-3 layout-band mx-auto space-y-2">
+          <div className="section-reveal reveal-delay-3 layout-band space-y-2">
             <p className="section-eyebrow">Takeaways</p>
             <ol className="grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] lg:grid-cols-3">
               {strongestFindings.map((item) => (
@@ -81,7 +81,7 @@ export function ResultsSection({
           </div>
 
           <div className="space-y-4">
-            <div className="section-reveal reveal-delay-4 layout-band mx-auto space-y-2">
+            <div className="section-reveal reveal-delay-4 layout-band space-y-2">
               <p className="section-eyebrow">Distribution</p>
               <QuantifiedFigure
                 title={findings.representationFigure.title}
@@ -90,7 +90,7 @@ export function ResultsSection({
               />
             </div>
 
-            <div className="section-reveal reveal-delay-5 layout-band mx-auto space-y-2">
+            <div className="section-reveal reveal-delay-5 layout-band space-y-2">
               <p className="section-eyebrow">Associations</p>
               <AssociationFigure
                 title={findings.associationFigure.title}

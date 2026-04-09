@@ -101,6 +101,11 @@ main {
     max-width: 52rem;
   }
 
+  .layout-module {
+    width: 100%;
+    max-width: 50rem;
+  }
+
   .layout-copy {
     width: 100%;
     max-width: 36rem;

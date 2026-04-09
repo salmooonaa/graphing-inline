@@ -10,8 +10,8 @@ export function ProblemSection({ content }: ProblemSectionProps) {
   return (
     <section id="motivation" className="border-b border-[var(--line)] py-10 sm:py-12">
       <Container>
-        <div className="mx-auto space-y-5 sm:space-y-6">
-          <div className="section-reveal layout-copy mx-auto space-y-2">
+        <div className="layout-module mx-auto space-y-5 sm:space-y-6">
+          <div className="section-reveal layout-copy space-y-2">
             <p className="section-eyebrow">{content.eyebrow}</p>
             <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
               {content.title}
@@ -21,7 +21,7 @@ export function ProblemSection({ content }: ProblemSectionProps) {
             </p>
           </div>
 
-          <ol className="section-reveal reveal-delay-1 layout-band mx-auto grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] md:grid-cols-3">
+          <ol className="section-reveal reveal-delay-1 layout-band grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] md:grid-cols-3">
             {content.points.map((point) => (
               <li key={point.label} className="bg-white px-4 py-4.5 sm:px-4.5 sm:py-5">
                 <p className="font-[var(--font-data)] text-[0.66rem] uppercase tracking-[0.24em] text-[var(--muted)]">
