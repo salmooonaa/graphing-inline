@@ -56,7 +56,7 @@ export function CitationSection({ content }: CitationSectionProps) {
           <div className="section-reveal module-header">
             <div className="module-header-row">
               <div className="layout-copy min-w-0">
-                <h2 className="text-[1.8rem] leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] sm:text-[2.1rem]">
+                <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
                   {content.title}
                 </h2>
               </div>

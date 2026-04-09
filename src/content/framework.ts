@@ -2,7 +2,7 @@ import type { FrameworkContent } from "@/types/content";
 
 export const frameworkContent: FrameworkContent = {
   eyebrow: "Framework",
-  title: "Where–Why–How Framework",
+  title: "",
   description:
     "A compact lens for position, function, and representation.",
   conclusion:

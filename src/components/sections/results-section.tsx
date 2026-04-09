@@ -30,8 +30,7 @@ export function ResultsSection({
         <div className="layout-module mx-auto space-y-5 sm:space-y-6">
           <div className="section-reveal module-header">
             <div className="module-header-row">
-              <div className="layout-copy min-w-0 space-y-2">
-                <p className="section-eyebrow">Results</p>
+              <div className="layout-copy min-w-0">
                 <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
                   Results
                 </h2>

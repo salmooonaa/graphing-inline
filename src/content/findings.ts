@@ -40,7 +40,7 @@ export const findingsContent: FindingsContent = {
     },
   ],
   representationFigure: {
-    title: "Representation Distribution",
+    title: "",
     caption:
       "Corpus prevalence across representation types.",
     items: [
@@ -77,7 +77,7 @@ export const findingsContent: FindingsContent = {
     ],
   },
   associationFigure: {
-    title: "Dimension Associations",
+    title: "",
     caption:
       "Pairwise relationships across where, why, and how.",
     pairs: [
