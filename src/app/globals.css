@@ -149,12 +149,14 @@ main {
   }
 
   .author-link {
+    display: inline;
     color: var(--muted-strong);
     text-decoration-line: underline;
+    text-decoration-style: solid;
     text-decoration-skip-ink: auto;
-    text-decoration-thickness: 1px;
-    text-decoration-color: rgba(23, 19, 15, 0.42);
-    text-underline-offset: 0.14em;
+    text-decoration-thickness: 0.075em;
+    text-decoration-color: rgba(23, 19, 15, 0.58);
+    text-underline-offset: 0.17em;
     transition:
       color 150ms ease,
       text-decoration-color 150ms ease;
@@ -162,7 +164,7 @@ main {
 
   .author-link:hover {
     color: var(--foreground);
-    text-decoration-color: rgba(23, 19, 15, 0.72);
+    text-decoration-color: rgba(23, 19, 15, 0.84);
   }
 
   .quiet-link {
