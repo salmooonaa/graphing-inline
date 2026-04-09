@@ -96,13 +96,6 @@ export function CitationSection({ content }: CitationSectionProps) {
               <BibtexCode value={content.bibtex} />
             </pre>
           </div>
-
-          <div className="section-reveal reveal-delay-2 w-full space-y-1">
-            <p className="section-eyebrow">Citation</p>
-            <p className="max-w-[36rem] text-[0.72rem] leading-5 text-[var(--muted)] sm:text-[0.76rem] sm:leading-5.5">
-              {content.citationText}
-            </p>
-          </div>
         </div>
       </Container>
     </section>
