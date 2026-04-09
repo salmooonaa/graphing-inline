@@ -58,7 +58,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-white/94 backdrop-blur-md">
+    <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-white">
       <Container className="flex min-h-14 items-center justify-center sm:min-h-15">
         <nav className="flex w-full items-center justify-center gap-5 sm:gap-7 md:gap-9 lg:gap-11">
           {siteMeta.navItems.map((item) => {
