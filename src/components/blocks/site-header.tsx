@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 
 const sectionToNavMap = {
   overview: "overview",
-  lens: "overview",
-  findings: "findings",
-  paper: "paper",
+  motivation: "motivation",
+  method: "method",
+  results: "results",
+  bibtex: "bibtex",
 } as const;
 
 type ActiveNavId = (typeof sectionToNavMap)[keyof typeof sectionToNavMap];

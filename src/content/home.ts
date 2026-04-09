@@ -2,18 +2,16 @@ import type { HomePageContent } from "@/types/content";
 
 export const homeContent: HomePageContent = {
   hero: {
-    badge: "Project Thesis",
-    title:
-      "Graphing Inline: Understanding Word-scale Graphics Use in Scientific Papers",
+    badge: "Title",
+    title: "Graphing Inline",
+    subtitle: "Understanding Word-scale Graphics Use in Scientific Papers",
     authorsLine:
       "Siyu Lu*, Yanhan Liu*, Shiyu Xu, Ruishi Zou, Chen Ye",
     publicationLine:
-      "CHI EA 2026 · Barcelona, Spain · DOI 10.1145/3772363.3798356",
+      "CHI EA 2026 · DOI 10.1145/3772363.3798356",
     contributionNotes: ["* Equal contribution"],
-    acknowledgementLine:
-      "We gratefully acknowledge Ruishi Zou for substantial project support.",
     thesis:
-      "Word-scale graphics, the tiny visuals embedded directly in sentences and tables, remain rare in scientific papers, yet the cases that do appear follow a repeatable logic of placement, function, and representation.",
+      "A corpus study of how word-scale graphics appear in scientific papers.",
     actions: [
       {
         label: "Paper",
@@ -37,10 +35,9 @@ export const homeContent: HomePageContent = {
       { value: "0.6%", label: "adoption rate" },
     ],
     visual: {
-      eyebrow: "Main figure",
-      title: "Replace with the thesis image",
-      description:
-        "Use a real paper figure, redraw, or tightly cropped comparison that immediately shows what word-scale graphics are. Preferred direction: conventional split figure reading versus inline graphics, or a refined Figure 1 adaptation.",
+      eyebrow: "Title figure",
+      title: "Figure placeholder",
+      description: "",
     },
   },
   lens: {

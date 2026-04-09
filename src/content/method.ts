@@ -2,12 +2,14 @@ import type { MethodContent } from "@/types/content";
 
 export const methodContent: MethodContent = {
   eyebrow: "Method",
-  title: "A four-stage corpus study pipeline",
+  title: "Method",
   description:
-    "The paper studies word-scale graphics through four linked stages that move from heuristic formation to corpus-scale extraction, coding, and framework validation.",
+    "A four-stage pipeline from preparation to validation.",
   phases: [
     {
       title: "Preparation",
+      metric: "103 papers",
+      summary: "Built the initial VIS corpus and retrieval heuristic.",
       input: ["1,080 IEEE VIS papers published between 2017 and 2025."],
       process: [
         "One author manually browsed the VIS papers and identified 103 papers containing word-scale graphics.",
@@ -21,6 +23,8 @@ export const methodContent: MethodContent = {
     },
     {
       title: "Extraction",
+      metric: "5,006 candidates",
+      summary: "Applied the HTML retrieval rules to the arXiv CS corpus.",
       input: [
         "The HTML retrieval rules from Preparation.",
         "125,577 arXiv Computer Science papers from 2024.",
@@ -34,6 +38,8 @@ export const methodContent: MethodContent = {
     },
     {
       title: "Annotation",
+      metric: "585 valid papers",
+      summary: "Annotated candidates and refined the where-why-how framework.",
       input: [
         "The VIS corpus and 5,006 extracted arXiv candidates.",
         "An initial inductive codebook seeded from the VIS analysis.",
@@ -50,6 +56,8 @@ export const methodContent: MethodContent = {
     },
     {
       title: "Validation",
+      metric: "κ = 0.91",
+      summary: "Tested the framework on an external validation corpus.",
       input: ["140 papers from the Beck and Weiskopf corpus."],
       process: [
         "Two coders deductively applied the resulting framework to the validation corpus.",
@@ -62,5 +70,5 @@ export const methodContent: MethodContent = {
     },
   ],
   note:
-    "The paper’s final integrated results combine the VIS, arXiv, and validation corpora into 718 unique papers and 909 distinct use cases.",
+    "Final corpus: 718 papers and 909 distinct use cases.",
 };

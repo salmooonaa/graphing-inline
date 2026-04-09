@@ -1,7 +1,10 @@
 export type SectionId =
   | "overview"
+  | "motivation"
   | "lens"
   | "paper"
+  | "results"
+  | "bibtex"
   | "hero"
   | "summary"
   | "problem"
@@ -127,6 +130,8 @@ export type DetailItem = {
 
 export type MethodStage = {
   title: string;
+  metric?: string;
+  summary?: string;
   input: string[];
   process: string[];
   output: string[];
@@ -183,6 +188,7 @@ export type PlaceholderFigure = {
 export type PageHeroContent = {
   badge: string;
   title: string;
+  subtitle?: string;
   authorsLine: string;
   publicationLine: string;
   contributionNotes?: string[];

@@ -1,34 +1,34 @@
 import type { ProblemContent } from "@/types/content";
 
 export const problemContent: ProblemContent = {
-  eyebrow: "Problem",
-  title: "The study starts from a reading problem and a corpus gap",
+  eyebrow: "Motivation",
+  title: "Motivation",
   description:
-    "The paper argues that word-scale graphics matter because scholarly reading often separates prose from evidence, while real-world use in scientific writing remains under-documented.",
+    "Why word-scale graphics matter in scholarly communication.",
   points: [
     {
       label: "01",
       title: "Standalone figures create split attention",
       description:
-        "Scientific papers often place figures and charts away from the sentence that references them. Readers must alternate between prose and standalone graphics to reconstruct the author’s intended connection.",
+        "Readers often jump between prose and distant figures to reconstruct meaning.",
       evidence:
-        "The introduction frames this as the split-attention effect: a division of attention that adds extraneous cognitive load and hinders comprehension.",
+        "Split attention increases reading burden.",
     },
     {
       label: "02",
-      title: "Word-scale graphics can keep visual evidence inside the reading flow",
+      title: "Word-scale graphics keep evidence in the flow",
       description:
-        "Prior work shows that typographically sized graphics can be embedded directly in text or tables, making the surrounding sentence more expressive without forcing readers to leave the local context.",
+        "Inline visuals can sit directly inside text or tables instead of outside them.",
       evidence:
-        "The paper positions word-scale graphics as compact visuals that range from letter height to sentence or paragraph size and support multiple visual encodings.",
+        "They promise tighter links between text and evidence.",
     },
     {
       label: "03",
-      title: "Scholarly communication lacks an in-the-wild account",
+      title: "The field lacks an in-the-wild account",
       description:
-        "Earlier work largely studied design spaces, applications, or data-driven examples, but left open how both data-driven and non-data-driven word-scale graphics are actually used in published scientific papers.",
+        "We still know little about how these graphics are actually used in published papers.",
       evidence:
-        "This motivates the paper’s research question: how do researchers apply word-scale graphics in scientific papers?",
+        "That gap motivates the corpus study.",
     },
   ],
 };

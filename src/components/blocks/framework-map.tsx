@@ -10,20 +10,20 @@ type FrameworkMapProps = {
 
 export function FrameworkMap({ dimensions, title, caption }: FrameworkMapProps) {
   return (
-    <figure className="space-y-6 border border-[var(--line-strong)] bg-[rgba(255,252,247,0.92)] p-6 sm:p-7">
+    <figure className="space-y-6 border border-[var(--line)] bg-white p-6 sm:p-7">
       <div className="grid gap-6 lg:grid-cols-3">
         {dimensions.map((dimension) => (
           <section
             key={dimension.label}
-            className="border-t border-[var(--line-strong)] pt-4"
+            className="border-t border-[var(--line)] pt-4"
           >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--muted)]">
               {dimension.label}
             </p>
-            <h3 className="mt-2 text-2xl font-semibold text-slate-950">
+            <h3 className="mt-2 text-2xl font-semibold text-[var(--foreground)]">
               {dimension.title}
             </h3>
-            <p className="mt-3 text-sm leading-7 text-slate-700">
+            <p className="mt-3 text-sm leading-7 text-[var(--muted)]">
               {dimension.conclusion}
             </p>
 
@@ -31,19 +31,19 @@ export function FrameworkMap({ dimensions, title, caption }: FrameworkMapProps) 
               {dimension.items.map((item) => (
                 <div key={`${dimension.label}-${item.label}`} className="space-y-2">
                   <div className="flex items-baseline justify-between gap-4">
-                    <dt className="text-sm text-slate-700">{item.label}</dt>
-                    <dd className="text-sm font-semibold text-slate-950">
+                    <dt className="text-sm text-[var(--muted)]">{item.label}</dt>
+                    <dd className="text-sm font-semibold text-[var(--foreground)]">
                       {item.value}
                     </dd>
                   </div>
-                  <div className="h-1.5 bg-slate-200">
+                  <div className="h-1.5 bg-black/8">
                     <div
-                      className="h-full bg-[linear-gradient(90deg,#111827,#8a5a1f)]"
+                      className="h-full bg-[var(--foreground)]"
                       style={{ width: item.width }}
                     />
                   </div>
                   {item.note ? (
-                    <p className="text-xs leading-6 text-slate-500">{item.note}</p>
+                    <p className="text-xs leading-6 text-[var(--muted)]">{item.note}</p>
                   ) : null}
                 </div>
               ))}

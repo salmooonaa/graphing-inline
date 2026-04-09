@@ -1,32 +1,32 @@
 import type { FindingsContent } from "@/types/content";
 
 export const findingsContent: FindingsContent = {
-  eyebrow: "Findings",
-  title: "The corpus points to scarcity, icon dominance, and structured co-occurrence",
+  eyebrow: "Results",
+  title: "Strongest Findings",
   description:
-    "The paper does not treat word-scale graphics as isolated curiosities. It shows that prevalence is low, representation is uneven, and the three dimensions align in repeatable patterns.",
+    "The corpus points to rarity, icon dominance, and structured relationships.",
   conclusion:
-    "The main result is not only that word-scale graphics are rare, but that when they do appear, they follow a structured design logic across positioning, function, and representation.",
+    "Word-scale graphics are rare, but their use follows a repeatable logic.",
   items: [
     {
       label: "01",
-      conclusion: "Word-scale graphics are still rare in scientific papers.",
+      conclusion: "Word-scale graphics are still rare.",
       explanation:
-        "Only about 0.6% of the 126,797 collected papers contain word-scale graphics, indicating that adoption remains limited.",
+        "Only about 0.6% of the 126,797 collected papers contain them.",
       evidence: "Final corpus: 718 unique papers and 909 distinct use cases.",
     },
     {
       label: "02",
       conclusion: "Icons dominate the visual repertoire.",
       explanation:
-        "Icons account for 79.5% of all use cases and appear in four of the five most common usage combinations in the corpus.",
+        "Icons account for 79.5% of all use cases.",
       evidence: "They dominate in both text and table contexts.",
     },
     {
       label: "03",
       conclusion: "Quantitative graphs align with tables and data annotation.",
       explanation:
-        "Data annotation frequently uses quantitative graphs, and quantitative graphs appear much more often in tables than in running text.",
+        "Data annotation and table contexts are where quantitative forms appear most often.",
       evidence:
         "73.9% within data annotation use quantitative graphs; 98 table cases versus 46 text cases.",
     },
@@ -40,9 +40,9 @@ export const findingsContent: FindingsContent = {
     },
   ],
   representationFigure: {
-    title: "Representation and prevalence",
+    title: "Result figure placeholder",
     caption:
-      "Findings figure 1. Word-scale graphics are uncommon overall, while icons account for the large majority of the observed visual forms.",
+      "Distribution of use and representation.",
     items: [
       {
         label: "Papers using word-scale graphics",
@@ -77,9 +77,9 @@ export const findingsContent: FindingsContent = {
     ],
   },
   associationFigure: {
-    title: "Association strengths across where, why, and how",
+    title: "Result figure placeholder",
     caption:
-      "Findings figure 2. All pairwise associations are significant, with the strongest relationship observed between positioning and communicative function.",
+      "Associations across where, why, and how.",
     pairs: [
       {
         label: "Where × Why",

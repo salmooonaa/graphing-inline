@@ -2,13 +2,13 @@ import type { FrameworkContent } from "@/types/content";
 
 export const frameworkContent: FrameworkContent = {
   eyebrow: "Framework",
-  title: "The framework reduces the corpus to three linked questions",
+  title: "Where–Why–How Framework",
   description:
-    "The paper’s core contribution is a where–why–how framework that describes where word-scale graphics appear, why authors use them, and how they are visually encoded.",
+    "A compact lens for position, function, and representation.",
   conclusion:
-    "Read together, the three dimensions turn scattered examples into a comparable language for scholarly communication.",
+    "The framework turns scattered examples into a comparable design language.",
   figureCaption:
-    "Framework figure. The paper organizes each use case by positioning, communicative function, and visual representation, allowing the dimensions to be compared and later tested for association.",
+    "Framework figure placeholder.",
   dimensions: [
     {
       label: "Where",
