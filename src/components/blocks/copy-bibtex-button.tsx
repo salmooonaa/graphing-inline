@@ -19,9 +19,22 @@ export function CopyBibtexButton({ value }: CopyBibtexButtonProps) {
     <button
       type="button"
       onClick={handleCopy}
-      className="inline-flex items-center border border-[var(--line-strong)] bg-white/78 px-3 py-2 text-[0.68rem] font-medium uppercase tracking-[0.18em] text-[var(--muted)] transition-colors hover:border-[var(--foreground)] hover:text-[var(--foreground)]"
+      className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.6rem] border border-[rgba(23,19,15,0.14)] bg-white px-4 py-2.5 text-[0.82rem] font-medium text-[var(--foreground)] shadow-[0_1px_2px_rgba(23,19,15,0.04)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.22)]"
     >
-      {copied ? "Copied" : "Copy BibTeX"}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-4.5 w-4.5 shrink-0"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M9 7.25h10v13H9z" />
+        <path d="M5 3.75h10v13" />
+      </svg>
+      <span>{copied ? "Copied" : "Copy"}</span>
     </button>
   );
 }
