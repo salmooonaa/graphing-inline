@@ -73,36 +73,36 @@ export function HeroSection({ content }: HeroSectionProps) {
   return (
     <section
       id="overview"
-      className="border-b border-[var(--line)] px-0 pb-12 pt-8 sm:pb-14 sm:pt-10 lg:pb-16"
+      className="border-b border-[var(--line)] px-0 pb-10 pt-7 sm:pb-12 sm:pt-8 lg:pb-14"
     >
       <Container>
         <div className="section-reveal layout-masthead mx-auto flex flex-col items-center text-center">
-          <div className="w-full space-y-4 sm:space-y-5">
-            <div className="space-y-2.5">
-              <h1 className="text-balance text-[2.2rem] leading-[0.97] tracking-[-0.045em] text-[var(--foreground)] sm:text-[2.95rem] lg:text-[3.45rem]">
+          <div className="w-full space-y-3.5 sm:space-y-4.5">
+            <div className="space-y-2">
+              <h1 className="text-balance text-[2.02rem] leading-[0.97] tracking-[-0.043em] text-[var(--foreground)] sm:text-[2.55rem] lg:text-[2.95rem]">
                 {content.title}
               </h1>
               {content.subtitle ? (
-                <p className="layout-copy mx-auto text-balance text-[0.88rem] leading-6 text-[var(--muted)] sm:text-[0.96rem] sm:leading-7">
+                <p className="layout-copy mx-auto text-balance text-[0.82rem] leading-5.5 text-[var(--muted)] sm:text-[0.9rem] sm:leading-6.5">
                   {content.subtitle}
                 </p>
               ) : null}
             </div>
 
-            <div className="layout-copy mx-auto space-y-2">
-              <p className="text-pretty text-[0.94rem] font-medium leading-6 text-[var(--muted-strong)] sm:text-[1rem]">
+            <div className="layout-copy mx-auto space-y-1.5">
+              <p className="text-pretty text-[0.88rem] font-medium leading-5.5 text-[var(--muted-strong)] sm:text-[0.95rem]">
                 {content.authorsLine}
               </p>
 
               {(hasPublicationLine || hasContributionNotes) && (
-                <div className="space-y-1">
+                <div className="space-y-0.5">
                   {hasPublicationLine ? (
-                    <p className="text-[0.74rem] leading-5 text-[var(--muted)] sm:text-[0.8rem]">
+                    <p className="text-[0.68rem] leading-5 text-[var(--muted)] sm:text-[0.74rem]">
                       {content.publicationLine}
                     </p>
                   ) : null}
                   {hasContributionNotes ? (
-                    <p className="text-[0.66rem] leading-5 text-[var(--muted)]/90 sm:text-[0.72rem]">
+                    <p className="text-[0.62rem] leading-5 text-[var(--muted)]/90 sm:text-[0.68rem]">
                       {content.contributionNotes!.join(" · ")}
                     </p>
                   ) : null}
@@ -110,18 +110,18 @@ export function HeroSection({ content }: HeroSectionProps) {
               )}
 
               {hasAcknowledgementLine ? (
-                <p className="mx-auto max-w-3xl text-[0.64rem] leading-5 text-[var(--muted)]/76 sm:text-[0.7rem]">
+                <p className="mx-auto max-w-3xl text-[0.62rem] leading-5 text-[var(--muted)]/76 sm:text-[0.66rem]">
                   {content.acknowledgementLine}
                 </p>
               ) : null}
             </div>
 
-            <div className="flex w-full flex-wrap items-center justify-center gap-2 pt-0.5 sm:gap-2.5">
+            <div className="flex w-full flex-wrap items-center justify-center gap-1.5 pt-0.5 sm:gap-2">
               {content.actions.map((action) => (
                 <a
                   key={`${action.label}-${action.href}`}
                   href={action.href}
-                  className="inline-flex min-w-[9.15rem] items-center justify-center gap-2.25 border border-[var(--line)] bg-white px-4 py-2.25 text-[0.68rem] font-medium uppercase tracking-[0.16em] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--foreground)]"
+                  className="inline-flex min-w-[8.35rem] items-center justify-center gap-2 border border-[var(--line)] bg-white px-3.5 py-2 text-[0.64rem] font-medium uppercase tracking-[0.16em] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--foreground)]"
                 >
                   <HeroActionIcon label={action.label} />
                   <span>{action.label}</span>

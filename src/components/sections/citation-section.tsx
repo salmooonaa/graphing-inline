@@ -50,22 +50,22 @@ function BibtexCode({ value }: { value: string }) {
 
 export function CitationSection({ content }: CitationSectionProps) {
   return (
-    <section id="bibtex" className="py-12 sm:py-14">
+    <section id="bibtex" className="py-10 sm:py-12">
       <Container>
-        <div className="mx-auto space-y-5 sm:space-y-6">
-          <div className="section-reveal layout-copy mx-auto space-y-4">
-            <h2 className="text-[2.2rem] leading-[0.94] tracking-[-0.045em] text-[var(--foreground)] sm:text-[2.7rem]">
+        <div className="mx-auto space-y-4 sm:space-y-5">
+          <div className="section-reveal layout-copy mx-auto space-y-3">
+            <h2 className="text-[1.8rem] leading-[0.98] tracking-[-0.04em] text-[var(--foreground)] sm:text-[2.1rem]">
               {content.title}
             </h2>
             <div className="h-px w-full bg-[var(--line)]" />
           </div>
 
-          <div className="section-reveal reveal-delay-1 layout-figure mx-auto rounded-[1.15rem] bg-[#f6f3ef] px-4 py-4 sm:px-5 sm:py-5">
-            <div className="flex flex-wrap items-center justify-end gap-2 pb-3.5 sm:pb-4">
+          <div className="section-reveal reveal-delay-1 layout-utility mx-auto rounded-[0.95rem] border border-[var(--line)] bg-white px-3.5 py-3.5 sm:px-4 sm:py-4">
+            <div className="flex flex-wrap items-center justify-end gap-1.5 pb-3 sm:pb-3.5">
               {content.bibtexDownloadHref ? (
                 <a
                   href={content.bibtexDownloadHref}
-                  className="inline-flex min-h-10 items-center justify-center rounded-[0.55rem] border border-[rgba(23,19,15,0.1)] bg-white px-3.5 py-2 text-[0.72rem] font-medium text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.2)] hover:text-[var(--foreground)]"
+                  className="inline-flex min-h-9 items-center justify-center rounded-[0.5rem] border border-[rgba(23,19,15,0.1)] bg-white px-3 py-1.75 text-[0.66rem] font-medium text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.18)] hover:text-[var(--foreground)]"
                 >
                   Download .bib
                 </a>
@@ -73,14 +73,14 @@ export function CitationSection({ content }: CitationSectionProps) {
               <CopyBibtexButton value={content.bibtex} />
             </div>
 
-            <pre className="max-h-[24rem] overflow-auto rounded-[0.95rem] bg-[#f6f3ef] px-2 pb-2 text-[0.86rem] leading-[1.78] text-[var(--muted-strong)] sm:px-3 sm:pb-3 sm:text-[0.92rem]">
+            <pre className="overflow-x-auto overflow-y-hidden rounded-[0.75rem] bg-[#f7f6f4] px-2.5 py-2.5 text-[0.78rem] leading-[1.72] text-[var(--muted-strong)] sm:px-3 sm:py-3 sm:text-[0.82rem]">
               <BibtexCode value={content.bibtex} />
             </pre>
           </div>
 
-          <div className="section-reveal reveal-delay-2 layout-copy mx-auto space-y-1.5">
+          <div className="section-reveal reveal-delay-2 layout-copy mx-auto space-y-1">
             <p className="section-eyebrow">Citation</p>
-            <p className="text-[0.78rem] leading-5 text-[var(--muted)] sm:text-[0.82rem] sm:leading-6">
+            <p className="text-[0.72rem] leading-5 text-[var(--muted)] sm:text-[0.76rem] sm:leading-5.5">
               {content.citationText}
             </p>
           </div>

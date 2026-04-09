@@ -33,12 +33,12 @@ export function FigureCaption({ title, caption, className }: FigureCaptionProps)
   return (
     <figcaption className={className}>
       {safeTitle ? (
-        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--muted)]">
+        <p className="text-[9px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
           {safeTitle}
         </p>
       ) : null}
       {safeCaption ? (
-        <p className="mt-1.5 max-w-2xl text-[0.84rem] leading-6 text-[var(--muted)]">
+        <p className="mt-1 max-w-xl text-[0.76rem] leading-5.5 text-[var(--muted)]">
           {safeCaption}
         </p>
       ) : null}
