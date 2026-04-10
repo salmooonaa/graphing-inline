@@ -10,7 +10,6 @@ import { cn } from "@/lib/utils";
 const sectionToNavMap = {
   overview: "overview",
   motivation: "motivation",
-  method: "method",
   results: "results",
   bibtex: "bibtex",
 } as const;

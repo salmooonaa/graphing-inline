@@ -11,12 +11,15 @@ export const heroContent: HeroContent = {
   publicationLine:
     "CHI EA 2026 · Barcelona, Spain · DOI 10.1145/3772363.3798356",
   status:
-    "The site emphasizes the paper’s framework, method pipeline, findings, and public research materials.",
+    "The site emphasizes the paper's framework, findings, and public research materials.",
   actions: [
-    { label: "Paper", href: "https://arxiv.org/abs/2603.10533", variant: "primary" },
+    {
+      label: "Paper",
+      href: "https://arxiv.org/abs/2603.10533",
+      variant: "primary",
+    },
     { label: "Poster", href: "#resources", variant: "secondary" },
     { label: "BibTeX", href: "#citation", variant: "secondary" },
-    { label: "Method", href: "#method", variant: "secondary" },
     { label: "Contact", href: "#contact", variant: "secondary" },
   ],
   metrics: [

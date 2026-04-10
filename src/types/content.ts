@@ -8,7 +8,6 @@ export type SectionId =
   | "hero"
   | "summary"
   | "problem"
-  | "method"
   | "framework"
   | "findings"
   | "implications"
@@ -119,15 +118,6 @@ export type DetailItem = {
   title: string;
   description: string;
   details?: string[];
-};
-
-export type MethodStage = {
-  title: string;
-  metric?: string;
-  summary?: string;
-  input: string[];
-  process: string[];
-  output: string[];
 };
 
 export type ResourceStatus = "available" | "comingSoon" | "unavailable";
@@ -276,11 +266,6 @@ export type ProblemContent = SectionIntro & {
   researchQuestion: string;
 };
 
-export type MethodContent = SectionIntro & {
-  phases: MethodStage[];
-  note?: string;
-};
-
 export type FrameworkContent = SectionIntro & {
   conclusion: string;
   figureCaption: string;
@@ -326,7 +311,6 @@ export type HomeContent = {
   hero: HeroContent;
   summary: SummaryContent;
   problem: ProblemContent;
-  method: MethodContent;
   framework: FrameworkContent;
   findings: FindingsContent;
   implications: ImplicationsContent;

@@ -77,86 +77,86 @@ export function HeroSection({ content }: HeroSectionProps) {
         <div id="overview" className="section-anchor">
           <div className="section-reveal layout-masthead mx-auto flex flex-col items-center text-center">
             <div className="w-full space-y-3.5 sm:space-y-4.5">
-            <div className="space-y-2">
-              <h1 className="text-balance text-[2.02rem] leading-[0.97] tracking-[-0.043em] text-[var(--foreground)] sm:text-[2.55rem] lg:text-[2.95rem]">
-                {content.title}
-              </h1>
-              {content.subtitle ? (
-                <p className="mx-auto max-w-full font-[var(--font-editorial)] text-[1rem] font-semibold leading-[1] tracking-[-0.04em] text-[var(--muted-strong)] sm:text-[1.18rem] md:whitespace-nowrap lg:text-[1.32rem]">
-                  {content.subtitle}
-                </p>
-              ) : null}
-            </div>
+              <div className="space-y-2">
+                <h1 className="text-balance text-[2.02rem] leading-[0.97] tracking-[-0.043em] text-[var(--foreground)] sm:text-[2.55rem] lg:text-[2.95rem]">
+                  {content.title}
+                </h1>
+                {content.subtitle ? (
+                  <p className="mx-auto max-w-full font-[var(--font-editorial)] text-[1rem] font-semibold leading-[1] tracking-[-0.04em] text-[var(--muted-strong)] sm:text-[1.18rem] md:whitespace-nowrap lg:text-[1.32rem]">
+                    {content.subtitle}
+                  </p>
+                ) : null}
+              </div>
 
-            <div className="layout-copy mx-auto space-y-1.5">
-              <p className="text-pretty text-[0.88rem] font-medium leading-5.5 text-[var(--muted-strong)] sm:text-[0.95rem]">
-                {hasStructuredAuthors
-                  ? content.authors!.map((author, index) => {
-                      const separator =
-                        index < content.authors!.length - 1 ? ", " : "";
+              <div className="layout-copy mx-auto space-y-1.5">
+                <p className="text-pretty text-[0.88rem] font-medium leading-5.5 text-[var(--muted-strong)] sm:text-[0.95rem]">
+                  {hasStructuredAuthors
+                    ? content.authors!.map((author, index) => {
+                        const separator =
+                          index < content.authors!.length - 1 ? ", " : "";
 
-                      if (author.href) {
+                        if (author.href) {
+                          return (
+                            <span key={`${author.name}-${author.href}`}>
+                              <a
+                                href={author.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="author-link"
+                              >
+                                {author.name}
+                              </a>
+                              {separator}
+                            </span>
+                          );
+                        }
+
                         return (
-                          <span key={`${author.name}-${author.href}`}>
-                            <a
-                              href={author.href}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="author-link"
-                            >
-                              {author.name}
-                            </a>
+                          <span key={author.name}>
+                            {author.name}
                             {separator}
                           </span>
                         );
-                      }
-
-                      return (
-                        <span key={author.name}>
-                          {author.name}
-                          {separator}
-                        </span>
-                      );
-                    })
-                  : content.authorsLine}
-              </p>
-
-              {(hasPublicationLine || hasContributionNotes) && (
-                <div className="space-y-0.5">
-                  {hasPublicationLine ? (
-                    <p className="text-[0.68rem] leading-5 text-[var(--muted)] sm:text-[0.74rem]">
-                      {content.publicationLine}
-                    </p>
-                  ) : null}
-                  {hasContributionNotes ? (
-                    <p className="text-[0.62rem] leading-5 text-[var(--muted)]/90 sm:text-[0.68rem]">
-                      {content.contributionNotes!.join(" · ")}
-                    </p>
-                  ) : null}
-                </div>
-              )}
-
-              {hasAcknowledgementLine ? (
-                <p className="mx-auto max-w-3xl text-[0.62rem] leading-5 text-[var(--muted)]/76 sm:text-[0.66rem]">
-                  {content.acknowledgementLine}
+                      })
+                    : content.authorsLine}
                 </p>
-              ) : null}
-            </div>
 
-            <div className="flex w-full flex-wrap items-center justify-center gap-1.5 pt-0.5 sm:gap-2">
-              {content.actions.map((action) => (
-                <a
-                  key={`${action.label}-${action.href}`}
-                  href={action.href}
-                  className="inline-flex min-w-[8.35rem] items-center justify-center gap-2 border border-[var(--line)] bg-white px-3.5 py-2 text-[0.64rem] font-medium uppercase tracking-[0.16em] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--foreground)]"
-                >
-                  <HeroActionIcon label={action.label} />
-                  <span>{action.label}</span>
-                </a>
-              ))}
+                {(hasPublicationLine || hasContributionNotes) && (
+                  <div className="space-y-0.5">
+                    {hasPublicationLine ? (
+                      <p className="text-[0.68rem] leading-5 text-[var(--muted)] sm:text-[0.74rem]">
+                        {content.publicationLine}
+                      </p>
+                    ) : null}
+                    {hasContributionNotes ? (
+                      <p className="text-[0.62rem] leading-5 text-[var(--muted)]/90 sm:text-[0.68rem]">
+                        {content.contributionNotes!.join(" 路 ")}
+                      </p>
+                    ) : null}
+                  </div>
+                )}
+
+                {hasAcknowledgementLine ? (
+                  <p className="mx-auto max-w-3xl text-[0.62rem] leading-5 text-[var(--muted)]/76 sm:text-[0.66rem]">
+                    {content.acknowledgementLine}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="flex w-full flex-wrap items-center justify-center gap-1.5 pt-0.5 sm:gap-2">
+                {content.actions.map((action) => (
+                  <a
+                    key={`${action.label}-${action.href}`}
+                    href={action.href}
+                    className="inline-flex min-w-[8.35rem] items-center justify-center gap-2 border border-[var(--line)] bg-white px-3.5 py-2 text-[0.64rem] font-medium uppercase tracking-[0.16em] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--foreground)]"
+                  >
+                    <HeroActionIcon label={action.label} />
+                    <span>{action.label}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
         </div>
       </Container>
     </section>
