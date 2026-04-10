@@ -54,7 +54,9 @@ const TD = "py-[5px] px-2 first:pl-0 last:pr-0 text-[0.74rem] text-[var(--foregr
 const BAR_TH =
   "pb-[7px] pt-1 px-1 text-center text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
 const BAR_TD = "py-[5px] pl-1 pr-0 align-middle text-[0.74rem] text-[var(--foreground)]";
-const BAR_COL = { width: "8.2rem" } as const;
+const BAR_COL = { width: "7.8rem" } as const;
+const SIDE_NUM_COL = { width: "4.1rem" } as const;
+const SIDE_NUM_TH = `${TH} whitespace-nowrap text-right`;
 const NUM = "text-right tabular-nums";
 const MONO: React.CSSProperties = { fontFamily: "var(--font-data), monospace" };
 const MODULE_NOTE =
@@ -150,16 +152,16 @@ export function ProblemSection({ content }: ProblemSectionProps) {
                     <table className="w-full border-collapse" style={{ minWidth: 240 }}>
                       <colgroup>
                         <col />
-                        <col style={{ width: "3.5rem" }} />
+                        <col style={SIDE_NUM_COL} />
                         <col style={BAR_COL} />
-                        <col style={{ width: "3.5rem" }} />
+                        <col style={SIDE_NUM_COL} />
                       </colgroup>
                       <thead>
                         <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
                           <th className={TH}>Study</th>
-                          <th className={`${TH} text-right`}>Group A</th>
+                          <th className={SIDE_NUM_TH}>Group A</th>
                           <th className={BAR_TH}>% A vs. B</th>
-                          <th className={`${TH} text-right`}>Group B</th>
+                          <th className={SIDE_NUM_TH}>Group B</th>
                         </tr>
                       </thead>
                       <tbody>
