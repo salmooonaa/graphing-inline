@@ -12,6 +12,7 @@
 node_modules/
 .next/
 .vercel/
+.playwright-mcp/
 .eslintcache
 coverage/
 npm-debug.log*
