@@ -6,68 +6,49 @@ type ProblemSectionProps = {
   content: ProblemContent;
 };
 
-/* ── tiny helpers for the mock-text diagram ── */
+/* ── neutral scholarly placeholder data ── */
+const ROWS = [
+  { label: "Item α", a: 0.71, b: 0.43 },
+  { label: "Item β", a: 0.58, b: 0.51 },
+  { label: "Item γ", a: 0.47, b: 0.33 },
+  { label: "Item δ", a: 0.50, b: 0.45 },
+  { label: "Item ε", a: 0.33, b: 0.24 },
+] as const;
 
-/** A single gray bar pretending to be a line of text */
-function TextLine({ w = "100%" }: { w?: string }) {
-  return (
-    <div
-      className="h-[5px] rounded-full bg-[var(--foreground)]/8"
-      style={{ width: w }}
-    />
-  );
+const MEAN = { a: 0.52, b: 0.39 };
+
+function pct(a: number, b: number) {
+  return Math.round((a / (a + b)) * 100);
 }
 
-/** Inline colored shape sitting in a "text line" */
-function InlineGraphic({
-  kind,
-}: {
-  kind: "bar" | "dot" | "box";
-}) {
-  if (kind === "bar")
-    return (
-      <span className="inline-flex h-[5px] w-[18px] items-center gap-[2px]">
-        <span className="h-full w-[5px] rounded-sm bg-[var(--foreground)]/30" />
-        <span className="h-[4px] w-[5px] rounded-sm bg-[var(--foreground)]/20" />
-        <span className="h-[3px] w-[5px] rounded-sm bg-[var(--foreground)]/14" />
+/* ── stacked proportional bar (amber = Group A, blue = Group B) ── */
+function StackedBar({ a, b }: { a: number; b: number }) {
+  const p = pct(a, b);
+  return (
+    <div className="flex items-center gap-[5px]">
+      <span
+        className="w-[22px] text-right text-[8px] tabular-nums text-[var(--muted)]"
+        style={{ fontFamily: "var(--font-data), monospace" }}
+      >
+        {p}%
       </span>
-    );
-  if (kind === "dot")
-    return (
-      <span className="inline-block h-[5px] w-[5px] rounded-full bg-[var(--foreground)]/30" />
-    );
-  /* box */
-  return (
-    <span className="inline-block h-[5px] w-[8px] rounded-[1px] bg-[var(--foreground)]/25" />
-  );
-}
-
-/** A simulated text paragraph — several gray bars in a column */
-function MockParagraph({
-  lines,
-  className,
-}: {
-  lines: { w: string; graphic?: "bar" | "dot" | "box" }[];
-  className?: string;
-}) {
-  return (
-    <div className={`flex flex-col gap-[6px] ${className ?? ""}`}>
-      {lines.map((l, i) =>
-        l.graphic ? (
-          <div key={i} className="flex items-center gap-[5px]">
-            <div
-              className="h-[5px] rounded-full bg-[var(--foreground)]/8"
-              style={{ width: `calc(${l.w} - 24px)` }}
-            />
-            <InlineGraphic kind={l.graphic} />
-          </div>
-        ) : (
-          <TextLine key={i} w={l.w} />
-        ),
-      )}
+      <div
+        className="flex overflow-hidden rounded-[1px]"
+        style={{ width: 52, height: 6 }}
+      >
+        <div style={{ width: `${p}%`, height: "100%", background: "var(--amber)" }} />
+        <div style={{ flex: 1, height: "100%", background: "var(--blue)" }} />
+      </div>
     </div>
   );
 }
+
+/* ── shared table cell classes ── */
+const TH =
+  "pb-[7px] pt-1 px-2 first:pl-0 last:pr-0 text-left text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
+const TD = "py-[5px] px-2 first:pl-0 last:pr-0 text-[0.74rem] text-[var(--foreground)]";
+const NUM = "text-right tabular-nums";
+const MONO: React.CSSProperties = { fontFamily: "var(--font-data), monospace" };
 
 export function ProblemSection({ content }: ProblemSectionProps) {
   return (
@@ -92,85 +73,124 @@ export function ProblemSection({ content }: ProblemSectionProps) {
             </p>
           </div>
 
-          {/* ── before / after diagram ── */}
+          {/* ── comparison figure ── */}
           <div className="section-reveal reveal-delay-1 w-full border border-[var(--line)] bg-white">
             <div className="grid md:grid-cols-2">
-              {/* LEFT — traditional */}
-              <div className="flex flex-col gap-5 border-b border-[var(--line)] p-5 sm:p-6 md:border-b-0 md:border-r">
-                <p className="section-eyebrow">Traditional</p>
 
-                <div className="flex-1 space-y-5">
-                  {/* simulated paragraph */}
-                  <MockParagraph
-                    lines={[
-                      { w: "100%" },
-                      { w: "92%" },
-                      { w: "85%" },
-                      { w: "96%" },
-                      { w: "60%" },
-                    ]}
-                  />
+              {/* LEFT — conventional plain table */}
+              <div className="flex flex-col gap-4 border-b border-[var(--line)] p-5 sm:p-6 md:border-b-0 md:border-r">
+                <p className="section-eyebrow">Conventional</p>
 
-                  {/* "see Fig. 3" reference + dashed connector + figure box */}
-                  <div className="flex flex-col items-start gap-0">
-                    <p className="text-[0.7rem] italic text-[var(--muted)]">
-                      (see Fig.&nbsp;3)
-                    </p>
-                    <div className="ml-[2px] h-6 w-0 border-l border-dashed border-[var(--foreground)]/20" />
-                    <div className="w-full max-w-[10rem] border border-[var(--line)] p-2.5">
-                      <p className="mb-2 text-[9px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
-                        Fig.&nbsp;3
-                      </p>
-                      <div className="flex items-end gap-[3px]">
-                        <div className="h-[18px] w-[6px] rounded-[1px] bg-[var(--foreground)]/12" />
-                        <div className="h-[12px] w-[6px] rounded-[1px] bg-[var(--foreground)]/12" />
-                        <div className="h-[22px] w-[6px] rounded-[1px] bg-[var(--foreground)]/12" />
-                        <div className="h-[16px] w-[6px] rounded-[1px] bg-[var(--foreground)]/12" />
-                        <div className="h-[10px] w-[6px] rounded-[1px] bg-[var(--foreground)]/12" />
-                      </div>
-                    </div>
-                  </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse" style={{ minWidth: 220 }}>
+                    <thead>
+                      <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
+                        <th className={TH}>Study</th>
+                        <th className={`${TH} text-right`}>Group A</th>
+                        <th className={`${TH} text-right`}>A vs. B</th>
+                        <th className={`${TH} text-right`}>Group B</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {ROWS.map((row) => (
+                        <tr key={row.label} style={{ borderBottom: "1px solid var(--line)" }}>
+                          <td className={TD}>{row.label}</td>
+                          <td className={`${TD} ${NUM}`} style={MONO}>
+                            {row.a.toFixed(2)}
+                          </td>
+                          <td className={`${TD} ${NUM}`} style={MONO}>
+                            {pct(row.a, row.b)}%
+                          </td>
+                          <td className={`${TD} ${NUM}`} style={MONO}>
+                            {row.b.toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                      <tr style={{ borderTop: "1px solid var(--line-strong)" }}>
+                        <td className={TD} style={{ fontWeight: 600 }}>Mean</td>
+                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                          {MEAN.a.toFixed(2)}
+                        </td>
+                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                          {pct(MEAN.a, MEAN.b)}%
+                        </td>
+                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                          {MEAN.b.toFixed(2)}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
 
-                <p className="text-[0.78rem] font-medium text-[var(--muted-strong)]">
-                  Split attention
+                <p className="text-[0.74rem] leading-5 text-[var(--muted)]">
+                  Comparison requires scanning across separate value columns.
                 </p>
               </div>
 
-              {/* RIGHT — inline */}
-              <div className="flex flex-col gap-5 p-5 sm:p-6">
-                <p className="section-eyebrow">Inline</p>
+              {/* RIGHT — WSG-enhanced table with embedded micro-bars */}
+              <div className="flex flex-col gap-4 p-5 sm:p-6">
+                <p className="section-eyebrow">Word-scale enhanced</p>
 
-                <div className="flex-1 space-y-5">
-                  {/* simulated paragraph with inline graphics */}
-                  <MockParagraph
-                    lines={[
-                      { w: "100%" },
-                      { w: "94%", graphic: "box" },
-                      { w: "88%" },
-                      { w: "96%", graphic: "bar" },
-                      { w: "78%" },
-                      { w: "92%", graphic: "dot" },
-                      { w: "65%" },
-                    ]}
-                  />
-
-                  <MockParagraph
-                    lines={[
-                      { w: "100%", graphic: "box" },
-                      { w: "90%" },
-                      { w: "72%", graphic: "dot" },
-                    ]}
-                  />
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse" style={{ minWidth: 220 }}>
+                    <thead>
+                      <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
+                        <th className={TH}>Study</th>
+                        <th className={`${TH} text-right`}>Group A</th>
+                        <th className={TH}>% A vs. B</th>
+                        <th className={`${TH} text-right`}>Group B</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {ROWS.map((row) => (
+                        <tr key={row.label} style={{ borderBottom: "1px solid var(--line)" }}>
+                          <td className={TD}>{row.label}</td>
+                          <td className={`${TD} ${NUM}`} style={MONO}>
+                            {row.a.toFixed(2)}
+                          </td>
+                          <td className={TD}>
+                            <StackedBar a={row.a} b={row.b} />
+                          </td>
+                          <td className={`${TD} ${NUM}`} style={MONO}>
+                            {row.b.toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                      <tr style={{ borderTop: "1px solid var(--line-strong)" }}>
+                        <td className={TD} style={{ fontWeight: 600 }}>Mean</td>
+                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                          {MEAN.a.toFixed(2)}
+                        </td>
+                        <td className={TD} style={{ fontWeight: 600 }}>
+                          <StackedBar a={MEAN.a} b={MEAN.b} />
+                        </td>
+                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                          {MEAN.b.toFixed(2)}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
 
-                <p className="text-[0.78rem] font-medium text-[var(--muted-strong)]">
-                  Integrated reading
+                {/* colour legend */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-[5px]">
+                    <div style={{ width: 10, height: 6, borderRadius: 1, background: "var(--amber)" }} />
+                    <span className="text-[0.67rem] text-[var(--muted)]">Group A</span>
+                  </div>
+                  <div className="flex items-center gap-[5px]">
+                    <div style={{ width: 10, height: 6, borderRadius: 1, background: "var(--blue)" }} />
+                    <span className="text-[0.67rem] text-[var(--muted)]">Group B</span>
+                  </div>
+                </div>
+
+                <p className="text-[0.74rem] leading-5 text-[var(--muted)]">
+                  Embedded micro-bars keep proportions readable in place.
                 </p>
               </div>
             </div>
 
-            {/* bottom strip — research gap */}
+            {/* ── research gap strip ── */}
             <div className="border-t border-[var(--line)] px-5 py-3.5 sm:px-6">
               <p className="text-[0.78rem] leading-5.5 text-[var(--muted)]">
                 {content.gapStatement}
