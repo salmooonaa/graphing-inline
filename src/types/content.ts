@@ -273,7 +273,6 @@ export type SummaryContent = SectionIntro & {
 };
 
 export type ProblemContent = SectionIntro & {
-  gapStatement: string;
   researchQuestion: string;
 };
 

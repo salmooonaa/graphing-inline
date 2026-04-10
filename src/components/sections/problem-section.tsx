@@ -25,16 +25,20 @@ function pct(a: number, b: number) {
 function StackedBar({ a, b }: { a: number; b: number }) {
   const p = pct(a, b);
   return (
-    <div className="flex items-center gap-[5px]">
+    <div className="flex w-full items-center gap-1">
       <span
-        className="w-[22px] text-right text-[8px] tabular-nums text-[var(--muted)]"
+        className="w-[24px] text-right text-[0.5rem] font-medium tabular-nums text-[var(--muted-strong)]"
         style={{ fontFamily: "var(--font-data), monospace" }}
       >
         {p}%
       </span>
       <div
-        className="flex overflow-hidden rounded-[1px]"
-        style={{ width: 52, height: 6 }}
+        className="flex min-w-[4.9rem] flex-1 overflow-hidden rounded-[2px]"
+        style={{
+          height: 7,
+          background: "rgba(23, 19, 15, 0.06)",
+          boxShadow: "inset 0 0 0 1px rgba(23, 19, 15, 0.05)",
+        }}
       >
         <div style={{ width: `${p}%`, height: "100%", background: "var(--amber)" }} />
         <div style={{ flex: 1, height: "100%", background: "var(--blue)" }} />
@@ -47,6 +51,9 @@ function StackedBar({ a, b }: { a: number; b: number }) {
 const TH =
   "pb-[7px] pt-1 px-2 first:pl-0 last:pr-0 text-left text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
 const TD = "py-[5px] px-2 first:pl-0 last:pr-0 text-[0.74rem] text-[var(--foreground)]";
+const BAR_TH =
+  "pb-[7px] pt-1 pl-1 pr-0 text-left text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
+const BAR_TD = "py-[4px] pl-1 pr-0 text-[0.74rem] text-[var(--foreground)]";
 const NUM = "text-right tabular-nums";
 const MONO: React.CSSProperties = { fontFamily: "var(--font-data), monospace" };
 const MODULE_NOTE =
@@ -144,7 +151,7 @@ export function ProblemSection({ content }: ProblemSectionProps) {
                         <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
                           <th className={TH}>Study</th>
                           <th className={`${TH} text-right`}>Group A</th>
-                          <th className={TH}>% A vs. B</th>
+                          <th className={BAR_TH}>% A vs. B</th>
                           <th className={`${TH} text-right`}>Group B</th>
                         </tr>
                       </thead>
@@ -155,7 +162,7 @@ export function ProblemSection({ content }: ProblemSectionProps) {
                             <td className={`${TD} ${NUM}`} style={MONO}>
                               {row.a.toFixed(2)}
                             </td>
-                            <td className={TD}>
+                            <td className={BAR_TD}>
                               <StackedBar a={row.a} b={row.b} />
                             </td>
                             <td className={`${TD} ${NUM}`} style={MONO}>
@@ -168,7 +175,7 @@ export function ProblemSection({ content }: ProblemSectionProps) {
                           <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
                             {MEAN.a.toFixed(2)}
                           </td>
-                          <td className={TD} style={{ fontWeight: 600 }}>
+                          <td className={BAR_TD} style={{ fontWeight: 600 }}>
                             <StackedBar a={MEAN.a} b={MEAN.b} />
                           </td>
                           <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
@@ -200,16 +207,11 @@ export function ProblemSection({ content }: ProblemSectionProps) {
 
             {/* ── research gap strip ── */}
             <div className="border-t border-[var(--line)] px-5 py-3.5 sm:px-6">
-              <div className="space-y-2.5">
-                <p className="text-[0.78rem] leading-5.5 text-[var(--muted)]">
-                  {content.gapStatement}
+              <div className="max-w-[31rem] border-l border-[var(--line)] pl-3.5 sm:pl-4">
+                <p className="section-eyebrow">Research Question</p>
+                <p className="mt-1.5 text-[0.84rem] leading-5.5 text-[var(--foreground)] sm:text-[0.88rem]">
+                  {content.researchQuestion}
                 </p>
-                <div className="max-w-[31rem] border-l border-[var(--line)] pl-3.5 sm:pl-4">
-                  <p className="section-eyebrow">Research Question</p>
-                  <p className="mt-1.5 text-[0.84rem] leading-5.5 text-[var(--foreground)] sm:text-[0.88rem]">
-                    {content.researchQuestion}
-                  </p>
-                </div>
               </div>
             </div>
           </div>
