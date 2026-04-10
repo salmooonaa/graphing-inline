@@ -54,6 +54,7 @@ const TD = "py-[5px] px-2 first:pl-0 last:pr-0 text-[0.74rem] text-[var(--foregr
 const BAR_TH =
   "pb-[7px] pt-1 px-1 text-center text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
 const BAR_TD = "py-[5px] pl-1 pr-0 align-middle text-[0.74rem] text-[var(--foreground)]";
+const BAR_COL = { width: "8.2rem" } as const;
 const NUM = "text-right tabular-nums";
 const MONO: React.CSSProperties = { fontFamily: "var(--font-data), monospace" };
 const MODULE_NOTE =
@@ -146,7 +147,13 @@ export function ProblemSection({ content }: ProblemSectionProps) {
 
                 <div className="flex flex-1 flex-col gap-4">
                   <div className="overflow-x-auto">
-                    <table className="w-full border-collapse" style={{ minWidth: 220 }}>
+                    <table className="w-full border-collapse" style={{ minWidth: 240 }}>
+                      <colgroup>
+                        <col />
+                        <col style={{ width: "3.5rem" }} />
+                        <col style={BAR_COL} />
+                        <col style={{ width: "3.5rem" }} />
+                      </colgroup>
                       <thead>
                         <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
                           <th className={TH}>Study</th>
