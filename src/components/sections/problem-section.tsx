@@ -64,14 +64,11 @@ const MODULE_NOTE =
 
 export function ProblemSection({ content }: ProblemSectionProps) {
   return (
-    <section
-      id="motivation"
-      className="border-b border-[var(--line)] py-10 sm:py-12"
-    >
+    <section className="border-b border-[var(--line)] py-10 sm:py-12">
       <Container>
         <div className="layout-module mx-auto space-y-5 sm:space-y-6">
           {/* ── header ── */}
-          <div className="section-reveal module-header">
+          <div id="motivation" className="section-reveal module-header section-anchor">
             <div className="module-header-row">
               <div className="layout-copy min-w-0">
                 <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">

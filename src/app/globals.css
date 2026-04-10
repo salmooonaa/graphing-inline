@@ -2,6 +2,7 @@
 
 :root {
   color-scheme: light;
+  --section-anchor-offset: 4.25rem;
   --background: #ffffff;
   --background-deep: #ffffff;
   --surface: #ffffff;
@@ -23,6 +24,12 @@
   --green: #4b695c;
   --green-soft: #ffffff;
   --green-line: rgba(75, 105, 92, 0.26);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-anchor-offset: 4.5rem;
+  }
 }
 
 html {
@@ -134,6 +141,14 @@ main {
     display: grid;
     gap: 0.75rem;
     width: 100%;
+  }
+
+  .section-anchor {
+    scroll-margin-top: var(--section-anchor-offset);
+  }
+
+  .section-anchor-endcap {
+    min-height: calc(100vh - var(--section-anchor-offset) + 4.25rem);
   }
 
   .module-header-row {
