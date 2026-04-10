@@ -6,5 +6,7 @@ export const problemContent: ProblemContent = {
   description:
     "Why word-scale graphics matter in scholarly communication.",
   gapStatement:
-    "Yet no systematic corpus study of this practice exists — that is the gap this work addresses.",
+    "But how word-scale graphics are actually used in scientific papers remains unclear.",
+  researchQuestion:
+    "How do researchers apply word-scale graphics in scientific papers?",
 };

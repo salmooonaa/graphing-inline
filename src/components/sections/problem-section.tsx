@@ -49,6 +49,8 @@ const TH =
 const TD = "py-[5px] px-2 first:pl-0 last:pr-0 text-[0.74rem] text-[var(--foreground)]";
 const NUM = "text-right tabular-nums";
 const MONO: React.CSSProperties = { fontFamily: "var(--font-data), monospace" };
+const MODULE_NOTE =
+  "text-[0.74rem] leading-5 text-[var(--muted)] md:min-h-[2.5rem]";
 
 export function ProblemSection({ content }: ProblemSectionProps) {
   return (
@@ -78,113 +80,119 @@ export function ProblemSection({ content }: ProblemSectionProps) {
             <div className="grid md:grid-cols-2">
 
               {/* LEFT — conventional plain table */}
-              <div className="flex flex-col gap-4 border-b border-[var(--line)] p-5 sm:p-6 md:border-b-0 md:border-r">
+              <div className="flex h-full flex-col gap-4 border-b border-[var(--line)] p-5 sm:p-6 md:border-b-0 md:border-r">
                 <p className="section-eyebrow">Conventional</p>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse" style={{ minWidth: 220 }}>
-                    <thead>
-                      <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
-                        <th className={TH}>Study</th>
-                        <th className={`${TH} text-right`}>Group A</th>
-                        <th className={`${TH} text-right`}>A vs. B</th>
-                        <th className={`${TH} text-right`}>Group B</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {ROWS.map((row) => (
-                        <tr key={row.label} style={{ borderBottom: "1px solid var(--line)" }}>
-                          <td className={TD}>{row.label}</td>
-                          <td className={`${TD} ${NUM}`} style={MONO}>
-                            {row.a.toFixed(2)}
+                <div className="flex flex-1 flex-col gap-4">
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse" style={{ minWidth: 220 }}>
+                      <thead>
+                        <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
+                          <th className={TH}>Study</th>
+                          <th className={`${TH} text-right`}>Group A</th>
+                          <th className={`${TH} text-right`}>A vs. B</th>
+                          <th className={`${TH} text-right`}>Group B</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {ROWS.map((row) => (
+                          <tr key={row.label} style={{ borderBottom: "1px solid var(--line)" }}>
+                            <td className={TD}>{row.label}</td>
+                            <td className={`${TD} ${NUM}`} style={MONO}>
+                              {row.a.toFixed(2)}
+                            </td>
+                            <td className={`${TD} ${NUM}`} style={MONO}>
+                              {pct(row.a, row.b)}%
+                            </td>
+                            <td className={`${TD} ${NUM}`} style={MONO}>
+                              {row.b.toFixed(2)}
+                            </td>
+                          </tr>
+                        ))}
+                        <tr style={{ borderTop: "1px solid var(--line-strong)" }}>
+                          <td className={TD} style={{ fontWeight: 600 }}>Mean</td>
+                          <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                            {MEAN.a.toFixed(2)}
                           </td>
-                          <td className={`${TD} ${NUM}`} style={MONO}>
-                            {pct(row.a, row.b)}%
+                          <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                            {pct(MEAN.a, MEAN.b)}%
                           </td>
-                          <td className={`${TD} ${NUM}`} style={MONO}>
-                            {row.b.toFixed(2)}
+                          <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                            {MEAN.b.toFixed(2)}
                           </td>
                         </tr>
-                      ))}
-                      <tr style={{ borderTop: "1px solid var(--line-strong)" }}>
-                        <td className={TD} style={{ fontWeight: 600 }}>Mean</td>
-                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
-                          {MEAN.a.toFixed(2)}
-                        </td>
-                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
-                          {pct(MEAN.a, MEAN.b)}%
-                        </td>
-                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
-                          {MEAN.b.toFixed(2)}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div aria-hidden="true" className="hidden min-h-[1rem] md:block" />
                 </div>
 
-                <p className="text-[0.74rem] leading-5 text-[var(--muted)]">
+                <p className={MODULE_NOTE}>
                   Comparison requires scanning across separate value columns.
                 </p>
               </div>
 
               {/* RIGHT — WSG-enhanced table with embedded micro-bars */}
-              <div className="flex flex-col gap-4 p-5 sm:p-6">
+              <div className="flex h-full flex-col gap-4 p-5 sm:p-6">
                 <p className="section-eyebrow">Word-scale enhanced</p>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse" style={{ minWidth: 220 }}>
-                    <thead>
-                      <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
-                        <th className={TH}>Study</th>
-                        <th className={`${TH} text-right`}>Group A</th>
-                        <th className={TH}>% A vs. B</th>
-                        <th className={`${TH} text-right`}>Group B</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {ROWS.map((row) => (
-                        <tr key={row.label} style={{ borderBottom: "1px solid var(--line)" }}>
-                          <td className={TD}>{row.label}</td>
-                          <td className={`${TD} ${NUM}`} style={MONO}>
-                            {row.a.toFixed(2)}
+                <div className="flex flex-1 flex-col gap-4">
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse" style={{ minWidth: 220 }}>
+                      <thead>
+                        <tr style={{ borderBottom: "1px solid var(--line-strong)" }}>
+                          <th className={TH}>Study</th>
+                          <th className={`${TH} text-right`}>Group A</th>
+                          <th className={TH}>% A vs. B</th>
+                          <th className={`${TH} text-right`}>Group B</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {ROWS.map((row) => (
+                          <tr key={row.label} style={{ borderBottom: "1px solid var(--line)" }}>
+                            <td className={TD}>{row.label}</td>
+                            <td className={`${TD} ${NUM}`} style={MONO}>
+                              {row.a.toFixed(2)}
+                            </td>
+                            <td className={TD}>
+                              <StackedBar a={row.a} b={row.b} />
+                            </td>
+                            <td className={`${TD} ${NUM}`} style={MONO}>
+                              {row.b.toFixed(2)}
+                            </td>
+                          </tr>
+                        ))}
+                        <tr style={{ borderTop: "1px solid var(--line-strong)" }}>
+                          <td className={TD} style={{ fontWeight: 600 }}>Mean</td>
+                          <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                            {MEAN.a.toFixed(2)}
                           </td>
-                          <td className={TD}>
-                            <StackedBar a={row.a} b={row.b} />
+                          <td className={TD} style={{ fontWeight: 600 }}>
+                            <StackedBar a={MEAN.a} b={MEAN.b} />
                           </td>
-                          <td className={`${TD} ${NUM}`} style={MONO}>
-                            {row.b.toFixed(2)}
+                          <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
+                            {MEAN.b.toFixed(2)}
                           </td>
                         </tr>
-                      ))}
-                      <tr style={{ borderTop: "1px solid var(--line-strong)" }}>
-                        <td className={TD} style={{ fontWeight: 600 }}>Mean</td>
-                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
-                          {MEAN.a.toFixed(2)}
-                        </td>
-                        <td className={TD} style={{ fontWeight: 600 }}>
-                          <StackedBar a={MEAN.a} b={MEAN.b} />
-                        </td>
-                        <td className={`${TD} ${NUM}`} style={{ ...MONO, fontWeight: 600 }}>
-                          {MEAN.b.toFixed(2)}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* colour legend */}
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-[5px]">
-                    <div style={{ width: 10, height: 6, borderRadius: 1, background: "var(--amber)" }} />
-                    <span className="text-[0.67rem] text-[var(--muted)]">Group A</span>
+                      </tbody>
+                    </table>
                   </div>
-                  <div className="flex items-center gap-[5px]">
-                    <div style={{ width: 10, height: 6, borderRadius: 1, background: "var(--blue)" }} />
-                    <span className="text-[0.67rem] text-[var(--muted)]">Group B</span>
+
+                  {/* colour legend */}
+                  <div className="flex min-h-[1rem] items-center gap-4">
+                    <div className="flex items-center gap-[5px]">
+                      <div style={{ width: 10, height: 6, borderRadius: 1, background: "var(--amber)" }} />
+                      <span className="text-[0.67rem] text-[var(--muted)]">Group A</span>
+                    </div>
+                    <div className="flex items-center gap-[5px]">
+                      <div style={{ width: 10, height: 6, borderRadius: 1, background: "var(--blue)" }} />
+                      <span className="text-[0.67rem] text-[var(--muted)]">Group B</span>
+                    </div>
                   </div>
                 </div>
 
-                <p className="text-[0.74rem] leading-5 text-[var(--muted)]">
+                <p className={MODULE_NOTE}>
                   Embedded micro-bars keep proportions readable in place.
                 </p>
               </div>
@@ -192,9 +200,17 @@ export function ProblemSection({ content }: ProblemSectionProps) {
 
             {/* ── research gap strip ── */}
             <div className="border-t border-[var(--line)] px-5 py-3.5 sm:px-6">
-              <p className="text-[0.78rem] leading-5.5 text-[var(--muted)]">
-                {content.gapStatement}
-              </p>
+              <div className="space-y-2.5">
+                <p className="text-[0.78rem] leading-5.5 text-[var(--muted)]">
+                  {content.gapStatement}
+                </p>
+                <div className="max-w-[31rem] border-l border-[var(--line)] pl-3.5 sm:pl-4">
+                  <p className="section-eyebrow">Research Question</p>
+                  <p className="mt-1.5 text-[0.84rem] leading-5.5 text-[var(--foreground)] sm:text-[0.88rem]">
+                    {content.researchQuestion}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
