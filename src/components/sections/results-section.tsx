@@ -28,19 +28,21 @@ export function ResultsSection({
     <section className="border-b border-[var(--line)] py-10 sm:py-12">
       <Container>
         <div className="layout-module mx-auto space-y-5 sm:space-y-6">
-          <div id="results" className="section-reveal module-header section-anchor">
-            <div className="module-header-row">
-              <div className="layout-copy min-w-0">
-                <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
-                  Results
-                </h2>
+          <div id="results" className="section-anchor">
+            <div className="section-reveal module-header">
+              <div className="module-header-row">
+                <div className="layout-copy min-w-0">
+                  <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
+                    Results
+                  </h2>
+                </div>
+                <div aria-hidden="true" className="module-divider" />
               </div>
-              <div aria-hidden="true" className="module-divider" />
+              <p className="layout-copy max-w-lg text-[0.86rem] leading-5.5 text-[var(--muted)] sm:text-[0.92rem] sm:leading-6.5">
+                Where&#8211;why&#8211;how framework plus the strongest corpus
+                findings.
+              </p>
             </div>
-            <p className="layout-copy max-w-lg text-[0.86rem] leading-5.5 text-[var(--muted)] sm:text-[0.92rem] sm:leading-6.5">
-              Where&#8211;why&#8211;how framework plus the strongest corpus
-              findings.
-            </p>
           </div>
 
           <dl className="section-reveal reveal-delay-1 w-full grid gap-px overflow-hidden border border-[var(--line)] bg-[var(--line)] md:grid-cols-3">

@@ -53,14 +53,16 @@ export function CitationSection({ content }: CitationSectionProps) {
     <section className="section-anchor-endcap py-10 sm:py-12">
       <Container>
         <div className="layout-module mx-auto space-y-5 sm:space-y-6">
-          <div id="bibtex" className="section-reveal module-header section-anchor">
-            <div className="module-header-row">
-              <div className="layout-copy min-w-0">
-                <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
-                  {content.title}
-                </h2>
+          <div id="bibtex" className="section-anchor">
+            <div className="section-reveal module-header">
+              <div className="module-header-row">
+                <div className="layout-copy min-w-0">
+                  <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.25rem]">
+                    {content.title}
+                  </h2>
+                </div>
+                <div aria-hidden="true" className="module-divider" />
               </div>
-              <div aria-hidden="true" className="module-divider" />
             </div>
           </div>
 

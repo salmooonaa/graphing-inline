@@ -72,13 +72,11 @@ export function HeroSection({ content }: HeroSectionProps) {
   const hasStructuredAuthors = Boolean(content.authors?.length);
 
   return (
-    <section
-      id="overview"
-      className="border-b border-[var(--line)] px-0 pb-10 pt-7 sm:pb-12 sm:pt-8 lg:pb-14"
-    >
+    <section className="border-b border-[var(--line)] px-0 pb-10 pt-7 sm:pb-12 sm:pt-8 lg:pb-14">
       <Container>
-        <div className="section-reveal layout-masthead mx-auto flex flex-col items-center text-center">
-          <div className="w-full space-y-3.5 sm:space-y-4.5">
+        <div id="overview" className="section-anchor">
+          <div className="section-reveal layout-masthead mx-auto flex flex-col items-center text-center">
+            <div className="w-full space-y-3.5 sm:space-y-4.5">
             <div className="space-y-2">
               <h1 className="text-balance text-[2.02rem] leading-[0.97] tracking-[-0.043em] text-[var(--foreground)] sm:text-[2.55rem] lg:text-[2.95rem]">
                 {content.title}
@@ -158,6 +156,7 @@ export function HeroSection({ content }: HeroSectionProps) {
               ))}
             </div>
           </div>
+        </div>
         </div>
       </Container>
     </section>
