@@ -25,15 +25,15 @@ function pct(a: number, b: number) {
 function StackedBar({ a, b }: { a: number; b: number }) {
   const p = pct(a, b);
   return (
-    <div className="flex w-full items-center gap-1">
+    <div className="grid w-full grid-cols-[1.8rem_minmax(0,1fr)] items-center gap-1">
       <span
-        className="w-[24px] text-right text-[0.5rem] font-medium tabular-nums text-[var(--muted-strong)]"
+        className="text-right text-[0.5rem] font-medium tabular-nums text-[var(--muted-strong)]"
         style={{ fontFamily: "var(--font-data), monospace" }}
       >
         {p}%
       </span>
       <div
-        className="flex min-w-[4.9rem] flex-1 overflow-hidden rounded-[2px]"
+        className="flex w-full overflow-hidden rounded-[2px]"
         style={{
           height: 7,
           background: "rgba(23, 19, 15, 0.06)",
@@ -52,8 +52,8 @@ const TH =
   "pb-[7px] pt-1 px-2 first:pl-0 last:pr-0 text-left text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
 const TD = "py-[5px] px-2 first:pl-0 last:pr-0 text-[0.74rem] text-[var(--foreground)]";
 const BAR_TH =
-  "pb-[7px] pt-1 pl-1 pr-0 text-left text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
-const BAR_TD = "py-[4px] pl-1 pr-0 text-[0.74rem] text-[var(--foreground)]";
+  "pb-[7px] pt-1 px-1 text-center text-[0.6rem] font-medium uppercase tracking-[0.14em] text-[var(--muted)]";
+const BAR_TD = "py-[5px] pl-1 pr-0 align-middle text-[0.74rem] text-[var(--foreground)]";
 const NUM = "text-right tabular-nums";
 const MONO: React.CSSProperties = { fontFamily: "var(--font-data), monospace" };
 const MODULE_NOTE =
