@@ -28,24 +28,37 @@ function BoardBadge({
   isActive?: boolean;
   onClick?: () => void;
 }) {
-  const Element = interactive ? "button" : "div";
+  if (interactive) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className={cn(
+          "rounded-[1rem] border px-3.5 py-3 text-left transition duration-150 hover:border-[var(--line-strong)]",
+          isActive
+            ? "border-[var(--line-strong)] bg-[var(--surface-muted)]"
+            : "border-[var(--line)] bg-white",
+        )}
+      >
+        <p className="text-[0.66rem] uppercase tracking-[0.18em] text-[var(--muted)]">
+          {label}
+        </p>
+        <p className="mt-2 text-[0.94rem] leading-tight text-[var(--foreground)]">
+          {value}
+        </p>
+      </button>
+    );
+  }
 
   return (
-    <Element
-      {...(interactive ? { type: "button", onClick } : {})}
-      className={cn(
-        "rounded-[1rem] border px-3.5 py-3 text-left transition duration-150",
-        interactive ? "hover:border-[var(--line-strong)]" : "",
-        isActive ? "border-[var(--line-strong)] bg-[var(--surface-muted)]" : "border-[var(--line)] bg-white",
-      )}
-    >
+    <div className="rounded-[1rem] border border-[var(--line)] bg-white px-3.5 py-3 text-left transition duration-150">
       <p className="text-[0.66rem] uppercase tracking-[0.18em] text-[var(--muted)]">
         {label}
       </p>
       <p className="mt-2 text-[0.94rem] leading-tight text-[var(--foreground)]">
         {value}
       </p>
-    </Element>
+    </div>
   );
 }
 
@@ -113,56 +126,18 @@ function AxisNodeButton({
   );
 }
 
-function PatternChip({
-  label,
-  active,
-  onHover,
-  onLeave,
-  onClick,
-}: {
-  label: string;
-  active: boolean;
-  onHover: () => void;
-  onLeave: () => void;
-  onClick: () => void;
-}) {
-  return (
-    <button
-      type="button"
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      onFocus={onHover}
-      onBlur={onLeave}
-      onClick={onClick}
-      className={cn(
-        "rounded-full border px-3 py-2 text-[0.68rem] uppercase tracking-[0.16em] transition duration-150",
-        active
-          ? "border-[var(--line-strong)] bg-[var(--foreground)] text-white"
-          : "border-[var(--line)] bg-white text-[var(--muted)] hover:text-[var(--foreground)]",
-      )}
-    >
-      {label}
-    </button>
-  );
-}
-
 export function ResultsBoard({ content }: { content: ResultsContent }) {
   const [hoveredFocus, setHoveredFocus] = useState<FocusTarget | null>(null);
   const [pinnedFocus, setPinnedFocus] = useState<FocusTarget | null>(null);
 
   const nodeLookup = new Map(buildNodeLookup(content.axes));
   const activeFocus = pinnedFocus ?? hoveredFocus;
-  const relatedStrengths = getRelatedStrengths(
-    activeFocus,
-    content.connections,
-    content.patterns,
-  );
+  const relatedStrengths = getRelatedStrengths(activeFocus, content.connections);
   const panel = getPanelContent(
     content,
     activeFocus,
     nodeLookup,
     content.connections,
-    content.patterns,
   );
 
   const handleToggleFocus = (nextFocus: FocusTarget) => {
@@ -209,24 +184,7 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
               key={badge.id}
               label={badge.label}
               value={badge.value}
-              interactive={badge.interactive}
-              isActive={
-                badge.targetPatternId
-                  ? sameFocus(activeFocus, {
-                      type: "pattern",
-                      id: badge.targetPatternId,
-                    })
-                  : false
-              }
-              onClick={
-                badge.targetPatternId
-                  ? () =>
-                      handleToggleFocus({
-                        type: "pattern",
-                        id: badge.targetPatternId!,
-                      })
-                  : undefined
-              }
+              interactive={false}
             />
           ))}
         </div>
@@ -279,29 +237,6 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
                 </section>
               ))}
             </div>
-
-            <div className="rounded-[1.1rem] border border-[var(--line)] bg-[var(--surface-muted)] px-3.5 py-3.5">
-              <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:justify-between">
-                <div>
-                  <p className="section-eyebrow">Common paths</p>
-                  <p className="mt-1 text-[0.76rem] leading-5 text-[var(--muted)]">
-                    Click a path to reveal a more common 3W combination.
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {content.patterns.map((pattern) => (
-                    <PatternChip
-                      key={pattern.id}
-                      label={pattern.label}
-                      active={sameFocus(activeFocus, { type: "pattern", id: pattern.id })}
-                      onHover={() => handleHover({ type: "pattern", id: pattern.id })}
-                      onLeave={handleLeave}
-                      onClick={() => handleToggleFocus({ type: "pattern", id: pattern.id })}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
           </div>
 
           <aside className="rounded-[1.3rem] border border-[var(--line)] bg-white p-4 sm:p-5">
@@ -344,53 +279,6 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
             </div>
           </aside>
         </div>
-
-        <details className="group rounded-[1.2rem] border border-[var(--line)] bg-white px-4 py-3.5 sm:px-5">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-            <div>
-              <p className="section-eyebrow">{content.evidence.title}</p>
-              <p className="mt-1 text-[0.76rem] leading-5 text-[var(--muted)]">
-                {content.evidence.summary}
-              </p>
-            </div>
-            <span className="text-[0.72rem] uppercase tracking-[0.18em] text-[var(--muted)] transition-transform duration-150 group-open:rotate-45">
-              +
-            </span>
-          </summary>
-
-          <div className="mt-4 grid gap-3 lg:grid-cols-3">
-            {content.evidence.items.map((item) => (
-              <article
-                key={item.id}
-                className="rounded-[1rem] border border-[var(--line)] bg-[var(--surface-muted)] px-3.5 py-3"
-              >
-                <p className="text-[0.72rem] uppercase tracking-[0.18em] text-[var(--foreground)]">
-                  {item.label}
-                </p>
-                <p className="mt-2 text-[0.8rem] leading-5 text-[var(--foreground)]">
-                  {item.summary}
-                </p>
-                <p className="mt-2 text-[0.72rem] leading-5 text-[var(--muted)]">
-                  {item.detail}
-                </p>
-                <p className="mt-3 font-[var(--font-data)] text-[0.68rem] text-[var(--muted)]">
-                  {item.statistic}
-                </p>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-3 grid gap-2">
-            {content.evidence.notes.map((note) => (
-              <div
-                key={note}
-                className="rounded-[0.95rem] border border-[var(--line)] px-3 py-2 text-[0.74rem] leading-5 text-[var(--muted)]"
-              >
-                {note}
-              </div>
-            ))}
-          </div>
-        </details>
       </div>
     </article>
   );

@@ -168,8 +168,6 @@ export type ResultBoardBadge = {
   id: string;
   label: string;
   value: string;
-  interactive?: boolean;
-  targetPatternId?: string;
 };
 
 export type ResultBoardNode = {
@@ -192,21 +190,6 @@ export type ResultBoardConnection = {
   to: string;
   strength: "primary" | "secondary";
   summary: string;
-};
-
-export type ResultBoardPattern = {
-  id: string;
-  label: string;
-  summary: string;
-  nodeIds: string[];
-};
-
-export type ResultBoardEvidenceItem = {
-  id: string;
-  label: string;
-  statistic: string;
-  summary: string;
-  detail: string;
 };
 
 export type HeroAuthor = {
@@ -358,18 +341,11 @@ export type ResultsContent = SectionIntro & {
   badges: ResultBoardBadge[];
   axes: ResultBoardAxis[];
   connections: ResultBoardConnection[];
-  patterns: ResultBoardPattern[];
   defaultPanel: {
     title: string;
     definition: string;
     strongestLink: string;
     insight: string;
-  };
-  evidence: {
-    title: string;
-    summary: string;
-    items: ResultBoardEvidenceItem[];
-    notes: string[];
   };
 };
 

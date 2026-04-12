@@ -19,9 +19,7 @@ export const resultsContent: ResultsContent = {
     {
       id: "badge-structure",
       label: "Structured relationships",
-      value: "Click to explore",
-      interactive: true,
-      targetPatternId: "pattern-text-indexing-icons",
+      value: "Click nodes to explore",
     },
   ],
   axes: [
@@ -163,66 +161,10 @@ export const resultsContent: ResultsContent = {
       summary: "73.9% of data-annotation cases use quantitative graphs.",
     },
   ],
-  patterns: [
-    {
-      id: "pattern-text-indexing-icons",
-      label: "Text -> Visual Indexing -> Icons",
-      summary: "The most common pathway is icon-based visual indexing embedded in running text.",
-      nodeIds: ["where-text", "why-visual-indexing", "how-icons"],
-    },
-    {
-      id: "pattern-table-symbolizing-icons",
-      label: "Table -> Semantic Symbolizing -> Icons",
-      summary: "A strong secondary pathway places icon-based semantic symbolizing inside tables.",
-      nodeIds: ["where-table", "why-semantic-symbolizing", "how-icons"],
-    },
-    {
-      id: "pattern-table-annotation-graphs",
-      label: "Table -> Data Annotation -> Quantitative Graphs",
-      summary: "The clearest data-driven pathway combines tables, data annotation, and quantitative graphs.",
-      nodeIds: ["where-table", "why-data-annotation", "how-quantitative-graphs"],
-    },
-  ],
   defaultPanel: {
     title: "Structured relationships across 3W",
     definition: "The board starts from findings, not definitions: adoption is rare, icons dominate, and the three dimensions move together.",
-    strongestLink: "Click a node or path to reveal the strongest related categories.",
+    strongestLink: "Click any node to reveal the strongest related categories.",
     insight: "Text tends toward visual indexing and icons, while tables are where data annotation and quantitative graphs most clearly cluster.",
-  },
-  evidence: {
-    title: "Evidence",
-    summary:
-      "Open the detail layer only when you want the pairwise tests and methodological summary.",
-    items: [
-      {
-        id: "pair-where-why",
-        label: "Where x Why",
-        statistic: "chi^2(2)=340.56, p<0.001, V=0.612",
-        summary: "Placement and function are tightly coupled.",
-        detail:
-          "Text cases mainly support visual indexing, while table cases lean toward semantic symbolizing and data annotation.",
-      },
-      {
-        id: "pair-why-how",
-        label: "Why x How",
-        statistic: "chi^2(6)=498.53, p<0.001, V=0.524",
-        summary: "Function and visual form move together in structured ways.",
-        detail:
-          "Data annotation frequently uses quantitative graphs, while icons dominate visual indexing and semantic symbolizing.",
-      },
-      {
-        id: "pair-where-how",
-        label: "Where x How",
-        statistic: "chi^2(3)=82.38, p<0.001, V=0.301",
-        summary: "Placement still shapes which representation appears.",
-        detail:
-          "Icons dominate both contexts, but data-driven graphics are disproportionately placed in tables.",
-      },
-    ],
-    notes: [
-      "Final corpus: 718 unique papers and 909 distinct use cases drawn from 126,797 screened papers.",
-      "All three pairwise tests are statistically significant at p < 0.001.",
-      "Definitions stay in hover and the dynamic panel so the default board stays insight-first.",
-    ],
   },
 };

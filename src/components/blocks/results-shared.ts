@@ -2,20 +2,14 @@ import type {
   ResultBoardAxis,
   ResultBoardConnection,
   ResultBoardNode,
-  ResultBoardPattern,
   ResultsContent,
   ResultsDimensionId,
 } from "@/types/content";
 
-export type FocusTarget =
-  | {
-      type: "item";
-      id: string;
-    }
-  | {
-      type: "pattern";
-      id: string;
-    };
+export type FocusTarget = {
+  type: "item";
+  id: string;
+};
 
 export type BoardNodeMeta = ResultBoardNode & {
   dimensionId: ResultsDimensionId;
@@ -67,21 +61,10 @@ export function buildNodeLookup(
 export function getRelatedStrengths(
   focus: FocusTarget | null,
   connections: ResultBoardConnection[],
-  patterns: ResultBoardPattern[],
 ) {
   const related = new Map<string, "active" | "primary" | "secondary">();
 
   if (!focus) {
-    return related;
-  }
-
-  if (focus.type === "pattern") {
-    const pattern = patterns.find((entry) => entry.id === focus.id);
-
-    pattern?.nodeIds.forEach((nodeId) => {
-      related.set(nodeId, "primary");
-    });
-
     return related;
   }
 
@@ -111,7 +94,6 @@ export function getPanelContent(
   focus: FocusTarget | null,
   nodeLookup: Map<string, BoardNodeMeta>,
   connections: ResultBoardConnection[],
-  patterns: ResultBoardPattern[],
 ) {
   const defaultPanel = {
     eyebrow: "Default view",
@@ -125,27 +107,6 @@ export function getPanelContent(
 
   if (!focus) {
     return defaultPanel;
-  }
-
-  if (focus.type === "pattern") {
-    const pattern = patterns.find((entry) => entry.id === focus.id);
-
-    if (!pattern) {
-      return defaultPanel;
-    }
-
-    return {
-      eyebrow: "Common path",
-      title: pattern.label,
-      definition: "A frequent Where-Why-How combination.",
-      metric: "",
-      count: "",
-      strongestLink: pattern.nodeIds
-        .map((nodeId) => nodeLookup.get(nodeId)?.label)
-        .filter(Boolean)
-        .join(" -> "),
-      insight: pattern.summary,
-    };
   }
 
   const node = nodeLookup.get(focus.id);
