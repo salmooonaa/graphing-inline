@@ -7,7 +7,6 @@ import type { ResultsContent } from "@/types/content";
 import {
   buildNodeLookup,
   dimensionTheme,
-  getPanelContent,
   getRelatedStrengths,
   sameFocus,
   type BoardNodeMeta,
@@ -18,38 +17,10 @@ import { cn } from "@/lib/utils";
 function BoardBadge({
   label,
   value,
-  interactive,
-  isActive,
-  onClick,
 }: {
   label: string;
   value: string;
-  interactive?: boolean;
-  isActive?: boolean;
-  onClick?: () => void;
 }) {
-  if (interactive) {
-    return (
-      <button
-        type="button"
-        onClick={onClick}
-        className={cn(
-          "rounded-[1rem] border px-3.5 py-3 text-left transition duration-150 hover:border-[var(--line-strong)]",
-          isActive
-            ? "border-[var(--line-strong)] bg-[var(--surface-muted)]"
-            : "border-[var(--line)] bg-white",
-        )}
-      >
-        <p className="text-[0.66rem] uppercase tracking-[0.18em] text-[var(--muted)]">
-          {label}
-        </p>
-        <p className="mt-2 text-[0.94rem] leading-tight text-[var(--foreground)]">
-          {value}
-        </p>
-      </button>
-    );
-  }
-
   return (
     <div className="rounded-[1rem] border border-[var(--line)] bg-white px-3.5 py-3 text-left transition duration-150">
       <p className="text-[0.66rem] uppercase tracking-[0.18em] text-[var(--muted)]">
@@ -133,12 +104,6 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
   const nodeLookup = new Map(buildNodeLookup(content.axes));
   const activeFocus = pinnedFocus ?? hoveredFocus;
   const relatedStrengths = getRelatedStrengths(activeFocus, content.connections);
-  const panel = getPanelContent(
-    content,
-    activeFocus,
-    nodeLookup,
-    content.connections,
-  );
 
   const handleToggleFocus = (nextFocus: FocusTarget) => {
     setPinnedFocus((current) => (sameFocus(current, nextFocus) ? null : nextFocus));
@@ -184,102 +149,57 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
               key={badge.id}
               label={badge.label}
               value={badge.value}
-              interactive={false}
             />
           ))}
         </div>
 
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.45fr)_minmax(18rem,0.78fr)]">
-          <div className="space-y-4 rounded-[1.3rem] border border-[var(--line)] bg-white p-4 sm:p-5">
-            <div className="grid gap-3 md:grid-cols-3">
-              {content.axes.map((axis) => (
-                <section
-                  key={axis.id}
-                  className="rounded-[1.1rem] border p-3.5"
-                  style={{
-                    borderColor: dimensionTheme[axis.id].line,
-                    backgroundColor: dimensionTheme[axis.id].soft,
-                  }}
+        <div className="rounded-[1.3rem] border border-[var(--line)] bg-white p-4 sm:p-5">
+          <div className="grid gap-3 md:grid-cols-3">
+            {content.axes.map((axis) => (
+              <section
+                key={axis.id}
+                className="rounded-[1.1rem] border p-3.5"
+                style={{
+                  borderColor: dimensionTheme[axis.id].line,
+                  backgroundColor: dimensionTheme[axis.id].soft,
+                }}
+              >
+                <p
+                  className="font-[var(--font-data)] text-[0.66rem] uppercase tracking-[0.22em]"
+                  style={{ color: dimensionTheme[axis.id].accent }}
                 >
-                  <p
-                    className="font-[var(--font-data)] text-[0.66rem] uppercase tracking-[0.22em]"
-                    style={{ color: dimensionTheme[axis.id].accent }}
-                  >
-                    {axis.label}
-                  </p>
-                  <div className="mt-3 space-y-2.5">
-                    {axis.items.map((node) => {
-                      const relationState = relatedStrengths.get(node.id);
-                      const state =
-                        relationState === "active"
-                          ? "active"
-                          : relationState === "primary"
-                            ? "primary"
-                            : relationState === "secondary"
-                              ? "secondary"
-                              : activeFocus
-                                ? "dim"
-                                : "idle";
+                  {axis.label}
+                </p>
+                <div className="mt-3 space-y-2.5">
+                  {axis.items.map((node) => {
+                    const relationState = relatedStrengths.get(node.id);
+                    const state =
+                      relationState === "active"
+                        ? "active"
+                        : relationState === "primary"
+                          ? "primary"
+                          : relationState === "secondary"
+                            ? "secondary"
+                            : activeFocus
+                              ? "dim"
+                              : "idle";
 
-                      return (
-                        <AxisNodeButton
-                          key={node.id}
-                          node={nodeLookup.get(node.id)!}
-                          state={state}
-                          isPinned={sameFocus(pinnedFocus, { type: "item", id: node.id })}
-                          onHover={() => handleHover({ type: "item", id: node.id })}
-                          onLeave={handleLeave}
-                          onClick={() => handleToggleFocus({ type: "item", id: node.id })}
-                        />
-                      );
-                    })}
-                  </div>
-                </section>
-              ))}
-            </div>
+                    return (
+                      <AxisNodeButton
+                        key={node.id}
+                        node={nodeLookup.get(node.id)!}
+                        state={state}
+                        isPinned={sameFocus(pinnedFocus, { type: "item", id: node.id })}
+                        onHover={() => handleHover({ type: "item", id: node.id })}
+                        onLeave={handleLeave}
+                        onClick={() => handleToggleFocus({ type: "item", id: node.id })}
+                      />
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
           </div>
-
-          <aside className="rounded-[1.3rem] border border-[var(--line)] bg-white p-4 sm:p-5">
-            {panel.eyebrow ? (
-              <p className="section-eyebrow">{panel.eyebrow}</p>
-            ) : null}
-            <h3 className={cn("text-[1.18rem] leading-tight text-[var(--foreground)]", panel.eyebrow ? "mt-2" : "")}>
-              {panel.title}
-            </h3>
-            <p className="mt-3 text-[0.8rem] leading-5.5 text-[var(--muted)]">
-              {panel.definition}
-            </p>
-
-            {panel.metric || panel.count ? (
-              <div className="mt-4 flex flex-wrap gap-2">
-                {panel.metric ? (
-                  <span className="rounded-full border border-[var(--line)] px-2.5 py-1 text-[0.66rem] uppercase tracking-[0.16em] text-[var(--foreground)]">
-                    {panel.metric}
-                  </span>
-                ) : null}
-                {panel.count ? (
-                  <span className="rounded-full border border-[var(--line)] px-2.5 py-1 text-[0.66rem] uppercase tracking-[0.16em] text-[var(--muted)]">
-                    {panel.count}
-                  </span>
-                ) : null}
-              </div>
-            ) : null}
-
-            <div className="mt-4 space-y-3 rounded-[1rem] border border-[var(--line)] bg-[var(--surface-muted)] px-3.5 py-3">
-              <div>
-                <p className="section-eyebrow">Strongest link</p>
-                <p className="mt-1.5 text-[0.78rem] leading-5 text-[var(--foreground)]">
-                  {panel.strongestLink}
-                </p>
-              </div>
-              <div>
-                <p className="section-eyebrow">Insight</p>
-                <p className="mt-1.5 text-[0.78rem] leading-5 text-[var(--muted)]">
-                  {panel.insight}
-                </p>
-              </div>
-            </div>
-          </aside>
         </div>
       </div>
     </article>

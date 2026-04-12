@@ -161,10 +161,4 @@ export const resultsContent: ResultsContent = {
       summary: "73.9% of data-annotation cases use quantitative graphs.",
     },
   ],
-  defaultPanel: {
-    title: "Structured relationships across 3W",
-    definition: "The board starts from findings, not definitions: adoption is rare, icons dominate, and the three dimensions move together.",
-    strongestLink: "Click any node to reveal the strongest related categories.",
-    insight: "Text tends toward visual indexing and icons, while tables are where data annotation and quantitative graphs most clearly cluster.",
-  },
 };

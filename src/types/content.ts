@@ -341,12 +341,6 @@ export type ResultsContent = SectionIntro & {
   badges: ResultBoardBadge[];
   axes: ResultBoardAxis[];
   connections: ResultBoardConnection[];
-  defaultPanel: {
-    title: string;
-    definition: string;
-    strongestLink: string;
-    insight: string;
-  };
 };
 
 export type HomeContent = {

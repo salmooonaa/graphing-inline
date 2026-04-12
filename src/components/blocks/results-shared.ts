@@ -2,7 +2,6 @@ import type {
   ResultBoardAxis,
   ResultBoardConnection,
   ResultBoardNode,
-  ResultsContent,
   ResultsDimensionId,
 } from "@/types/content";
 
@@ -87,57 +86,4 @@ export function getRelatedStrengths(
   });
 
   return related;
-}
-
-export function getPanelContent(
-  content: ResultsContent,
-  focus: FocusTarget | null,
-  nodeLookup: Map<string, BoardNodeMeta>,
-  connections: ResultBoardConnection[],
-) {
-  const defaultPanel = {
-    eyebrow: "",
-    title: content.defaultPanel.title,
-    definition: content.defaultPanel.definition,
-    metric: "",
-    count: "",
-    strongestLink: content.defaultPanel.strongestLink,
-    insight: content.defaultPanel.insight,
-  };
-
-  if (!focus) {
-    return defaultPanel;
-  }
-
-  const node = nodeLookup.get(focus.id);
-
-  if (!node) {
-    return defaultPanel;
-  }
-
-  const strongestConnection =
-    connections.find(
-      (connection) =>
-        (connection.from === node.id || connection.to === node.id) &&
-        connection.strength === "primary",
-    ) ??
-    connections.find(
-      (connection) => connection.from === node.id || connection.to === node.id,
-    );
-  const relatedId = strongestConnection
-    ? strongestConnection.from === node.id
-      ? strongestConnection.to
-      : strongestConnection.from
-    : "";
-  const relatedLabel = relatedId ? nodeLookup.get(relatedId)?.label ?? "" : "";
-
-  return {
-    eyebrow: node.dimensionLabel,
-    title: node.label,
-    definition: node.definition,
-    metric: node.value,
-    count: node.count ?? "",
-    strongestLink: relatedLabel || strongestConnection?.summary || "",
-    insight: node.insight,
-  };
 }
