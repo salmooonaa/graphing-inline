@@ -33,8 +33,8 @@ export function SiteHeader() {
     const fallbackOffset = headerRef.current?.getBoundingClientRect().height ?? 0;
     const offset =
       Number.isFinite(configuredOffset) && configuredOffset > 0
-        ? configuredOffset
-        : fallbackOffset;
+        ? Math.max(configuredOffset, fallbackOffset + 12)
+        : fallbackOffset + 12;
     const top = Math.max(
       target.getBoundingClientRect().top + window.scrollY - offset,
       0,
@@ -142,8 +142,8 @@ export function SiteHeader() {
       ref={headerRef}
       className="sticky top-0 z-30 border-b border-[var(--line)] bg-white"
     >
-      <Container className="flex min-h-14 items-center justify-center sm:min-h-15">
-        <nav className="flex w-full items-center justify-center gap-5 sm:gap-7 md:gap-9 lg:gap-11">
+      <Container className="flex min-h-14 items-center justify-center py-1.5 sm:min-h-15 sm:py-0">
+        <nav className="flex w-full items-center justify-between gap-1.5 sm:justify-center sm:gap-4 md:gap-6 lg:gap-11 max-[359px]:grid max-[359px]:grid-cols-2 max-[359px]:gap-x-2 max-[359px]:gap-y-1.5">
           {siteMeta.navItems.map((item) => {
             const navId = item.id as ActiveNavId;
             const isActive = activeNavId === navId;
@@ -155,7 +155,7 @@ export function SiteHeader() {
                 onClick={(event) => handleNavClick(event, navId)}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "group relative inline-flex items-center pb-1.5 text-[0.72rem] font-medium uppercase tracking-[0.2em] transition-colors duration-150 sm:text-[0.76rem] md:text-[0.8rem]",
+                  "group relative inline-flex min-h-11 items-center justify-center px-2 pb-1.5 text-[0.62rem] font-medium uppercase tracking-[0.17em] transition-colors duration-150 sm:px-1 sm:text-[0.76rem] lg:min-h-10 md:text-[0.8rem] max-[359px]:w-full",
                   isActive
                     ? "text-[var(--foreground)]"
                     : "text-[var(--muted)] hover:text-[var(--muted-strong)]",

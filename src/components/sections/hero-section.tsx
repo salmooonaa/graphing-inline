@@ -89,9 +89,33 @@ export function HeroSection({ content }: HeroSectionProps) {
               </div>
 
               <div className="layout-copy mx-auto space-y-1.5">
-                <p className="text-pretty text-[0.88rem] font-medium leading-5.5 text-[var(--muted-strong)] sm:text-[0.95rem]">
-                  {hasStructuredAuthors
-                    ? content.authors!.map((author, index) => {
+                {hasStructuredAuthors ? (
+                  <>
+                    <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-[0.84rem] font-medium leading-5 text-[var(--muted-strong)] lg:hidden">
+                      {content.authors!.map((author) =>
+                        author.href ? (
+                          <a
+                            key={`${author.name}-${author.href}-mobile`}
+                            href={author.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="author-link inline-flex min-h-11 items-center px-1"
+                          >
+                            {author.name}
+                          </a>
+                        ) : (
+                          <span
+                            key={`${author.name}-mobile`}
+                            className="inline-flex min-h-11 items-center px-1"
+                          >
+                            {author.name}
+                          </span>
+                        ),
+                      )}
+                    </div>
+
+                    <p className="hidden text-pretty text-[0.88rem] font-medium leading-5.5 text-[var(--muted-strong)] lg:block lg:text-[0.95rem]">
+                      {content.authors!.map((author, index) => {
                         const separator =
                           index < content.authors!.length - 1 ? ", " : "";
 
@@ -117,9 +141,14 @@ export function HeroSection({ content }: HeroSectionProps) {
                             {separator}
                           </span>
                         );
-                      })
-                    : content.authorsLine}
-                </p>
+                      })}
+                    </p>
+                  </>
+                ) : (
+                  <p className="text-pretty text-[0.88rem] font-medium leading-5.5 text-[var(--muted-strong)] sm:text-[0.95rem]">
+                    {content.authorsLine}
+                  </p>
+                )}
 
                 {(hasPublicationLine || hasContributionNotes) && (
                   <div className="space-y-0.5">
@@ -148,7 +177,7 @@ export function HeroSection({ content }: HeroSectionProps) {
                   <a
                     key={`${action.label}-${action.href}`}
                     href={action.href}
-                    className="inline-flex min-w-[8.35rem] items-center justify-center gap-2 border border-[var(--line)] bg-white px-3.5 py-2 text-[0.64rem] font-medium uppercase tracking-[0.16em] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--foreground)]"
+                    className="inline-flex min-h-11 min-w-[7.3rem] items-center justify-center gap-2 border border-[var(--line)] bg-white px-3 py-2 text-[0.62rem] font-medium uppercase tracking-[0.16em] text-[var(--muted-strong)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--foreground)] sm:min-w-[8.35rem] sm:px-3.5 sm:text-[0.64rem] lg:min-h-10"
                   >
                     <HeroActionIcon label={action.label} />
                     <span>{action.label}</span>

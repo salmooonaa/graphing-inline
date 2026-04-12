@@ -11,13 +11,17 @@ function BibtexCode({ value }: { value: string }) {
   const lines = value.split("\n");
 
   return (
-    <code className="block min-w-max">
+    <code className="block min-w-0">
       {lines.map((line, index) => {
         const entryMatch = line.match(/^@([a-zA-Z]+)\{(.+)$/);
 
         if (entryMatch) {
           return (
-            <div key={`${index}-${line}`} className="whitespace-pre">
+            <div
+              key={`${index}-${line}`}
+              className="whitespace-pre-wrap break-words md:whitespace-pre"
+              style={{ overflowWrap: "anywhere" }}
+            >
               <span className="text-[#c43652]">@{entryMatch[1]}</span>
               <span className="text-[#c28a18]">{`{${entryMatch[2]}`}</span>
             </div>
@@ -28,7 +32,11 @@ function BibtexCode({ value }: { value: string }) {
 
         if (fieldMatch) {
           return (
-            <div key={`${index}-${line}`} className="whitespace-pre">
+            <div
+              key={`${index}-${line}`}
+              className="whitespace-pre-wrap break-words md:whitespace-pre"
+              style={{ overflowWrap: "anywhere" }}
+            >
               <span className="text-[var(--muted)]">{fieldMatch[1]}</span>
               <span className="text-[#c43652]">{fieldMatch[2]}</span>
               <span className="text-[var(--muted)]">{fieldMatch[3]}</span>
@@ -39,7 +47,11 @@ function BibtexCode({ value }: { value: string }) {
         }
 
         return (
-          <div key={`${index}-${line}`} className="whitespace-pre text-[var(--muted)]">
+          <div
+            key={`${index}-${line}`}
+            className="whitespace-pre-wrap break-words text-[var(--muted)] md:whitespace-pre"
+            style={{ overflowWrap: "anywhere" }}
+          >
             {line}
           </div>
         );
@@ -72,7 +84,7 @@ export function CitationSection({ content }: CitationSectionProps) {
                 <a
                   href={content.bibtexDownloadHref}
                   download
-                  className="inline-flex min-h-9 items-center justify-center gap-2 rounded-[0.5rem] border border-[rgba(23,19,15,0.1)] bg-white px-3 py-1.75 text-[0.68rem] font-medium text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.18)] hover:text-[var(--foreground)]"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.5rem] border border-[rgba(23,19,15,0.1)] bg-white px-3.5 py-2 text-[0.7rem] font-medium text-[var(--muted-strong)] transition-colors duration-150 hover:border-[rgba(23,19,15,0.18)] hover:text-[var(--foreground)] sm:px-3 sm:py-1.75 sm:text-[0.68rem] lg:min-h-9"
                 >
                   <svg
                     aria-hidden="true"
@@ -94,7 +106,7 @@ export function CitationSection({ content }: CitationSectionProps) {
               <CopyBibtexButton value={content.bibtex} />
             </div>
 
-            <pre className="overflow-x-auto overflow-y-hidden rounded-[0.75rem] bg-[#f7f6f4] px-2.5 py-2.5 text-[0.78rem] leading-[1.72] text-[var(--muted-strong)] sm:px-3 sm:py-3 sm:text-[0.82rem]">
+            <pre className="overflow-x-auto overflow-y-hidden rounded-[0.75rem] bg-[#f7f6f4] px-2 py-2 text-[0.72rem] leading-[1.64] text-[var(--muted-strong)] sm:px-3 sm:py-3 sm:text-[0.82rem] sm:leading-[1.72]">
               <BibtexCode value={content.bibtex} />
             </pre>
           </div>
