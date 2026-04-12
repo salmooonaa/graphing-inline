@@ -4,7 +4,7 @@ export const resultsContent: ResultsContent = {
   eyebrow: "Results",
   title: "Results",
   description:
-    "This board shows how word-scale graphics are used in scientific papers through three connected dimensions: where they appear, why they are used, and how they are represented.",
+    "This board presents our wherewhyhow framework and the corpus distribution of each dimension of word-scale graphics in scientific papers.",
   axes: [
     {
       id: "where",
