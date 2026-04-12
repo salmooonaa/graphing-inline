@@ -164,79 +164,49 @@ export type PageStat = {
 
 export type ResultsDimensionId = "where" | "why" | "how";
 
-export type ResultKeyFinding = {
-  id: string;
-  title: string;
-  summary: string;
-  metric: string;
-  evidence: string;
-};
-
-export type ResultExplorerItem = {
+export type ResultBoardBadge = {
   id: string;
   label: string;
   value: string;
-  note?: string;
-  summary: string;
-  detail: string;
+  interactive?: boolean;
+  targetPatternId?: string;
 };
 
-export type ResultExplorerDimension = {
+export type ResultBoardNode = {
+  id: string;
+  label: string;
+  value: string;
+  count?: string;
+  definition: string;
+  insight: string;
+};
+
+export type ResultBoardAxis = {
   id: ResultsDimensionId;
   label: string;
-  title: string;
-  summary: string;
-  items: ResultExplorerItem[];
+  items: ResultBoardNode[];
 };
 
-export type ResultExplorerConnection = {
+export type ResultBoardConnection = {
   from: string;
   to: string;
   strength: "primary" | "secondary";
-  explanation: string;
+  summary: string;
 };
 
-export type ResultPatternPill = {
-  label: string;
-  itemId: string;
-};
-
-export type ResultPattern = {
+export type ResultBoardPattern = {
   id: string;
-  rank: string;
-  title: string;
-  share: string;
-  width: string;
-  qualifier: string;
-  summary: string;
-  evidence: string;
-  connectedItemIds: string[];
-  pills: ResultPatternPill[];
-};
-
-export type ResultDistributionItem = {
-  itemId: string;
   label: string;
-  value: string;
-  width: string;
-  note?: string;
-};
-
-export type ResultDistributionGroup = {
-  id: ResultsDimensionId;
-  title: string;
   summary: string;
-  variant: "stacked" | "bars";
-  items: ResultDistributionItem[];
+  nodeIds: string[];
 };
 
-export type ResultEvidencePair = {
+export type ResultBoardEvidenceItem = {
   id: string;
   label: string;
   statistic: string;
   summary: string;
   detail: string;
-  connectedItemIds: string[];
 };
 
 export type HeroAuthor = {
@@ -385,32 +355,20 @@ export type ContactContent = SectionIntro & {
 };
 
 export type ResultsContent = SectionIntro & {
-  keyFindings: ResultKeyFinding[];
-  explorer: {
-    defaultTitle: string;
-    defaultSummary: string;
-    defaultDetail: string;
-    dimensions: ResultExplorerDimension[];
-    connections: ResultExplorerConnection[];
-    definitions: Array<{
-      term: string;
-      description: string;
-    }>;
-  };
-  dominantPatterns: {
+  badges: ResultBoardBadge[];
+  axes: ResultBoardAxis[];
+  connections: ResultBoardConnection[];
+  patterns: ResultBoardPattern[];
+  defaultPanel: {
     title: string;
-    summary: string;
-    items: ResultPattern[];
-  };
-  distributions: {
-    title: string;
-    summary: string;
-    groups: ResultDistributionGroup[];
+    definition: string;
+    strongestLink: string;
+    insight: string;
   };
   evidence: {
     title: string;
     summary: string;
-    pairs: ResultEvidencePair[];
+    items: ResultBoardEvidenceItem[];
     notes: string[];
   };
 };

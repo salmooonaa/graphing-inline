@@ -1,8 +1,8 @@
 import type {
-  ResultExplorerConnection,
-  ResultExplorerDimension,
-  ResultExplorerItem,
-  ResultPattern,
+  ResultBoardAxis,
+  ResultBoardConnection,
+  ResultBoardNode,
+  ResultBoardPattern,
   ResultsContent,
   ResultsDimensionId,
 } from "@/types/content";
@@ -17,10 +17,9 @@ export type FocusTarget =
       id: string;
     };
 
-export type ExplorerItemMeta = ResultExplorerItem & {
+export type BoardNodeMeta = ResultBoardNode & {
   dimensionId: ResultsDimensionId;
   dimensionLabel: string;
-  dimensionTitle: string;
 };
 
 export const dimensionTheme = {
@@ -48,18 +47,17 @@ export function sameFocus(a: FocusTarget | null, b: FocusTarget | null) {
   return a?.type === b?.type && a?.id === b?.id;
 }
 
-export function buildItemLookup(
-  dimensions: ResultExplorerDimension[],
-): Array<[string, ExplorerItemMeta]> {
-  return dimensions.flatMap((dimension) =>
-    dimension.items.map(
-      (item): [string, ExplorerItemMeta] => [
+export function buildNodeLookup(
+  axes: ResultBoardAxis[],
+): Array<[string, BoardNodeMeta]> {
+  return axes.flatMap((axis) =>
+    axis.items.map(
+      (item): [string, BoardNodeMeta] => [
         item.id,
         {
           ...item,
-          dimensionId: dimension.id,
-          dimensionLabel: dimension.label,
-          dimensionTitle: dimension.title,
+          dimensionId: axis.id,
+          dimensionLabel: axis.label,
         },
       ],
     ),
@@ -68,8 +66,8 @@ export function buildItemLookup(
 
 export function getRelatedStrengths(
   focus: FocusTarget | null,
-  connections: ResultExplorerConnection[],
-  patterns: ResultPattern[],
+  connections: ResultBoardConnection[],
+  patterns: ResultBoardPattern[],
 ) {
   const related = new Map<string, "active" | "primary" | "secondary">();
 
@@ -80,8 +78,8 @@ export function getRelatedStrengths(
   if (focus.type === "pattern") {
     const pattern = patterns.find((entry) => entry.id === focus.id);
 
-    pattern?.connectedItemIds.forEach((itemId) => {
-      related.set(itemId, "primary");
+    pattern?.nodeIds.forEach((nodeId) => {
+      related.set(nodeId, "primary");
     });
 
     return related;
@@ -111,18 +109,18 @@ export function getRelatedStrengths(
 export function getPanelContent(
   content: ResultsContent,
   focus: FocusTarget | null,
-  itemLookup: Map<string, ExplorerItemMeta>,
-  connections: ResultExplorerConnection[],
-  patterns: ResultPattern[],
+  nodeLookup: Map<string, BoardNodeMeta>,
+  connections: ResultBoardConnection[],
+  patterns: ResultBoardPattern[],
 ) {
   const defaultPanel = {
-    eyebrow: "Explorer guide",
-    title: content.explorer.defaultTitle,
-    summary: content.explorer.defaultSummary,
-    detail: content.explorer.defaultDetail,
-    definitions: content.explorer.definitions,
-    facts: [] as string[],
-    links: [] as string[],
+    eyebrow: "Default view",
+    title: content.defaultPanel.title,
+    definition: content.defaultPanel.definition,
+    metric: "",
+    count: "",
+    strongestLink: content.defaultPanel.strongestLink,
+    insight: content.defaultPanel.insight,
   };
 
   if (!focus) {
@@ -137,31 +135,48 @@ export function getPanelContent(
     }
 
     return {
-      eyebrow: `Pattern ${pattern.rank}`,
-      title: pattern.title,
-      summary: pattern.summary,
-      detail: pattern.evidence,
-      definitions: [] as Array<{ term: string; description: string }>,
-      facts: [pattern.share, pattern.qualifier],
-      links: pattern.pills.map((pill) => pill.label),
+      eyebrow: "Common path",
+      title: pattern.label,
+      definition: "A frequent Where-Why-How combination.",
+      metric: "",
+      count: "",
+      strongestLink: pattern.nodeIds
+        .map((nodeId) => nodeLookup.get(nodeId)?.label)
+        .filter(Boolean)
+        .join(" -> "),
+      insight: pattern.summary,
     };
   }
 
-  const item = itemLookup.get(focus.id);
+  const node = nodeLookup.get(focus.id);
 
-  if (!item) {
+  if (!node) {
     return defaultPanel;
   }
 
+  const strongestConnection =
+    connections.find(
+      (connection) =>
+        (connection.from === node.id || connection.to === node.id) &&
+        connection.strength === "primary",
+    ) ??
+    connections.find(
+      (connection) => connection.from === node.id || connection.to === node.id,
+    );
+  const relatedId = strongestConnection
+    ? strongestConnection.from === node.id
+      ? strongestConnection.to
+      : strongestConnection.from
+    : "";
+  const relatedLabel = relatedId ? nodeLookup.get(relatedId)?.label ?? "" : "";
+
   return {
-    eyebrow: `${item.dimensionLabel} · ${item.dimensionTitle}`,
-    title: item.label,
-    summary: item.summary,
-    detail: item.detail,
-    definitions: [] as Array<{ term: string; description: string }>,
-    facts: [item.value, item.note].filter(Boolean) as string[],
-    links: connections
-      .filter((connection) => connection.from === item.id || connection.to === item.id)
-      .map((connection) => connection.explanation),
+    eyebrow: node.dimensionLabel,
+    title: node.label,
+    definition: node.definition,
+    metric: node.value,
+    count: node.count ?? "",
+    strongestLink: relatedLabel || strongestConnection?.summary || "",
+    insight: node.insight,
   };
 }
