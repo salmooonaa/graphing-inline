@@ -164,12 +164,6 @@ export type PageStat = {
 
 export type ResultsDimensionId = "where" | "why" | "how";
 
-export type ResultBoardBadge = {
-  id: string;
-  label: string;
-  value: string;
-};
-
 export type ResultBoardNode = {
   id: string;
   label: string;
@@ -338,7 +332,6 @@ export type ContactContent = SectionIntro & {
 };
 
 export type ResultsContent = SectionIntro & {
-  badges: ResultBoardBadge[];
   axes: ResultBoardAxis[];
   connections: ResultBoardConnection[];
 };

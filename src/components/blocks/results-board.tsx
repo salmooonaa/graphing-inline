@@ -14,25 +14,6 @@ import {
 } from "@/components/blocks/results-shared";
 import { cn } from "@/lib/utils";
 
-function BoardBadge({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="rounded-[1rem] border border-[var(--line)] bg-white px-3.5 py-3 text-left transition duration-150">
-      <p className="text-[0.66rem] uppercase tracking-[0.18em] text-[var(--muted)]">
-        {label}
-      </p>
-      <p className="mt-2 text-[0.94rem] leading-tight text-[var(--foreground)]">
-        {value}
-      </p>
-    </div>
-  );
-}
-
 function AxisNodeButton({
   node,
   state,
@@ -119,7 +100,7 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
 
   return (
     <article className="section-reveal rounded-[1.6rem] border border-[var(--line)] bg-[linear-gradient(180deg,#ffffff,rgba(236,239,243,0.38))] p-4 sm:p-5 lg:p-6">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3.5">
         <div className="space-y-2">
           <p className="section-eyebrow">{content.eyebrow}</p>
           <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
@@ -141,16 +122,6 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
               </button>
             ) : null}
           </div>
-        </div>
-
-        <div className="grid gap-2.5 md:grid-cols-3">
-          {content.badges.map((badge) => (
-            <BoardBadge
-              key={badge.id}
-              label={badge.label}
-              value={badge.value}
-            />
-          ))}
         </div>
 
         <div className="rounded-[1.3rem] border border-[var(--line)] bg-white p-4 sm:p-5">

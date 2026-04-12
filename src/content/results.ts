@@ -4,24 +4,7 @@ export const resultsContent: ResultsContent = {
   eyebrow: "Results",
   title: "Results",
   description:
-    "A single 3W board for seeing the main findings first and opening deeper evidence only when needed.",
-  badges: [
-    {
-      id: "badge-rare",
-      label: "Rare adoption",
-      value: "0.6%",
-    },
-    {
-      id: "badge-icons",
-      label: "Icons dominate",
-      value: "79.5%",
-    },
-    {
-      id: "badge-structure",
-      label: "Structured relationships",
-      value: "Click nodes to explore",
-    },
-  ],
+    "This board shows how word-scale graphics are used in scientific papers through three connected dimensions: where they appear, why they are used, and how they are represented.",
   axes: [
     {
       id: "where",
