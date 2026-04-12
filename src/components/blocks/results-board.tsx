@@ -240,8 +240,10 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
           </div>
 
           <aside className="rounded-[1.3rem] border border-[var(--line)] bg-white p-4 sm:p-5">
-            <p className="section-eyebrow">{panel.eyebrow}</p>
-            <h3 className="mt-2 text-[1.18rem] leading-tight text-[var(--foreground)]">
+            {panel.eyebrow ? (
+              <p className="section-eyebrow">{panel.eyebrow}</p>
+            ) : null}
+            <h3 className={cn("text-[1.18rem] leading-tight text-[var(--foreground)]", panel.eyebrow ? "mt-2" : "")}>
               {panel.title}
             </h3>
             <p className="mt-3 text-[0.8rem] leading-5.5 text-[var(--muted)]">

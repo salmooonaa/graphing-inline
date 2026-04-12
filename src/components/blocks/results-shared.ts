@@ -96,7 +96,7 @@ export function getPanelContent(
   connections: ResultBoardConnection[],
 ) {
   const defaultPanel = {
-    eyebrow: "Default view",
+    eyebrow: "",
     title: content.defaultPanel.title,
     definition: content.defaultPanel.definition,
     metric: "",
