@@ -16,4 +16,4 @@ Siyu Lu, Yanhan Liu, Shiyu Xu, Ruishi Zou, and Chen Ye. 2026. Graphing Inline: U
 
 ## Contact
 
-Corresponding author: [Chen Ye](mailto:yechen@tongji.edu.cn)
+Corresponding author: lusiyu
