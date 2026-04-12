@@ -4,10 +4,9 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { ProblemSection } from "@/components/sections/problem-section";
 import { ResultsSection } from "@/components/sections/results-section";
 import { citationContent } from "@/content/citation";
-import { findingsContent } from "@/content/findings";
-import { frameworkContent } from "@/content/framework";
 import { homeContent } from "@/content/home";
 import { problemContent } from "@/content/problem";
+import { resultsContent } from "@/content/results";
 
 export default function HomePage() {
   return (
@@ -16,11 +15,7 @@ export default function HomePage() {
       <main>
         <HeroSection content={homeContent.hero} />
         <ProblemSection content={problemContent} />
-        <ResultsSection
-          framework={frameworkContent}
-          findings={findingsContent}
-          stats={homeContent.hero.stats}
-        />
+        <ResultsSection content={resultsContent} />
         <CitationSection content={citationContent} />
       </main>
     </>

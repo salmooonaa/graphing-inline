@@ -162,6 +162,83 @@ export type PageStat = {
   label: string;
 };
 
+export type ResultsDimensionId = "where" | "why" | "how";
+
+export type ResultKeyFinding = {
+  id: string;
+  title: string;
+  summary: string;
+  metric: string;
+  evidence: string;
+};
+
+export type ResultExplorerItem = {
+  id: string;
+  label: string;
+  value: string;
+  note?: string;
+  summary: string;
+  detail: string;
+};
+
+export type ResultExplorerDimension = {
+  id: ResultsDimensionId;
+  label: string;
+  title: string;
+  summary: string;
+  items: ResultExplorerItem[];
+};
+
+export type ResultExplorerConnection = {
+  from: string;
+  to: string;
+  strength: "primary" | "secondary";
+  explanation: string;
+};
+
+export type ResultPatternPill = {
+  label: string;
+  itemId: string;
+};
+
+export type ResultPattern = {
+  id: string;
+  rank: string;
+  title: string;
+  share: string;
+  width: string;
+  qualifier: string;
+  summary: string;
+  evidence: string;
+  connectedItemIds: string[];
+  pills: ResultPatternPill[];
+};
+
+export type ResultDistributionItem = {
+  itemId: string;
+  label: string;
+  value: string;
+  width: string;
+  note?: string;
+};
+
+export type ResultDistributionGroup = {
+  id: ResultsDimensionId;
+  title: string;
+  summary: string;
+  variant: "stacked" | "bars";
+  items: ResultDistributionItem[];
+};
+
+export type ResultEvidencePair = {
+  id: string;
+  label: string;
+  statistic: string;
+  summary: string;
+  detail: string;
+  connectedItemIds: string[];
+};
+
 export type HeroAuthor = {
   name: string;
   href?: string;
@@ -305,6 +382,37 @@ export type CitationContent = SectionIntro & {
 
 export type ContactContent = SectionIntro & {
   items: ContactItem[];
+};
+
+export type ResultsContent = SectionIntro & {
+  keyFindings: ResultKeyFinding[];
+  explorer: {
+    defaultTitle: string;
+    defaultSummary: string;
+    defaultDetail: string;
+    dimensions: ResultExplorerDimension[];
+    connections: ResultExplorerConnection[];
+    definitions: Array<{
+      term: string;
+      description: string;
+    }>;
+  };
+  dominantPatterns: {
+    title: string;
+    summary: string;
+    items: ResultPattern[];
+  };
+  distributions: {
+    title: string;
+    summary: string;
+    groups: ResultDistributionGroup[];
+  };
+  evidence: {
+    title: string;
+    summary: string;
+    pairs: ResultEvidencePair[];
+    notes: string[];
+  };
 };
 
 export type HomeContent = {

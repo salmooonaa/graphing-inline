@@ -230,6 +230,14 @@ main {
   .reveal-delay-3 {
     animation-delay: 270ms;
   }
+
+  .reveal-delay-4 {
+    animation-delay: 360ms;
+  }
+
+  .reveal-delay-5 {
+    animation-delay: 450ms;
+  }
 }
 
 @keyframes section-rise {
@@ -252,7 +260,9 @@ main {
   .section-reveal,
   .reveal-delay-1,
   .reveal-delay-2,
-  .reveal-delay-3 {
+  .reveal-delay-3,
+  .reveal-delay-4,
+  .reveal-delay-5 {
     animation: none;
     opacity: 1;
   }
