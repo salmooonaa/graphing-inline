@@ -179,13 +179,6 @@ export type ResultBoardAxis = {
   items: ResultBoardNode[];
 };
 
-export type ResultBoardConnection = {
-  from: string;
-  to: string;
-  strength: "primary" | "secondary";
-  summary: string;
-};
-
 export type HeroAuthor = {
   name: string;
   href?: string;
@@ -333,7 +326,6 @@ export type ContactContent = SectionIntro & {
 
 export type ResultsContent = SectionIntro & {
   axes: ResultBoardAxis[];
-  connections: ResultBoardConnection[];
 };
 
 export type HomeContent = {

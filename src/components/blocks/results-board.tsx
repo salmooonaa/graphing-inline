@@ -1,65 +1,35 @@
-"use client";
-
-import { useState } from "react";
-
 import type { ResultsContent } from "@/types/content";
 
-import {
-  buildNodeLookup,
-  dimensionTheme,
-  getRelatedStrengths,
-  sameFocus,
-  type BoardNodeMeta,
-  type FocusTarget,
-} from "@/components/blocks/results-shared";
+import { dimensionTheme } from "@/components/blocks/results-shared";
 import { cn } from "@/lib/utils";
 
 function AxisNodeButton({
   node,
-  state,
-  isPinned,
-  onHover,
-  onLeave,
-  onClick,
+  dimensionId,
 }: {
-  node: BoardNodeMeta;
-  state: "idle" | "active" | "primary" | "secondary" | "dim";
-  isPinned: boolean;
-  onHover: () => void;
-  onLeave: () => void;
-  onClick: () => void;
+  node: ResultsContent["axes"][number]["items"][number];
+  dimensionId: ResultsContent["axes"][number]["id"];
 }) {
-  const theme = dimensionTheme[node.dimensionId];
-  const isActive = state === "active";
-  const isLinked = state === "primary" || state === "secondary";
-  const isDim = state === "dim";
+  const theme = dimensionTheme[dimensionId];
 
   return (
-    <button
-      type="button"
+    <article
       title={node.definition}
-      aria-pressed={isPinned}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      onFocus={onHover}
-      onBlur={onLeave}
-      onClick={onClick}
+      tabIndex={0}
       className={cn(
         "group relative w-full rounded-[1rem] border px-3 py-3 text-left transition duration-150",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--foreground)]",
-        isDim && "opacity-40",
       )}
       style={{
-        borderColor: isActive || isLinked ? theme.line : "var(--line)",
-        backgroundColor: isActive ? theme.wash : isLinked ? theme.soft : "white",
-        boxShadow: isActive ? `inset 0 0 0 1px ${theme.accent}` : "none",
+        borderColor: theme.line,
+        backgroundColor: "white",
       }}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p
             className="text-[0.75rem] uppercase tracking-[0.18em]"
-            style={{ color: isActive || isLinked ? theme.accent : "var(--foreground)" }}
+            style={{ color: "var(--foreground)" }}
           >
             {node.label}
           </p>
@@ -74,53 +44,23 @@ function AxisNodeButton({
       >
         {node.definition}
       </div>
-    </button>
+    </article>
   );
 }
 
 export function ResultsBoard({ content }: { content: ResultsContent }) {
-  const [hoveredFocus, setHoveredFocus] = useState<FocusTarget | null>(null);
-  const [pinnedFocus, setPinnedFocus] = useState<FocusTarget | null>(null);
-
-  const nodeLookup = new Map(buildNodeLookup(content.axes));
-  const activeFocus = pinnedFocus ?? hoveredFocus;
-  const relatedStrengths = getRelatedStrengths(activeFocus, content.connections);
-
-  const handleToggleFocus = (nextFocus: FocusTarget) => {
-    setPinnedFocus((current) => (sameFocus(current, nextFocus) ? null : nextFocus));
-  };
-
-  const handleHover = (nextFocus: FocusTarget) => {
-    setHoveredFocus(nextFocus);
-  };
-
-  const handleLeave = () => {
-    setHoveredFocus(null);
-  };
-
   return (
     <article className="section-reveal rounded-[1.6rem] border border-[var(--line)] bg-[linear-gradient(180deg,#ffffff,rgba(236,239,243,0.38))] p-4 sm:p-5 lg:p-6">
       <div className="flex flex-col gap-3.5">
         <div className="space-y-2">
           <p className="section-eyebrow">{content.eyebrow}</p>
-          <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.2rem]">
-                {content.title}
-              </h2>
-              <p className="mt-2 text-[0.86rem] leading-5.5 text-[var(--muted)] sm:text-[0.92rem] sm:leading-6">
-                {content.description}
-              </p>
-            </div>
-            {pinnedFocus ? (
-              <button
-                type="button"
-                onClick={() => setPinnedFocus(null)}
-                className="shrink-0 self-start rounded-full border border-[var(--line)] px-3 py-1.5 text-[0.66rem] uppercase tracking-[0.16em] text-[var(--muted)] transition-colors duration-150 hover:text-[var(--foreground)]"
-              >
-                Clear selection
-              </button>
-            ) : null}
+          <div className="max-w-2xl">
+            <h2 className="text-[1.9rem] leading-[1] text-[var(--foreground)] sm:text-[2.2rem]">
+              {content.title}
+            </h2>
+            <p className="mt-2 text-[0.86rem] leading-5.5 text-[var(--muted)] sm:text-[0.92rem] sm:leading-6">
+              {content.description}
+            </p>
           </div>
         </div>
 
@@ -142,31 +82,13 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
                   {axis.label}
                 </p>
                 <div className="mt-3 space-y-2.5">
-                  {axis.items.map((node) => {
-                    const relationState = relatedStrengths.get(node.id);
-                    const state =
-                      relationState === "active"
-                        ? "active"
-                        : relationState === "primary"
-                          ? "primary"
-                          : relationState === "secondary"
-                            ? "secondary"
-                            : activeFocus
-                              ? "dim"
-                              : "idle";
-
-                    return (
-                      <AxisNodeButton
-                        key={node.id}
-                        node={nodeLookup.get(node.id)!}
-                        state={state}
-                        isPinned={sameFocus(pinnedFocus, { type: "item", id: node.id })}
-                        onHover={() => handleHover({ type: "item", id: node.id })}
-                        onLeave={handleLeave}
-                        onClick={() => handleToggleFocus({ type: "item", id: node.id })}
-                      />
-                    );
-                  })}
+                  {axis.items.map((node) => (
+                    <AxisNodeButton
+                      key={node.id}
+                      node={node}
+                      dimensionId={axis.id}
+                    />
+                  ))}
                 </div>
               </section>
             ))}
