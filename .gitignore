@@ -1,5 +1,8 @@
 /private/
 
+# Local AI collaboration file (content stays out of the public repo)
+/CLAUDE.md
+
 # Local environment files
 .env*
 !.env.example
