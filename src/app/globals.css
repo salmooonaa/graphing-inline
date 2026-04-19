@@ -251,6 +251,52 @@ main {
   .reveal-delay-5 {
     animation-delay: 450ms;
   }
+
+  .wsg-demo-prose {
+    font-family: var(--font-interface), sans-serif;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--foreground);
+    margin: 0;
+  }
+
+  .wsg-token {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .wsg-smallcaps {
+    font-variant: small-caps;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .wsg-icon {
+    display: inline-block;
+    width: 0.95em;
+    height: 0.95em;
+    color: var(--muted-strong);
+    vertical-align: -0.12em;
+    margin-inline-start: 0.22em;
+  }
+
+  .wsg-sparkline {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 1px;
+    width: 2.1em;
+    height: 0.72em;
+    vertical-align: -0.05em;
+    margin-inline-end: 0.3em;
+  }
+
+  .wsg-sparkline__bar {
+    display: block;
+    flex: 1;
+    min-width: 2px;
+    background: var(--amber);
+    border-radius: 0.5px;
+  }
 }
 
 @keyframes section-rise {
