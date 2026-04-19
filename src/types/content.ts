@@ -279,8 +279,39 @@ export type SummaryContent = SectionIntro & {
   points: HighlightItem[];
 };
 
+export type RichTextRun = {
+  text: string;
+  italic?: boolean;
+  bold?: boolean;
+};
+
+export type MotivationDemoGraphic =
+  | { kind: "icon-figure" }
+  | { kind: "sparkline"; direction: "up" | "down"; bars: number[] }
+  | { kind: "smallcaps" };
+
+export type MotivationDemoToken = {
+  id: string;
+  text: string;
+  graphic: MotivationDemoGraphic;
+};
+
+export type MotivationDemoSegment =
+  | ({ type: "run" } & RichTextRun)
+  | ({ type: "token" } & MotivationDemoToken);
+
+export type MotivationDemo = {
+  segments: MotivationDemoSegment[];
+};
+
 export type ProblemContent = SectionIntro & {
   researchQuestion: string;
+  thesis: RichTextRun[];
+  framing: string;
+  demo: MotivationDemo;
+  annotation: string;
+  gap: string;
+  bridge: RichTextRun[];
 };
 
 export type FrameworkContent = SectionIntro & {
