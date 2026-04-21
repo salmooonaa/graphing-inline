@@ -266,7 +266,7 @@ main {
   }
 
   .wsg-demo-layout__toggle {
-    justify-self: start;
+    justify-self: stretch;
   }
 
   @media (min-width: 640px) {
@@ -305,6 +305,7 @@ main {
     color: var(--muted);
     padding: 0.5rem 0.9rem;
     min-height: 1.9rem;
+    flex: 1;
     border: 0;
     background: transparent;
     cursor: pointer;
@@ -389,6 +390,17 @@ main {
     min-width: 2px;
     background: var(--amber);
     border-radius: 0.5px;
+  }
+}
+
+@media (max-width: 639px) {
+  .wsg-toggle {
+    display: flex;
+    width: 100%;
+  }
+
+  .wsg-toggle__btn {
+    min-height: 2.75rem;
   }
 }
 

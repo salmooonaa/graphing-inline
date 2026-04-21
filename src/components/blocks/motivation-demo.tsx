@@ -150,7 +150,7 @@ function Toggle({
         aria-checked={mode === "plain"}
         tabIndex={mode === "plain" ? 0 : -1}
         onClick={() => onChange("plain")}
-        className={`wsg-toggle__btn ${mode === "plain" ? "is-active" : ""}`}
+        className={`wsg-toggle__btn whitespace-nowrap ${mode === "plain" ? "is-active" : ""}`}
       >
         Plain text
       </button>
