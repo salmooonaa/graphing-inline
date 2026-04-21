@@ -260,6 +260,73 @@ main {
     margin: 0;
   }
 
+  .wsg-demo-layout {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .wsg-demo-layout__toggle {
+    justify-self: start;
+  }
+
+  @media (min-width: 640px) {
+    .wsg-demo-layout {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1.25rem 1.5rem;
+    }
+
+    .wsg-demo-layout__toggle {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+    }
+
+    .wsg-demo-layout__prose {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  .wsg-toggle {
+    display: inline-flex;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    padding: 2px;
+    gap: 2px;
+    border-radius: 2px;
+  }
+
+  .wsg-toggle__btn {
+    font-family: var(--font-data), monospace;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0.5rem 0.9rem;
+    min-height: 1.9rem;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    transition:
+      color 150ms ease,
+      background-color 150ms ease;
+  }
+
+  .wsg-toggle__btn:hover {
+    color: var(--muted-strong);
+  }
+
+  .wsg-toggle__btn.is-active {
+    color: var(--foreground);
+    background: rgba(23, 19, 15, 0.045);
+  }
+
+  .wsg-toggle__btn:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 2px;
+  }
+
   .wsg-token {
     display: inline;
     white-space: nowrap;
@@ -271,13 +338,40 @@ main {
     letter-spacing: 0.02em;
   }
 
+  .wsg-graphic-wrap {
+    display: inline-flex;
+    align-items: baseline;
+    overflow: hidden;
+    opacity: 1;
+    max-inline-size: 4em;
+    transition:
+      opacity 180ms ease-out,
+      max-inline-size 220ms ease-out,
+      margin-inline-start 220ms ease-out,
+      margin-inline-end 220ms ease-out;
+  }
+
+  .wsg-graphic-wrap--icon {
+    margin-inline-start: 0.22em;
+  }
+
+  .wsg-graphic-wrap--sparkline {
+    margin-inline-end: 0.3em;
+  }
+
+  .wsg-graphic-wrap.is-off {
+    opacity: 0;
+    max-inline-size: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+
   .wsg-icon {
     display: inline-block;
     width: 0.95em;
     height: 0.95em;
     color: var(--muted-strong);
     vertical-align: -0.12em;
-    margin-inline-start: 0.22em;
   }
 
   .wsg-sparkline {
@@ -287,7 +381,6 @@ main {
     width: 2.1em;
     height: 0.72em;
     vertical-align: -0.05em;
-    margin-inline-end: 0.3em;
   }
 
   .wsg-sparkline__bar {
@@ -324,5 +417,10 @@ main {
   .reveal-delay-5 {
     animation: none;
     opacity: 1;
+  }
+
+  .wsg-graphic-wrap,
+  .wsg-toggle__btn {
+    transition: none !important;
   }
 }
