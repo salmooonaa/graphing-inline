@@ -157,6 +157,8 @@ export type PageAction = {
   label: string;
   href: string;
   variant?: "primary" | "secondary";
+  disabled?: boolean;
+  tooltip?: string;
 };
 
 export type PageStat = {
