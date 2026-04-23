@@ -5,6 +5,12 @@ export const resultsContent: ResultsContent = {
   title: "Results",
   description:
     "Our where–why–how framework and the corpus distribution across each dimension of word-scale graphics.",
+  meta: {
+    sampleSize: "909",
+    corpus: "126,797 papers screened → 718 with word-scale graphics",
+    coding:
+      "Single-label coding per axis — percentages within each dimension sum to 100",
+  },
   axes: [
     {
       id: "where",
@@ -38,6 +44,7 @@ export const resultsContent: ResultsContent = {
           id: "why-visual-indexing",
           label: "Visual Indexing",
           value: "45.1%",
+          count: "410 cases",
           definition: "Graphics point readers to nearby text or entities.",
           insight:
             "This is the largest function slice and it connects most strongly to text and icons.",
@@ -46,6 +53,7 @@ export const resultsContent: ResultsContent = {
           id: "why-semantic-symbolizing",
           label: "Semantic Symbolizing",
           value: "38.1%",
+          count: "346 cases",
           definition: "Graphics reinforce a concept or semantic category.",
           insight:
             "This function is table-leaning but still dominated by icons.",
@@ -54,6 +62,7 @@ export const resultsContent: ResultsContent = {
           id: "why-data-annotation",
           label: "Data Annotation",
           value: "16.8%",
+          count: "153 cases",
           definition:
             "Graphics encode quantitative values tied to nearby content.",
           insight:

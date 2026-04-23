@@ -355,8 +355,15 @@ export type ContactContent = SectionIntro & {
   items: ContactItem[];
 };
 
+export type ResultsMeta = {
+  sampleSize: string;
+  corpus: string;
+  coding: string;
+};
+
 export type ResultsContent = SectionIntro & {
   axes: ResultBoardAxis[];
+  meta?: ResultsMeta;
 };
 
 export type HomeContent = {

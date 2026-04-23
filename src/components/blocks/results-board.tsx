@@ -1,56 +1,49 @@
-import type { ResultsContent } from "@/types/content";
+import type { ResultsContent, ResultsDimensionId } from "@/types/content";
 
-const AXIS_STYLES: Record<string, { tint: string; bar: string }> = {
-  where: { tint: "rgba(254,243,199,0.22)", bar: "rgba(217,119,6,0.55)" },
-  why: { tint: "rgba(219,234,254,0.22)", bar: "rgba(59,130,246,0.55)" },
-  how: { tint: "rgba(209,250,229,0.22)", bar: "rgba(16,185,129,0.55)" },
+const AXIS_STYLES: Record<
+  ResultsDimensionId,
+  { accent: string; tint: string; bar: string }
+> = {
+  where: {
+    accent: "var(--amber)",
+    tint: "rgba(254,243,199,0.18)",
+    bar: "rgba(217,119,6,0.7)",
+  },
+  why: {
+    accent: "var(--blue)",
+    tint: "rgba(219,234,254,0.20)",
+    bar: "rgba(59,130,246,0.7)",
+  },
+  how: {
+    accent: "var(--green)",
+    tint: "rgba(209,250,229,0.18)",
+    bar: "rgba(16,185,129,0.7)",
+  },
 };
 
-function AxisItemRow({
-  node,
-  pct,
-  barColor,
-}: {
-  node: ResultsContent["axes"][number]["items"][number];
-  pct: number;
-  barColor: string;
-}) {
+function parsePct(value: string): number {
+  const n = parseFloat(value);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function parseCount(count: string | undefined): string | null {
+  if (!count) return null;
+  const match = count.match(/([\d,]+)/);
+  return match ? match[1] : null;
+}
+
+function WordScaleBar({ pct, color }: { pct: number; color: string }) {
+  const clamped = Math.max(0, Math.min(100, pct));
   return (
-    <article className="group relative border-b border-[var(--line)] last:border-b-0">
-      <details className="group">
-        <summary className="min-h-10 cursor-pointer list-none py-2.5 text-left focus-visible:outline-none [&::-webkit-details-marker]:hidden">
-          <div className="flex items-baseline justify-between gap-3">
-            <p className="min-w-0 text-[0.78rem] leading-5 text-[var(--foreground)]">
-              {node.label}
-            </p>
-            <div className="flex shrink-0 items-baseline gap-2">
-              <span className="font-[var(--font-data)] text-[0.82rem] tabular-nums text-[var(--amber)]">
-                {node.value}
-              </span>
-              <span className="flex h-4 w-4 items-center justify-center text-[0.72rem] leading-none text-[var(--muted)] transition-transform duration-150 group-open:rotate-45 md:hidden">
-                +
-              </span>
-            </div>
-          </div>
-          <div className="mt-1.5 h-[3px] w-full overflow-hidden rounded-full bg-[var(--line)]">
-            <div
-              className="h-full rounded-full"
-              style={{ width: `${pct}%`, backgroundColor: barColor }}
-            />
-          </div>
-        </summary>
-
-        <div className="pb-3 pt-0.5 md:hidden">
-          <p className="text-[0.72rem] leading-5 text-[var(--muted)]">
-            {node.definition}
-          </p>
-        </div>
-
-        <div className="pointer-events-none absolute left-0 top-full z-10 mt-1 hidden w-56 border border-[var(--line)] bg-white px-3 py-2 text-[0.7rem] leading-5 text-[var(--muted)] shadow-[0_4px_16px_rgba(23,19,15,0.06)] md:group-hover:block md:group-focus-within:block">
-          {node.definition}
-        </div>
-      </details>
-    </article>
+    <span
+      aria-hidden="true"
+      className="relative inline-block h-[7px] w-full overflow-hidden rounded-[2px] bg-[var(--line)] align-middle"
+    >
+      <span
+        className="absolute inset-y-0 left-0 rounded-[2px]"
+        style={{ width: `${clamped}%`, backgroundColor: color }}
+      />
+    </span>
   );
 }
 
@@ -66,40 +59,142 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
         </p>
       </div>
 
-      <div className="section-reveal reveal-delay-1 grid divide-y divide-[var(--line)] border-y border-[var(--line)] md:grid-cols-3 md:divide-x md:divide-y-0">
-        {content.axes.map((axis) => {
-          const styles = AXIS_STYLES[axis.id] ?? {
-            tint: "transparent",
-            bar: "var(--amber)",
-          };
-          const maxPct = Math.max(
-            ...axis.items.map((item) => parseFloat(item.value) || 0),
-            0.0001,
-          );
-          return (
-            <section
-              key={axis.id}
-              className="py-4 md:px-5 md:first:pl-0 md:last:pr-0"
-              style={{ backgroundColor: styles.tint }}
-            >
-              <p className="section-eyebrow">{axis.label}</p>
-              <div className="mt-3 flex flex-col">
-                {axis.items.map((node) => {
-                  const value = parseFloat(node.value) || 0;
-                  const pct = (value / maxPct) * 100;
+      <div className="section-reveal reveal-delay-1">
+        <div className="overflow-hidden rounded-md border border-[var(--line)] bg-[var(--background)] px-4 py-4 sm:px-6 sm:py-5">
+          <table className="w-full border-separate border-spacing-0 text-left">
+            <thead>
+              <tr className="text-[0.68rem] uppercase tracking-[0.16em] text-[var(--muted)]">
+                <th
+                  scope="col"
+                  className="border-b border-[var(--line)] pb-2 pl-1 pr-3 font-medium"
+                >
+                  Dimension
+                </th>
+                <th
+                  scope="col"
+                  className="border-b border-[var(--line)] pb-2 pr-3 font-medium"
+                >
+                  Category
+                </th>
+                <th
+                  scope="col"
+                  className="border-b border-[var(--line)] pb-2 pr-2 text-right font-medium"
+                >
+                  Share
+                </th>
+                <th
+                  scope="col"
+                  className="border-b border-[var(--line)] pb-2 pr-3 font-medium"
+                >
+                  <span className="sr-only">Proportion</span>
+                </th>
+                <th
+                  scope="col"
+                  className="hidden border-b border-[var(--line)] pb-2 pr-1 text-right font-medium sm:table-cell"
+                >
+                  N
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {content.axes.map((axis, axisIndex) => {
+                const styles = AXIS_STYLES[axis.id];
+                const items = axis.items;
+                const groupTopBorder =
+                  axisIndex === 0
+                    ? "border-t-0"
+                    : "border-t border-[var(--line-strong)]";
+
+                return items.map((node, rowIndex) => {
+                  const pct = parsePct(node.value);
+                  const isFirst = rowIndex === 0;
+                  const isLast = rowIndex === items.length - 1;
+                  const rowBorder = isLast
+                    ? ""
+                    : "border-b border-[var(--line)]";
+                  const nCount = parseCount(node.count);
+
                   return (
-                    <AxisItemRow
+                    <tr
                       key={node.id}
-                      node={node}
-                      pct={pct}
-                      barColor={styles.bar}
-                    />
+                      style={{ backgroundColor: styles.tint }}
+                    >
+                      {isFirst ? (
+                        <th
+                          scope="rowgroup"
+                          rowSpan={items.length}
+                          className={`${groupTopBorder} align-top pl-3 pr-4 pt-3.5 pb-3.5`}
+                          style={{
+                            borderLeft: `2px solid ${styles.accent}`,
+                          }}
+                        >
+                          <span className="section-eyebrow whitespace-nowrap">
+                            {axis.label}
+                          </span>
+                        </th>
+                      ) : null}
+
+                      <td
+                        className={`${isFirst ? groupTopBorder : ""} ${rowBorder} py-2.5 pr-3 align-top`}
+                      >
+                        <details className="group relative">
+                          <summary className="cursor-pointer list-none focus-visible:outline-none [&::-webkit-details-marker]:hidden">
+                            <span className="text-[0.82rem] leading-5 text-[var(--foreground)]">
+                              {node.label}
+                            </span>
+                            <span className="ml-2 inline-flex h-4 w-4 items-center justify-center text-[0.72rem] leading-none text-[var(--muted)] transition-transform duration-150 group-open:rotate-45 md:hidden">
+                              +
+                            </span>
+                          </summary>
+                          <p className="mt-1 text-[0.72rem] leading-5 text-[var(--muted)] md:hidden">
+                            {node.definition}
+                          </p>
+                          <div className="pointer-events-none absolute left-0 top-full z-10 mt-1 hidden w-64 border border-[var(--line)] bg-white px-3 py-2 text-[0.7rem] leading-5 text-[var(--muted)] shadow-[0_4px_16px_rgba(23,19,15,0.06)] md:group-hover:block md:group-focus-within:block">
+                            {node.definition}
+                          </div>
+                        </details>
+                      </td>
+
+                      <td
+                        className={`${isFirst ? groupTopBorder : ""} ${rowBorder} py-2.5 pr-2 text-right align-middle`}
+                      >
+                        <span className="font-[var(--font-data)] text-[0.82rem] tabular-nums text-[var(--foreground)]">
+                          {node.value}
+                        </span>
+                      </td>
+
+                      <td
+                        className={`${isFirst ? groupTopBorder : ""} ${rowBorder} py-2.5 pr-3 align-middle`}
+                      >
+                        <div className="w-[56px] sm:w-[96px]">
+                          <WordScaleBar pct={pct} color={styles.bar} />
+                        </div>
+                      </td>
+
+                      <td
+                        className={`${isFirst ? groupTopBorder : ""} ${rowBorder} hidden py-2.5 pr-1 text-right align-middle sm:table-cell`}
+                      >
+                        <span className="font-[var(--font-data)] text-[0.76rem] tabular-nums text-[var(--muted)]">
+                          {nCount ?? "—"}
+                        </span>
+                      </td>
+                    </tr>
                   );
-                })}
-              </div>
-            </section>
-          );
-        })}
+                });
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {content.meta ? (
+          <p className="mt-3 text-[0.72rem] leading-5 text-[var(--muted)]">
+            <span className="font-[var(--font-data)] tabular-nums">
+              N = {content.meta.sampleSize}
+            </span>{" "}
+            word-scale graphics · {content.meta.coding} · Corpus:{" "}
+            {content.meta.corpus}
+          </p>
+        ) : null}
       </div>
     </div>
   );
