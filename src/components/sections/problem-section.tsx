@@ -23,7 +23,7 @@ export function ProblemSection({ content }: ProblemSectionProps) {
 
           <MotivationDemo segments={content.demo.segments} />
 
-          <p className="section-reveal reveal-delay-2 layout-copy text-[0.88rem] leading-6 text-[var(--muted)] sm:text-[0.94rem] sm:leading-7">
+          <p className="section-reveal reveal-delay-2 w-full text-[0.88rem] leading-6 text-[var(--muted)] sm:text-[0.94rem] sm:leading-7">
             <RichText runs={content.statement} />
           </p>
         </div>
