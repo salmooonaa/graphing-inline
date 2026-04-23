@@ -293,7 +293,7 @@ export type MotivationDemoGraphic =
   | { kind: "icon-figure" }
   | { kind: "sparkline"; direction: "up" | "down"; bars: number[] }
   | { kind: "smallcaps" }
-  | { kind: "bar"; value: number; max: number };
+  | { kind: "bar"; value: number; max: number; min?: number };
 
 export type MotivationDemoToken = {
   id: string;

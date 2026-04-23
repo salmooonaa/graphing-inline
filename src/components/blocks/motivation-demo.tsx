@@ -54,8 +54,8 @@ function Sparkline({
   );
 }
 
-function BarGraphic({ value, max }: { value: number; max: number }) {
-  const pct = (value / max) * 100;
+function BarGraphic({ value, max, min = 0 }: { value: number; max: number; min?: number }) {
+  const pct = ((value - min) / (max - min)) * 100;
   return (
     <span className="wsg-bar">
       <span className="wsg-bar__fill" style={{ width: `${pct}%` }} />
@@ -106,7 +106,7 @@ function TokenGraphic({
           className={`wsg-graphic-wrap wsg-graphic-wrap--bar ${isOn ? "is-on" : "is-off"}`}
           aria-hidden="true"
         >
-          <BarGraphic value={g.value} max={g.max} />
+          <BarGraphic value={g.value} max={g.max} min={g.min} />
         </span>
         {token.text}
       </span>
