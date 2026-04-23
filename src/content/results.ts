@@ -21,7 +21,7 @@ export const resultsContent: ResultsContent = {
           label: "Text",
           value: "65%",
           count: "591 cases",
-          definition: "Word-scale graphics embedded in running text.",
+          definition: "Graphics that appear embedded in text descriptions of scientific papers.",
           insight:
             "Text most strongly aligns with visual indexing and icon forms.",
         },
@@ -30,7 +30,7 @@ export const resultsContent: ResultsContent = {
           label: "Table",
           value: "35%",
           count: "318 cases",
-          definition: "Word-scale graphics embedded inside tables.",
+          definition: "Graphics that appear embedded in tables of scientific papers.",
           insight:
             "Tables more often align with semantic symbolizing, data annotation, and quantitative graphs.",
         },
@@ -45,7 +45,7 @@ export const resultsContent: ResultsContent = {
           label: "Visual Indexing",
           value: "45.1%",
           count: "410 cases",
-          definition: "Graphics point readers to nearby text or entities.",
+          definition: "Graphics that serve the purpose of establishing a visual correspondence with a specific visual or textual entity mentioned in the text descriptions.",
           insight:
             "This is the largest function slice and it connects most strongly to text and icons.",
         },
@@ -54,7 +54,7 @@ export const resultsContent: ResultsContent = {
           label: "Semantic Symbolizing",
           value: "38.1%",
           count: "346 cases",
-          definition: "Graphics reinforce a concept or semantic category.",
+          definition: "Graphics that serve as visual aids to symbolize specific concepts, thereby reinforcing the text description to enhance reader comprehension.",
           insight:
             "This function is table-leaning but still dominated by icons.",
         },
@@ -63,8 +63,7 @@ export const resultsContent: ResultsContent = {
           label: "Data Annotation",
           value: "16.8%",
           count: "153 cases",
-          definition:
-            "Graphics encode quantitative values tied to nearby content.",
+          definition: "Graphics designed to allow direct extraction of data that directly encode quantitative data associated with texts.",
           insight:
             "This is the clearest bridge from function to quantitative graphs and table use.",
         },
@@ -79,8 +78,7 @@ export const resultsContent: ResultsContent = {
           label: "Icons",
           value: "79.5%",
           count: "723 cases",
-          definition:
-            "Icon-like marks such as shapes, marks, or compact symbols.",
+          definition: "Graphics that typically adopt stylized visual forms of objects designed to evoke semantic associations.",
           insight:
             "Icons dominate both contexts and are the default form for visual indexing and semantic symbolizing.",
         },
@@ -89,8 +87,7 @@ export const resultsContent: ResultsContent = {
           label: "Quantitative Graphs",
           value: "15.8%",
           count: "144 cases",
-          definition:
-            "Miniature quantitative charts such as bars, lines, or encoded marks.",
+          definition: "Graphics in which numeric data are encoded through certain visual channels (e.g., length, angle), usually containing an implicit coordinate system.",
           insight:
             "Quantitative graphs cluster around data annotation and appear disproportionately in tables.",
         },
@@ -99,7 +96,7 @@ export const resultsContent: ResultsContent = {
           label: "Network Graphs",
           value: "1.4%",
           count: "13 cases",
-          definition: "Compact relational graph structures.",
+          definition: "Graphics that represent relational structures such as node-link diagrams to enhance the perception of relationships.",
           insight:
             "Network graphs are rare edge cases rather than dominant forms.",
         },
@@ -108,7 +105,7 @@ export const resultsContent: ResultsContent = {
           label: "Typography",
           value: "3.2%",
           count: "29 cases",
-          definition: "Typography itself carries the visual encoding.",
+          definition: "Graphics that encode texts with certain visual encodings (e.g., color) to create consistent visual linkages within the document scope.",
           insight:
             "Typography remains peripheral compared with icons and quantitative graphs.",
         },

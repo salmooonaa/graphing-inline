@@ -138,18 +138,24 @@ export function ResultsBoard({ content }: { content: ResultsContent }) {
                         className={`${isFirst ? groupTopBorder : ""} ${rowBorder} py-2.5 pr-3 align-top`}
                       >
                         <details className="group relative">
-                          <summary className="cursor-pointer list-none focus-visible:outline-none [&::-webkit-details-marker]:hidden">
-                            <span className="text-[0.82rem] leading-5 text-[var(--foreground)]">
+                          <summary className="inline-flex cursor-help list-none items-baseline gap-1 focus-visible:outline-none [&::-webkit-details-marker]:hidden">
+                            <span className="border-b border-dashed border-[var(--muted)] text-[0.82rem] leading-5 text-[var(--foreground)]">
                               {node.label}
                             </span>
-                            <span className="ml-2 inline-flex h-4 w-4 items-center justify-center text-[0.72rem] leading-none text-[var(--muted)] transition-transform duration-150 group-open:rotate-45 md:hidden">
+                            <span
+                              aria-hidden="true"
+                              className="inline-flex h-3.5 w-3.5 flex-shrink-0 items-center justify-center rounded-full border border-[var(--muted)] text-[0.55rem] leading-none text-[var(--muted)]"
+                            >
+                              i
+                            </span>
+                            <span className="inline-flex h-4 w-4 items-center justify-center text-[0.72rem] leading-none text-[var(--muted)] transition-transform duration-150 group-open:rotate-45 md:hidden">
                               +
                             </span>
                           </summary>
                           <p className="mt-1 text-[0.72rem] leading-5 text-[var(--muted)] md:hidden">
                             {node.definition}
                           </p>
-                          <div className="pointer-events-none absolute left-0 top-full z-10 mt-1 hidden w-64 border border-[var(--line)] bg-white px-3 py-2 text-[0.7rem] leading-5 text-[var(--muted)] shadow-[0_4px_16px_rgba(23,19,15,0.06)] md:group-hover:block md:group-focus-within:block">
+                          <div className="pointer-events-none absolute left-0 top-full z-10 mt-1 hidden w-72 border border-[var(--line)] bg-white px-3 py-2 text-[0.7rem] leading-5 text-[var(--muted)] shadow-[0_4px_16px_rgba(23,19,15,0.06)] md:group-hover:block md:group-focus-within:block">
                             {node.definition}
                           </div>
                         </details>
