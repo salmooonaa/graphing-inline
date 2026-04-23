@@ -176,14 +176,12 @@ export function MotivationDemo({
   const [mode, setMode] = useState<Mode>("word");
   return (
     <div className="section-reveal reveal-delay-1 w-full border border-[var(--line)] bg-white">
-      <div className="wsg-demo-layout p-5 sm:p-7">
-        <div className="wsg-demo-layout__toggle">
+      <div className="p-5 sm:p-7">
+        <div className="flex items-center justify-between mb-2">
+          <p className="section-eyebrow">Example</p>
           <Toggle mode={mode} onChange={setMode} />
         </div>
-        <div className="wsg-demo-layout__prose">
-          <p className="section-eyebrow mb-2">Example</p>
-          <DemoProse segments={segments} mode={mode} />
-        </div>
+        <DemoProse segments={segments} mode={mode} />
       </div>
     </div>
   );

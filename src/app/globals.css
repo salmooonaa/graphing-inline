@@ -260,32 +260,6 @@ main {
     margin: 0;
   }
 
-  .wsg-demo-layout {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .wsg-demo-layout__toggle {
-    justify-self: stretch;
-  }
-
-  @media (min-width: 640px) {
-    .wsg-demo-layout {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 1.25rem 1.5rem;
-    }
-
-    .wsg-demo-layout__toggle {
-      grid-column: 2;
-      grid-row: 1;
-      justify-self: end;
-    }
-
-    .wsg-demo-layout__prose {
-      grid-column: 1;
-      grid-row: 1;
-    }
-  }
 
   .wsg-toggle {
     display: inline-flex;
