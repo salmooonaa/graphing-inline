@@ -307,13 +307,8 @@ export type MotivationDemo = {
 };
 
 export type ProblemContent = SectionIntro & {
-  researchQuestion: string;
-  thesis: RichTextRun[];
-  framing: string;
   demo: MotivationDemo;
-  annotation: string;
-  gap: string;
-  bridge: RichTextRun[];
+  statement: RichTextRun[];
 };
 
 export type FrameworkContent = SectionIntro & {

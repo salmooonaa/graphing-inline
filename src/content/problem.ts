@@ -4,17 +4,6 @@ export const problemContent: ProblemContent = {
   eyebrow: "Motivation",
   title: "Motivation",
   description: "Why word-scale graphics matter in scholarly communication.",
-  researchQuestion:
-    "How do researchers apply word-scale graphics in scientific papers?",
-
-  thesis: [
-    { text: "Graphics live " },
-    { text: "in", italic: true },
-    { text: " text, not beside it." },
-  ],
-
-  framing:
-    "Scientific papers still separate numbers from the words that describe them. Word-scale graphics fold the visual back into the sentence — small enough to sit between letters, specific enough to answer a claim in place.",
 
   demo: {
     segments: [
@@ -57,22 +46,19 @@ export const problemContent: ProblemContent = {
     ],
   },
 
-  annotation:
-    "Inline graphics add a visual cue at the exact point a reader needs it — without forcing a jump to a standalone figure.",
-
-  gap: "Prior work has explored such micro-visualizations in design and interaction research. But their everyday use in published scientific papers has never been characterized at scale.",
-
-  bridge: [
-    { text: "We read " },
+  statement: [
+    {
+      text: "Word-scale graphics fold a precise visual cue back into the sentence that makes a claim — useful, well-studied in HCI, and almost absent from published science. In a corpus of ",
+    },
     { text: "126,797", bold: true },
-    { text: " papers and coded " },
-    { text: "909", bold: true },
-    { text: " use cases along three axes — " },
-    { text: "where", italic: true, bold: true },
-    { text: " they appear, " },
-    { text: "why", italic: true, bold: true },
-    { text: " they are used, and " },
-    { text: "how", italic: true, bold: true },
-    { text: " they are drawn — reported in the section below." },
+    { text: " papers, only " },
+    { text: "0.6%", bold: true },
+    {
+      text: " adopted them, and their everyday use has never been characterized at scale. ",
+    },
+    {
+      text: "How do researchers apply word-scale graphics in scientific papers?",
+      bold: true,
+    },
   ],
 };
