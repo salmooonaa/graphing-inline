@@ -372,6 +372,28 @@ main {
     margin-inline-end: 0.3em;
   }
 
+  .wsg-graphic-wrap--bar {
+    margin-inline-end: 0.35em;
+    align-items: center;
+  }
+
+  .wsg-bar {
+    display: inline-block;
+    width: 2.6em;
+    height: 0.42em;
+    background: rgba(23, 19, 15, 0.1);
+    border-radius: 1px;
+    overflow: hidden;
+    vertical-align: 0.1em;
+  }
+
+  .wsg-bar__fill {
+    display: block;
+    height: 100%;
+    background: var(--amber);
+    border-radius: 1px;
+  }
+
   .wsg-graphic-wrap.is-off {
     opacity: 0;
     max-inline-size: 0;

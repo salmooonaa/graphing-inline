@@ -54,6 +54,15 @@ function Sparkline({
   );
 }
 
+function BarGraphic({ value, max }: { value: number; max: number }) {
+  const pct = (value / max) * 100;
+  return (
+    <span className="wsg-bar">
+      <span className="wsg-bar__fill" style={{ width: `${pct}%` }} />
+    </span>
+  );
+}
+
 function TokenGraphic({
   token,
   mode,
@@ -85,6 +94,19 @@ function TokenGraphic({
           aria-hidden="true"
         >
           <Sparkline bars={g.bars} direction={g.direction} />
+        </span>
+        {token.text}
+      </span>
+    );
+  }
+  if (g.kind === "bar") {
+    return (
+      <span className="wsg-token">
+        <span
+          className={`wsg-graphic-wrap wsg-graphic-wrap--bar ${isOn ? "is-on" : "is-off"}`}
+          aria-hidden="true"
+        >
+          <BarGraphic value={g.value} max={g.max} />
         </span>
         {token.text}
       </span>
