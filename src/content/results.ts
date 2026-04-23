@@ -4,7 +4,7 @@ export const resultsContent: ResultsContent = {
   eyebrow: "Results",
   title: "Results",
   description:
-    "Distribution of word-scale graphics by placement (where), function (why), and graphic form (how) across our corpus.",
+    "Our where–why–how framework and the corpus distribution across each dimension of word-scale graphics.",
   axes: [
     {
       id: "where",
