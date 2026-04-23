@@ -181,6 +181,7 @@ export function MotivationDemo({
           <Toggle mode={mode} onChange={setMode} />
         </div>
         <div className="wsg-demo-layout__prose">
+          <p className="section-eyebrow mb-2">Example</p>
           <DemoProse segments={segments} mode={mode} />
         </div>
       </div>
