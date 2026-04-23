@@ -264,7 +264,7 @@ main {
   .wsg-demo-card {
     border: 1px solid var(--line);
     border-top: 2px solid var(--amber);
-    background: #fdfaf6;
+    background: #ffffff;
     box-shadow:
       0 1px 3px rgba(23, 19, 15, 0.05),
       0 4px 16px rgba(23, 19, 15, 0.03);

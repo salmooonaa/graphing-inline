@@ -48,13 +48,7 @@ export const problemContent: ProblemContent = {
 
   statement: [
     {
-      text: "Word-scale graphics fold a precise visual cue back into the sentence that makes a claim — useful, well-studied in HCI, and almost absent from published science. In a corpus of ",
-    },
-    { text: "126,797", bold: true },
-    { text: " papers, only " },
-    { text: "0.6%", bold: true },
-    {
-      text: " adopted them, and their everyday use has never been characterized at scale. ",
+      text: "Scientific figures typically sit apart from the prose that cites them, so readers split attention between text and graphic — an extraneous load that can obscure the argument the figure is meant to support. Word-scale graphics offer a different path: compact visuals rendered at typographic size that fold the evidence back into the sentence itself. Prior HCI work has mapped their design space, reading behaviors, and novel applications, yet how researchers actually put them to use in published papers remains uncharted. We therefore ask: ",
     },
     {
       text: "How do researchers apply word-scale graphics in scientific papers?",
