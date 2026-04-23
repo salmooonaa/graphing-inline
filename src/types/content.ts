@@ -31,6 +31,8 @@ export type HeroAction = {
   label: string;
   href: string;
   variant?: "primary" | "secondary";
+  disabled?: boolean;
+  tooltip?: string;
 };
 
 export type HeroMetric = {

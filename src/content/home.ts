@@ -25,7 +25,7 @@ export const homeContent: HomePageContent = {
     actions: [
       {
         label: "Paper",
-        href: "https://doi.org/10.1145/3772363.3798356",
+        href: "https://dl.acm.org/doi/10.1145/3772363.3798356",
         variant: "secondary",
       },
       {
@@ -35,8 +35,10 @@ export const homeContent: HomePageContent = {
       },
       {
         label: "Material",
-        href: "/files/graphing-inline.bib",
+        href: "#",
         variant: "secondary",
+        disabled: true,
+        tooltip: "暂无",
       },
     ],
     stats: [
